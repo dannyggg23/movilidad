@@ -60,7 +60,7 @@ Class Bienes
 	}
 	public function listarActivos()
 	{
-		$sql="SELECT bienes.idbienes,bienes.codigo,bienes.nombre,bienes.descripcion,bienes.tipo,bienes.imagen,bienes.valor,bienes.valor,bienes.stock,bienes.condicion,categorias_bienes.nombre as categoria FROM `bienes` INNER JOIN categorias_bienes on categorias_bienes.idcategorias_bienes=bienes.categorias_bienes_idcategorias_bienes where condicion=1";
+		$sql="SELECT bienes.idbienes,bienes.codigo,bienes.nombre,bienes.descripcion,bienes.tipo,bienes.imagen,bienes.valor,bienes.stock,bienes.condicion,categorias_bienes.nombre as categoria FROM `bienes` INNER JOIN categorias_bienes on categorias_bienes.idcategorias_bienes=bienes.categorias_bienes_idcategorias_bienes where condicion=1";
 		return ejecutarConsulta($sql);		
 	}
 }

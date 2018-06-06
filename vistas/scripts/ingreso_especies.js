@@ -13,11 +13,10 @@ function init() {
 
 //Función limpiar
 function limpiar() {
-    $("#idingreso_bienes").val("");
+    $("#idingreso_especies").val("");
     $("#ubicacion").val("");
     $("#detalle").val("");
-    $("#numero_ingreso").val("");
-    $("#n_documento").val("0");
+    $("#numero_docuemnto").val("");
 
 
     $("#total").val("");
@@ -76,7 +75,7 @@ function listar() {
             'pdf'
         ],
         "ajax": {
-            url: '../ajax/ingreso_bienes.php?op=listar',
+            url: '../ajax/ingreso_especies.php?op=listar',
             type: "get",
             dataType: "json",
             error: function(e) {
@@ -102,7 +101,7 @@ function listarArticulos() {
 
         ],
         "ajax": {
-            url: '../ajax/ingreso_bienes.php?op=listarBienes',
+            url: '../ajax/ingreso_especies.php?op=listarespecies',
             type: "get",
             dataType: "json",
             error: function(e) {
@@ -124,7 +123,7 @@ function guardaryeditar(e) {
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        url: "../ajax/ingreso_bienes.php?op=guardaryeditar",
+        url: "../ajax/ingreso_especies.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -140,8 +139,8 @@ function guardaryeditar(e) {
     limpiar();
 }
 
-function mostrar(idingreso_bienes) {
-    $.post("../ajax/ingreso_bienes.php?op=mostrar", { idingreso_bienes: idingreso_bienes }, function(data, status) {
+function mostrar(idingreso_especies) {
+    $.post("../ajax/ingreso_especies.php?op=mostrar", { idingreso_especies: idingreso_especies }, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -149,7 +148,7 @@ function mostrar(idingreso_bienes) {
 
         $("#detalle").val(data.detalle);
 
-        $("#numero_ingreso").val(data.numero_ingreso);
+        $("#numero_docuemnto").val(data.numero_ingreso);
         $("#fecha").val(data.fecha);
         $("#total").val(data.total);
 
@@ -160,16 +159,16 @@ function mostrar(idingreso_bienes) {
         $("#btnAgregarArt").hide();
     });
 
-    $.post("../ajax/ingreso_bienes.php?op=listarDetalle&id=" + idingreso_bienes, function(r) {
+    $.post("../ajax/ingreso_especies.php?op=listarDetalle&id=" + idingreso_especies, function(r) {
         $("#detalles").html(r);
     });
 }
 
 //Función para anular registros
-function anular(idingreso_bienes) {
+function anular(idingreso_especies) {
     bootbox.confirm("¿Está Seguro de anular el ingreso?", function(result) {
         if (result) {
-            $.post("../ajax/ingreso_bienes.php?op=anular", { idingreso_bienes: idingreso_bienes }, function(e) {
+            $.post("../ajax/ingreso_especies.php?op=anular", { idingreso_especies: idingreso_especies }, function(e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
@@ -188,20 +187,20 @@ $("#btnGuardar").hide();
 
 
 
-function agregarDetalle(idbienes, nombre) {
+function agregarDetalle(idespecies, nombre, desde) {
 
-    var cantidad = 1;
-    var consto_unitario = 1;
+    var cantidad = 1000;
 
-    if (idbienes != "") {
 
-        var subtotal = cantidad * consto_unitario;
+    if (idespecies != "") {
+
+        var subtotal = cantidad + desde;
         var fila = '<tr class="filas" id="fila' + cont + '">' +
             '<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle(' + cont + ')">X</button></td>' +
-            '<td><input type="hidden" name="bienes_idbienes[]" id="bienes_idbienes[]" value="' + idbienes + '">' + nombre + '</td>' +
+            '<td><input type="hidden" name="especies_idespecies[]" id="especies_idespecies[]" value="' + idespecies + '">' + nombre + '</td>' +
             '<td><input type="number" name="cantidad[]" id="cantidad[]" value="' + cantidad + '"></td>' +
-            '<td><input type="number" name="consto_unitario[]" id="consto_unitario[]" value="' + consto_unitario + '"></td>' +
-            '<td><span name="subtotal" id="subtotal' + cont + '">' + subtotal + '</span></td>' +
+            '<td><input type="number" name="desde[]" id="desde[]" value="' + desde + '"></td>' +
+            '<td><input type="number" name="subtotal" id="subtotal' + cont + ' value="' + subtotal + '"></input></td>' +
             '<td><button type="button" onclick="modificarSubototales()" class="btn btn-info"><i class="fa fa-refresh"></i></button></td>' +
             '</tr>';
         cont++;
@@ -215,7 +214,7 @@ function agregarDetalle(idbienes, nombre) {
 
 function modificarSubototales() {
     var cant = document.getElementsByName("cantidad[]");
-    var prec = document.getElementsByName("consto_unitario[]");
+    var prec = document.getElementsByName("desde[]");
     var sub = document.getElementsByName("subtotal");
 
     for (var i = 0; i < cant.length; i++) {
@@ -223,7 +222,7 @@ function modificarSubototales() {
         var inpP = prec[i];
         var inpS = sub[i];
 
-        inpS.value = inpC.value * inpP.value;
+        inpS.value = Number(inpC.value.replace(/[^0-9\.-]+/g, "")) + Number(inpP.value.replace(/[^0-9\.-]+/g, ""));
         document.getElementsByName("subtotal")[i].innerHTML = inpS.value;
     }
     calcularTotales();
@@ -237,7 +236,7 @@ function calcularTotales() {
     for (var i = 0; i < sub.length; i++) {
         total += document.getElementsByName("subtotal")[i].value;
     }
-    $("#totalL").html("S/. " + total);
+    $("#totalL").html("/. " + total);
     $("#total").val(total);
     evaluar();
 }

@@ -124,6 +124,7 @@ if (strlen(session_id()) < 1)
               <ul class="treeview-menu">
                 <li><a href="especies.php"><i class="fa fa-circle-o"></i> Especies</a></li>
                 <li><a href="bienes.php"><i class="fa fa-circle-o"></i> Bienes</a></li>
+                <li><a href="cajeros.php"><i class="fa fa-circle-o"></i> Personas</a></li>
               </ul>
             </li>
 
@@ -136,7 +137,7 @@ if (strlen(session_id()) < 1)
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
               <ul class="treeview-menu">
-                <li><a href="horario.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
+                <li><a href="ingreso_especies.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
                 <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
                 <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Cancelados</a></li>
               </ul>
@@ -150,7 +151,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li><a href="ingreso_bienes.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="alumno.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
+                <li><a href="egreso_bienes.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
                 <li><a href="ficha_alumno.php"><i class="fa fa-circle-o"></i> Cancelados</a></li>
               </ul>
             </li>

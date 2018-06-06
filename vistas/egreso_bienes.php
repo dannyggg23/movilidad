@@ -23,7 +23,7 @@ if ($_SESSION['bienes']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Ingreso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Egreso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -34,6 +34,7 @@ if ($_SESSION['bienes']==1)
                           <thead>
                             <th>Opciones</th>
                             <th>Fecha</th>
+                            <th>Cédula</th>
                             <th>Ubicación</th>
                             <th>Detalle</th>
                             <th>Numero</th>
@@ -46,6 +47,7 @@ if ($_SESSION['bienes']==1)
                           <tfoot>
                           <th>Opciones</th>
                             <th>Fecha</th>
+                            <th>Cédula</th>                            
                             <th>Ubicación</th>
                             <th>Detalle</th>
                             <th>Numero</th>
@@ -59,8 +61,8 @@ if ($_SESSION['bienes']==1)
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label>ubicacion(*):</label>
-                            <input type="hidden" name="idingreso_bienes" id="idingreso_bienes">
-                            <input type="text" class="form-control" name="ubicacion" id="ubicacion" maxlength="50" placeholder="Serie">
+                            <input type="hidden" name="idegreso_bienes" id="idegreso_bienes">
+                            <input type="text" class="form-control" name="lugar" id="lugar" maxlength="50" placeholder="Serie">
                             
                               
                             </select>
@@ -70,15 +72,21 @@ if ($_SESSION['bienes']==1)
                             <input type="date" class="form-control" name="fecha" id="fecha" required="">
                           </div>
 
+
                           <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
                             <label>Detalle:</label>
-                            <input type="text" class="form-control" name="detalle" id="detalle" maxlength="10" placeholder="Número" required="">
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="10" placeholder="Número" required="">
                           </div>
                           
                         
                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                             <label>Número:</label>
-                            <input type="text" class="form-control" name="numero_ingreso" id="numero_ingreso" maxlength="10" placeholder="Número" required="">
+                            <input type="text" class="form-control" name="numero_egreso" id="numero_egreso" maxlength="10" placeholder="Número" required="">
+                          </div>
+
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label>Persona(*):</label>
+                            <select id="personas_idcajeros" name="personas_idcajeros" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>
                          
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -177,7 +185,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/ingreso_bienes.js"></script>
+<script type="text/javascript" src="scripts/egreso_bienes.js"></script>
 <?php 
 }
 ob_end_flush();

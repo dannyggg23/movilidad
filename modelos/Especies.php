@@ -60,6 +60,14 @@ Class Especies
 		$sql="SELECT * FROM especies";
 		return ejecutarConsulta($sql);		
 	}
+
+	public function listarActivos()
+	{
+		$sql="SELECT especies.*,categorias_especies.nombre as 'categoria' FROM `especies` INNER JOIN categorias_especies ON categorias_especies.idcategorias_especies=especies.categorias_especies_idcategorias_especies WHERE especies.condicion=1";
+		return ejecutarConsulta($sql);		
+	}
+
+	
 }
 
 ?>

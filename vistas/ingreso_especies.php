@@ -11,7 +11,7 @@ else
 {
 require 'header.php';
 
-if ($_SESSION['bienes']==1)
+if ($_SESSION['especies']==1)
 {
 ?>
 <!--Contenido-->
@@ -59,7 +59,7 @@ if ($_SESSION['bienes']==1)
                         <form name="formulario" id="formulario" method="POST">
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label>ubicacion(*):</label>
-                            <input type="hidden" name="idingreso_bienes" id="idingreso_bienes">
+                            <input type="hidden" name="idingreso_especies" id="idingreso_especies">
                             <input type="text" class="form-control" name="ubicacion" id="ubicacion" maxlength="50" placeholder="Serie">
                             
                               
@@ -78,7 +78,7 @@ if ($_SESSION['bienes']==1)
                         
                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                             <label>Número:</label>
-                            <input type="text" class="form-control" name="numero_ingreso" id="numero_ingreso" maxlength="10" placeholder="Número" required="">
+                            <input type="text" class="form-control" name="numero_docuemnto" id="numero_docuemnto" maxlength="10" placeholder="Número" required="">
                           </div>
                          
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -92,18 +92,20 @@ if ($_SESSION['bienes']==1)
                           <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
                             <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                               <thead style="background-color:#A9D0F5">
-                                     <th>Opciones</th>
+                                    <th>Opciones</th>
                                     <th>Artículo</th>
                                     <th>Cantidad</th>
-                                    <th>Precio unitario</th>
-                                    <th>Subtotal</th>
+                                    <th>Desde</th>
+                                    <th>Hasta</th>
+                                  
                                 </thead>
                                 <tfoot>
                                     <th>TOTAL</th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th><h4 id="totalL">S/. 0.00</h4><input type="hidden" name="total" id="total"></th> 
+                                  
+                                    <th><h4 id="totalL">0</h4><input type="hidden" name="total" id="total"></th> 
                                 </tfoot>
                                 <tbody>
                                   
@@ -144,7 +146,6 @@ if ($_SESSION['bienes']==1)
                 <th>Código</th>                
                 <th>Categoría</th>
                 <th>Stock</th>
-                <th>Tipo</th>
                 <th>Imagen</th>
             </thead>
             <tbody>
@@ -156,7 +157,6 @@ if ($_SESSION['bienes']==1)
                 <th>Código</th>                
                 <th>Categoría</th>
                 <th>Stock</th>
-                <th>Tipo</th>
                 <th>Imagen</th>
             </tfoot>
           </table>
@@ -177,7 +177,7 @@ else
 
 require 'footer.php';
 ?>
-<script type="text/javascript" src="scripts/ingreso_bienes.js"></script>
+<script type="text/javascript" src="scripts/ingreso_especies.js"></script>
 <?php 
 }
 ob_end_flush();

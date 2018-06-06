@@ -11,17 +11,17 @@ Class Personas
 	}
 
 	//Implementamos un método <para></para> insertar registros
-	public function insertar($cedula,$nombre,$funcion,$condicion)
+	public function insertar($cedula,$nombre,$funcion)
 	{
-		$sql="INSERT INTO personas (cedula,nombre,funcion,condicion)
-		VALUES ('$cedula','$nombre','$funcion','$condicion')";
+		$sql="INSERT INTO personas (cedula,nombre,funcion)
+		VALUES ('$cedula','$nombre','$funcion')";
 		return ejecutarConsulta($sql);
 	}
 
 	//Implementamos un método para editar registros
-	public function editar($idcajeros,$cedula,$nombre,$funcion,$condicion)
+	public function editar($idcajeros,$cedula,$nombre,$funcion)
 	{
-		$sql="UPDATE personas SET cedula='$cedula',nombre='$nombre',funcion='$funcion',condicion='$condicion' WHERE idcajeros='$idcajeros'";
+		$sql="UPDATE personas SET cedula='$cedula',nombre='$nombre',funcion='$funcion'  WHERE idcajeros='$idcajeros'";
 		return ejecutarConsulta($sql);
 	}
 
