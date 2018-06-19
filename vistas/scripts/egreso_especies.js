@@ -9,7 +9,7 @@ function init() {
         guardaryeditar(e);
     });
 
-    $.post("../ajax/egreso_bienes.php?op=selectPersonas", function(r) {
+    $.post("../ajax/egreso_especies.php?op=selectPersonas", function(r) {
         $("#personas_idcajeros").html(r);
         $('#personas_idcajeros').selectpicker('refresh');
 
@@ -19,14 +19,14 @@ function init() {
 
 //Función limpiar
 function limpiar() {
+    $("#idegreso_especies").val("");
+    $("#ubicacion").val("");
+    $("#detalle").val("");
+    $("#numero_documento").val("");
 
-    $("#idegreso_bienes").val("");
-    $("#lugar").val("");
-    $("#descripcion").val("");
     $("#personas_idcajeros").val("");
     $('#personas_idcajeros').selectpicker('refresh');
 
-    $("#numero_egreso").val("");
 
 
     $("#total").val("");
@@ -85,7 +85,7 @@ function listar() {
             'pdf'
         ],
         "ajax": {
-            url: '../ajax/egreso_bienes.php?op=listar',
+            url: '../ajax/egreso_especies.php?op=listar',
             type: "get",
             dataType: "json",
             error: function(e) {
@@ -111,7 +111,7 @@ function listarArticulos() {
 
         ],
         "ajax": {
-            url: '../ajax/egreso_bienes.php?op=listarBienes',
+            url: '../ajax/egreso_especies.php?op=listarespecies',
             type: "get",
             dataType: "json",
             error: function(e) {
@@ -133,7 +133,7 @@ function guardaryeditar(e) {
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        url: "../ajax/egreso_bienes.php?op=guardaryeditar",
+        url: "../ajax/egreso_especies.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -149,18 +149,21 @@ function guardaryeditar(e) {
     limpiar();
 }
 
-function mostrar(idegreso_bienes) {
-    $.post("../ajax/egreso_bienes.php?op=mostrar", { idegreso_bienes: idegreso_bienes }, function(data, status) {
+function mostrar(idegreso_especies) {
+    $.post("../ajax/egreso_especies.php?op=mostrar", { idegreso_especies: idegreso_especies }, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
-        $("#lugar").val(data.lugar);
+        $("#ubicacion").val(data.ubicacion);
 
-        $("#descripcion").val(data.descripcion);
+        $("#detalle").val(data.detalle);
 
-        $("#numero_egreso").val(data.numero_egreso);
+        $("#numero_documento").val(data.numero_documento);
         $("#fecha").val(data.fecha);
         $("#total").val(data.total);
+
+        $("#personas_idcajeros").val(data.personas_idcajeros);
+        $('#personas_idcajeros').selectpicker('refresh');
 
 
         //Ocultar y mostrar los botones
@@ -169,16 +172,16 @@ function mostrar(idegreso_bienes) {
         $("#btnAgregarArt").hide();
     });
 
-    $.post("../ajax/egreso_bienes.php?op=listarDetalle&id=" + idegreso_bienes, function(r) {
+    $.post("../ajax/egreso_especies.php?op=listarDetalle&id=" + idegreso_especies, function(r) {
         $("#detalles").html(r);
     });
 }
 
 //Función para anular registros
-function anular(idegreso_bienes) {
+function anular(idegreso_especies) {
     bootbox.confirm("¿Está Seguro de anular el ingreso?", function(result) {
         if (result) {
-            $.post("../ajax/egreso_bienes.php?op=anular", { idegreso_bienes: idegreso_bienes }, function(e) {
+            $.post("../ajax/egreso_especies.php?op=anular", { idegreso_especies: idegreso_especies }, function(e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
@@ -197,20 +200,20 @@ $("#btnGuardar").hide();
 
 
 
-function agregarDetalle(idbienes, nombre, valor) {
+function agregarDetalle(idespecies, nombre, desde) {
 
-    var cantidad = 1;
+    var cantidad = 1000;
 
 
-    if (idbienes != "") {
+    if (idespecies != "") {
 
-        var subtotal = cantidad * valor;
+        var subtotal = cantidad + desde;
         var fila = '<tr class="filas" id="fila' + cont + '">' +
             '<td><button type="button" class="btn btn-danger" onclick="eliminarDetalle(' + cont + ')">X</button></td>' +
-            '<td><input type="hidden" name="bienes_idbienes[]" id="bienes_idbienes[]" value="' + idbienes + '">' + nombre + '</td>' +
+            '<td><input type="hidden" name="especies_idespecies[]" id="especies_idespecies[]" value="' + idespecies + '">' + nombre + '</td>' +
             '<td><input type="number" name="cantidad[]" id="cantidad[]" value="' + cantidad + '"></td>' +
-            '<td><input type="number" name="precio[]" id="precio[]" value="' + valor + '"></td>' +
-            '<td><span name="subtotal" id="subtotal' + cont + '">' + subtotal + '</span></td>' +
+            '<td><input type="number" name="desde[]" id="desde[]" value="' + desde + '"></td>' +
+            '<td><input type="number" name="subtotal" id="subtotal' + cont + ' value="' + subtotal + '"></input></td>' +
             '<td><button type="button" onclick="modificarSubototales()" class="btn btn-info"><i class="fa fa-refresh"></i></button></td>' +
             '</tr>';
         cont++;
@@ -224,7 +227,7 @@ function agregarDetalle(idbienes, nombre, valor) {
 
 function modificarSubototales() {
     var cant = document.getElementsByName("cantidad[]");
-    var prec = document.getElementsByName("precio[]");
+    var prec = document.getElementsByName("desde[]");
     var sub = document.getElementsByName("subtotal");
 
     for (var i = 0; i < cant.length; i++) {
@@ -232,8 +235,11 @@ function modificarSubototales() {
         var inpP = prec[i];
         var inpS = sub[i];
 
-        inpS.value = inpC.value * inpP.value;
+        //inpS.value = Number(inpC.value.replace(/[^0-9\.-]+/g, "")) + Number(inpP.value.replace(/[^0-9\.-]+/g, ""));
+        inpS.value = inpC.value;
+
         document.getElementsByName("subtotal")[i].innerHTML = inpS.value;
+
     }
     calcularTotales();
 
@@ -244,9 +250,9 @@ function calcularTotales() {
     var total = 0.0;
 
     for (var i = 0; i < sub.length; i++) {
-        total += document.getElementsByName("subtotal")[i].value;
+        total += Number(document.getElementsByName("subtotal")[i].value.replace(/[^0-9\.-]+/g, ""));
     }
-    $("#totalL").html("S/. " + total);
+    $("#totalL").html("/. " + total);
     $("#total").val(total);
     evaluar();
 }

@@ -148,7 +148,7 @@ function mostrar(idingreso_especies) {
 
         $("#detalle").val(data.detalle);
 
-        $("#numero_docuemnto").val(data.numero_ingreso);
+        $("#numero_docuemnto").val(data.numero_docuemnto);
         $("#fecha").val(data.fecha);
         $("#total").val(data.total);
 
@@ -234,7 +234,7 @@ function calcularTotales() {
     var total = 0.0;
 
     for (var i = 0; i < sub.length; i++) {
-        total += document.getElementsByName("subtotal")[i].value;
+        total += Number(document.getElementsByName("subtotal")[i].value.replace(/[^0-9\.-]+/g, ""));
     }
     $("#totalL").html("/. " + total);
     $("#total").val(total);

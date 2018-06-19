@@ -138,7 +138,7 @@ if (strlen(session_id()) < 1)
               </a>
               <ul class="treeview-menu">
                 <li><a href="ingreso_especies.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
-                <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
+                <li><a href="egreso_especies.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
                 <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Cancelados</a></li>
               </ul>
             </li>
