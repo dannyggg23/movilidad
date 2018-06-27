@@ -62,8 +62,8 @@ switch ($_GET["op"]){
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
-                                    <th><h4 id="total">S/.'.$total.'</h4><input type="hidden" name="total" id="total"></th> 
+                                   
+                                    <th><h4 id="totalL">S/.'.$total.'</h4><input type="hidden" name="total" id="total"></th> 
                                 </tfoot>';
 	break;
 
@@ -71,12 +71,14 @@ switch ($_GET["op"]){
 		$rspta=$ingreso->listar();
  		//Vamos a declarar un array
  		$data= Array();
+		 $url='../reportes/ingreso_bienes_Factura.php?id=';
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>($reg->estado=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_bienes.')"><i class="fa fa-eye"></i></button>'.
- 					' <button class="btn btn-danger" onclick="anular('.$reg->idingreso_bienes.')"><i class="fa fa-close"></i></button>':
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_bienes.')"><i class="fa fa-eye"></i></button>',
+ 				"0"=>(($reg->estado=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_bienes.')"><i class="fa fa-eye"></i></button>'.
+				 ' <button class="btn btn-danger" onclick="anular('.$reg->idingreso_bienes.')"><i class="fa fa-close"></i></button>':
+				 '<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_bienes.')"><i class="fa fa-eye"></i></button>').
+				 '<a target="_blank" href="'.$url.$reg->idingreso_bienes.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,
  				"2"=>$reg->ubicacion,
  				"3"=>$reg->detalle,

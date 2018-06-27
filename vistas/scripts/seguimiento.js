@@ -10,9 +10,9 @@ function init() {
     })
 
     //Cargamos los items al select categoria
-    $.post("../ajax/especies.php?op=selectCategoria", function(r) {
-        $("#categorias_especies_idcategorias_especies").html(r);
-        $('#categorias_especies_idcategorias_especies').selectpicker('refresh');
+    $.post("../ajax/seguimiento.php?op=selectEgresoBienes", function(r) {
+        $("#egreso_bienes_idegreso_bienes").html(r);
+        $('#egreso_bienes_idegreso_bienes').selectpicker('refresh');
 
     });
     $("#imagenmuestra").hide();
@@ -20,19 +20,15 @@ function init() {
 
 //Función limpiar
 function limpiar() {
-    $("#codigo").val("");
-    $("#nombre").val("");
+    $("#idseguimiento_egrese_bienes").val("");
+    $("#fecha").val("");
     $("#descripcion").val("");
-    $("#stock").val("");
     $("#imagenmuestra").attr("src", "");
     $("#imagenactual").val("");
-    $("#print").hide();
-    $("#idespecies").val("");
-    $("#desde").val("");
-    $("#hasta").val("");
 
-    $("#categorias_especies_idcategorias_especies").val("");
-    $('#categorias_especies_idcategorias_especies').selectpicker('refresh');
+    $("#egreso_bienes_idegreso_bienes").val("");
+    $('#egreso_bienes_idegreso_bienes').selectpicker('refresh');
+    $("#imagen").val("");
 
 }
 
@@ -71,7 +67,7 @@ function listar() {
             'pdf'
         ],
         "ajax": {
-            url: '../ajax/especies.php?op=listar',
+            url: '../ajax/seguimiento.php?op=listar',
             type: "get",
             dataType: "json",
             error: function(e) {
@@ -93,7 +89,7 @@ function guardaryeditar(e) {
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        url: "../ajax/especies.php?op=guardaryeditar",
+        url: "../ajax/seguimiento.php?op=guardaryeditar",
         type: "POST",
         data: formData,
         contentType: false,
@@ -109,34 +105,31 @@ function guardaryeditar(e) {
     limpiar();
 }
 
-function mostrar(idespecies) {
-    $.post("../ajax/especies.php?op=mostrar", { idespecies: idespecies }, function(data, status) {
+function mostrar(idseguimiento_egrese_bienes) {
+    $.post("../ajax/seguimiento.php?op=mostrar", { idseguimiento_egrese_bienes: idseguimiento_egrese_bienes }, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
 
-        $("#imagenmuestra").show();
+        $("#imagenmuestra").hide();
 
-        $("#categorias_especies_idcategorias_especies").val(data.categorias_especies_idcategorias_especies);
-        $('#categorias_especies_idcategorias_especies').selectpicker('refresh');
-        $("#codigo").val(data.codigo);
-        $("#nombre").val(data.nombre);
-        $("#stock").val(data.stock);
+        $("#idseguimiento_egrese_bienes").val(data.idseguimiento_egrese_bienes);
+        $("#fecha").val(data.fecha);
         $("#descripcion").val(data.descripcion);
+        $("#egreso_bienes_idegreso_bienes").val(data.egreso_bienes_idegreso_bienes);
+        $('#egreso_bienes_idegreso_bienes').selectpicker('refresh');
+
         $("#imagenmuestra").show();
-        $("#imagenmuestra").attr("src", "../files/especies/" + data.imagen);
+        $("#imagenmuestra").attr("src", "../files/seguimiento/" + data.imagen);
         $("#imagenactual").val(data.imagen);
-        $("#idespecies").val(data.idespecies);
-        $("#desde").val(data.desde);
-        $("#hasta").val(data.hasta);
 
     })
 }
 
 //Función para desactivar registros
-function desactivar(idespecies) {
-    bootbox.confirm("¿Está Seguro de desactivar el artículo?", function(result) {
+function desactivar(idseguimiento_egrese_bienes) {
+    bootbox.confirm("¿Está Seguro de desactivar ?", function(result) {
         if (result) {
-            $.post("../ajax/especies.php?op=desactivar", { idespecies: idespecies }, function(e) {
+            $.post("../ajax/seguimiento.php?op=desactivar", { idseguimiento_egrese_bienes: idseguimiento_egrese_bienes }, function(e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });
@@ -145,10 +138,10 @@ function desactivar(idespecies) {
 }
 
 //Función para activar registros
-function activar(idespecies) {
-    bootbox.confirm("¿Está Seguro de activar el Artículo?", function(result) {
+function activar(idseguimiento_egrese_bienes) {
+    bootbox.confirm("¿Está Seguro de activar ?", function(result) {
         if (result) {
-            $.post("../ajax/especies.php?op=activar", { idespecies: idespecies }, function(e) {
+            $.post("../ajax/seguimiento.php?op=activar", { idseguimiento_egrese_bienes: idseguimiento_egrese_bienes }, function(e) {
                 bootbox.alert(e);
                 tabla.ajax.reload();
             });

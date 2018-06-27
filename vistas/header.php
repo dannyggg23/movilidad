@@ -139,7 +139,7 @@ if (strlen(session_id()) < 1)
               <ul class="treeview-menu">
                 <li><a href="ingreso_especies.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
                 <li><a href="egreso_especies.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
-                <li><a href="categoria.php"><i class="fa fa-circle-o"></i> Cancelados</a></li>
+            
               </ul>
             </li>
 
@@ -152,7 +152,7 @@ if (strlen(session_id()) < 1)
               <ul class="treeview-menu">
                 <li><a href="ingreso_bienes.php"><i class="fa fa-circle-o"></i> Ingresos</a></li>
                 <li><a href="egreso_bienes.php"><i class="fa fa-circle-o"></i> Egresos</a></li>
-                <li><a href="ficha_alumno.php"><i class="fa fa-circle-o"></i> Cancelados</a></li>
+                <li><a href="seguimiento.php"><i class="fa fa-circle-o"></i> Seguimiento</a></li>
               </ul>
             </li>
 

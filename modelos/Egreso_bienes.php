@@ -9,11 +9,14 @@ Class Egreso_bienes
 	{
 
 	}
-
+ 
 	//Implementamos un método <para></para> insertar registros
-	public function insertar($fecha,$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,$cantidad,$precio,$bienes_idbienes)
+	public function insertar($fecha,
+	$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,
+	$calle,$interseccion,
+	$cantidad,$precio,$bienes_idbienes)
 	{
-		$sql="INSERT INTO `egreso_bienes`( `fecha`, `total`, `lugar`, `descripcion`, `personas_idcajeros`, `usuario_idusuario`,estado,numero_egreso) VALUES ('$fecha','$total','$lugar','$descripcion','$personas_idcajeros','$usuario_idusuario','Aceptado','$numero_egreso')";
+		$sql="INSERT INTO `egreso_bienes`( `fecha`, `total`, `lugar`, `descripcion`, `personas_idcajeros`, `usuario_idusuario`,estado,numero_egreso,calle,interseccion) VALUES ('$fecha','$total','$lugar','$descripcion','$personas_idcajeros','$usuario_idusuario','Aceptado','$numero_egreso','$calle','$interseccion')";
 		//return ejecutarConsulta($sql);
 		$idegresonew=ejecutarConsulta_retornarID($sql);
 		$num_elementos=0;
@@ -59,6 +62,28 @@ Class Egreso_bienes
 	{
 		$sql="SELECT egreso_bienes.*,usuario.nombre,personas.cedula FROM `egreso_bienes` INNER JOIN usuario ON usuario.idusuario=egreso_bienes.usuario_idusuario INNER JOIN personas ON personas.idcajeros=egreso_bienes.personas_idcajeros";
 		return ejecutarConsulta($sql);		
+	}
+	public function select()
+	{
+		$sql="SELECT * FROM `egreso_bienes` ";
+		return ejecutarConsulta($sql);		
+	}
+
+	public function egreso_bienes_cabecera($id)
+	{
+		$sql="SELECT egreso_bienes.*,usuario.nombre,personas.nombre as cajero FROM `egreso_bienes` 
+		INNER JOIN usuario ON usuario.idusuario=egreso_bienes.usuario_idusuario 
+		INNER JOIN personas ON personas.idcajeros=egreso_bienes.personas_idcajeros 
+		where egreso_bienes.idegreso_bienes='$id'";
+		return ejecutarConsulta($sql);		
+	}
+
+	
+
+	public function detalle_bienes_cabecera($idegreso)
+	{
+		$sql="SELECT detalle_egreso_bienes.*,bienes.nombre,bienes.codigo FROM `detalle_egreso_bienes` INNER JOIN bienes on bienes.idbienes=detalle_egreso_bienes.bienes_idbienes where detalle_egreso_bienes.egreso_bienes_idegreso_bienes='$idegreso'";
+		return ejecutarConsulta($sql);
 	}
 }
 

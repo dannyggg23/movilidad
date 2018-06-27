@@ -23,7 +23,7 @@ if($_SESSION['especies']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Ingreso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Egreso <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -34,9 +34,8 @@ if($_SESSION['especies']==1)
                           <thead>
                           <th>Opciones</th>
                             <th>Fecha</th>
-                            <th>Ubicación</th>
-                            <th>Detalle</th>
-                            <th>Numero</th>
+                            <th>Documento</th>
+                            <th>Persona</th>
                             <th>Usuario</th>
                             <th>Total</th>
                             <th>Estado</th>
@@ -46,9 +45,8 @@ if($_SESSION['especies']==1)
                           <tfoot>
                           <th>Opciones</th>
                             <th>Fecha</th>
-                            <th>Ubicación</th>
-                            <th>Detalle</th>
-                            <th>Numero</th>
+                            <th>Documento</th>
+                            <th>Persona</th>
                             <th>Usuario</th>
                             <th>Total</th>
                             <th>Estado</th>
@@ -60,29 +58,48 @@ if($_SESSION['especies']==1)
 
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label>Ubicación(*):</label>
-                            <input type="hidden" name="idingreso_especies" id="idingreso_especies">
-                            <input type="text" class="form-control" name="ubicacion" id="ubicacion" maxlength="100" placeholder="Ingrese la ubicación" required="">
+                            <input type="hidden" name="idegreso_especies" id="idegreso_especies">
+                            <input type="text" class="form-control" name="ubicacion" id="ubicacion" maxlength="7" placeholder="Serie" required="">
                           </div>
+
+
+                      
                           <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Fecha(*):</label>
                               <input type="date" class="form-control" name="fecha" id="fecha" required>
                           </div>
-                           <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
-                            <label>Detalle(*):</label>
-                              <input type="text" class="form-control" name="detalle" id="detalle" maxlength="200" placeholder="Ingrese el detalle del ingreso" required="">
+
+                          
+
+                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                            <label>detalle:</label>
+                              <input type="text" class="form-control" name="detalle" id="detalle" maxlength="10" placeholder="Número" required="">
                           </div>
+                          
                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                            <label>Número(*):</label>
-                              <input type="text" class="form-control" name="numero_docuemnto" id="numero_docuemnto" maxlength="20" placeholder="Número de ingreso" required="">
+                            <label>Número:</label>
+                              <input type="text" class="form-control" name="numero_documento" id="numero_documento" maxlength="10" placeholder="Número" required="">
                           </div>
+
+                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label>Persona(*):</label>
+                            <select id="personas_idcajeros" name="personas_idcajeros" class="form-control selectpicker" data-live-search="true" required></select>
+                          </div>
+                   
+                          
+
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                            <a data-toggle="modal" href="#myModal">
                               <button id="btnAgregarArt" type="button" class="btn btn-primary"> <span class="fa fa-plus"></span>Agregar ficha</button>
                            </a>
                           </div>
-                          <div class="form-group col-lg-12 col-sm-12 col-md-12 col-xs-12">                         
+
+                          <div class="form-group col-lg-12 col-sm-12 col-md-12 col-xs-12">
+                            
                             <table id="detalles" class="table table-striped table-bordered table-condensed table-hover">
                               <thead style="background-color: #A9D0F5">
+    
+                          
                               <th>Opciones</th>
                                     <th>Artículo</th>
                                     <th>Cantidad</th>
@@ -90,19 +107,27 @@ if($_SESSION['especies']==1)
                                     <th>Hasta</th>
                               </thead>
                               <tfoot>
-                                   <th>TOTAL</th>
+                              <th>TOTAL</th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
-                                
+                                  
+                                  
                                     <th><h4 id="totalL">0</h4><input type="hidden" name="total" id="total"></th> 
                               </tfoot>
-                              <tbody> 
+
+                              <tbody>
+                                
                               </tbody>
+
                             </table>
+
                           </div>
+
+
+
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" >
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
+
                             <button id="btnCancelar" class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                           </div>
                         </form>
@@ -115,7 +140,9 @@ if($_SESSION['especies']==1)
 
     </div><!-- /.content-wrapper -->
   <!--Fin-Contenido-->
+
  <!--Modal-->
+ 
   <!-- Modal -->
   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -127,7 +154,7 @@ if($_SESSION['especies']==1)
         <div class="modal-body">
           <table id="tblarticulos" class="table table-striped table-bordered table-condensed table-hover">
             <thead>
-               <th>Opciones</th>
+            <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Código</th>                
                 <th>Categoría</th>
@@ -135,9 +162,10 @@ if($_SESSION['especies']==1)
                 <th>Imagen</th>
             </thead>
             <tbody>
+              
             </tbody>
             <tfoot>
-                <th>Opciones</th>
+            <th>Opciones</th>
                 <th>Nombre</th>
                 <th>Código</th>                
                 <th>Categoría</th>
@@ -162,7 +190,7 @@ else
 require 'footer.php';
 ?>
 
-<script type="text/javascript" src="scripts/ingreso_especies.js"></script>
+<script type="text/javascript" src="scripts/egreso_especies.js"></script>
 <?php
 }
 

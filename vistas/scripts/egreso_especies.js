@@ -226,6 +226,7 @@ function agregarDetalle(idespecies, nombre, desde) {
 }
 
 function modificarSubototales() {
+
     var cant = document.getElementsByName("cantidad[]");
     var prec = document.getElementsByName("desde[]");
     var sub = document.getElementsByName("subtotal");
@@ -236,7 +237,7 @@ function modificarSubototales() {
         var inpS = sub[i];
 
         //inpS.value = Number(inpC.value.replace(/[^0-9\.-]+/g, "")) + Number(inpP.value.replace(/[^0-9\.-]+/g, ""));
-        inpS.value = inpC.value;
+        inpS.value = Number(inpC.value.replace(/[^0-9\.-]+/g, "")) + Number(inpP.value.replace(/[^0-9\.-]+/g, ""));
 
         document.getElementsByName("subtotal")[i].innerHTML = inpS.value;
 
@@ -247,10 +248,12 @@ function modificarSubototales() {
 
 function calcularTotales() {
     var sub = document.getElementsByName("subtotal");
+    var cant = document.getElementsByName("cantidad[]");
     var total = 0.0;
 
     for (var i = 0; i < sub.length; i++) {
-        total += Number(document.getElementsByName("subtotal")[i].value.replace(/[^0-9\.-]+/g, ""));
+        var inpC = cant[i];
+        total += Number(inpC.value.replace(/[^0-9\.-]+/g, ""));
     }
     $("#totalL").html("/. " + total);
     $("#total").val(total);

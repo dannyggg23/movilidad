@@ -1,7 +1,7 @@
 <?php 
 if (strlen(session_id()) < 1) 
   session_start();
-
+ 
 require_once "../modelos/egreso_bienes.php";
 
 $egreso=new Egreso_bienes();
@@ -15,14 +15,15 @@ $lugar=isset($_POST["lugar"])? limpiarCadena($_POST["lugar"]):"";
 $descripcion=isset($_POST["descripcion"])? limpiarCadena($_POST["descripcion"]):"";
 $personas_idcajeros=isset($_POST["personas_idcajeros"])? limpiarCadena($_POST["personas_idcajeros"]):"";
 $numero_egreso=isset($_POST["numero_egreso"])? limpiarCadena($_POST["numero_egreso"]):"";
+$calle=isset($_POST["calle"])? limpiarCadena($_POST["calle"]):"";
+$interseccion=isset($_POST["interseccion"])? limpiarCadena($_POST["interseccion"]):"";
 $usuario_idusuario=$_SESSION["idusuario"];
-
 
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idegreso_bienes)){
-			$rspta=$egreso->insertar($fecha,$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,$_POST["cantidad"],$_POST["precio"],$_POST["bienes_idbienes"]);
+			$rspta=$egreso->insertar($fecha,$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,$calle,$interseccion,$_POST["cantidad"],$_POST["precio"],$_POST["bienes_idbienes"]);
 			echo $rspta ? "egreso registrado" : "No se pudieron registrar todos los datos del egreso";
 		}
 		else {
@@ -53,11 +54,11 @@ switch ($_GET["op"]){
                                     <th>Cantidad</th>
                                     <th>Precio unitario</th>
                                     <th>Subtotal</th>
-                                </thead>';
+                                     </thead>';
 
 		while ($reg = $rspta->fetch_object())
 				{
-					echo '<tr class="filas"><td></td><td>'.$reg->nombre.'</td><td>'.$reg->cantidad.'</td><td>'.$reg->cantidad.'</td><td>'.$reg->cantidad*$reg->precio.'</td></tr>';
+					echo '<tr class="filas"><td></td><td>'.$reg->nombre.'</td><td>'.$reg->cantidad.'</td><td>'.$reg->precio.'</td><td>'.$reg->cantidad*$reg->precio.'</td></tr>';
 					$total=$total+($reg->cantidad*$reg->precio);
 				}
 		echo '<tfoot>
@@ -65,21 +66,25 @@ switch ($_GET["op"]){
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
-                                    <th><h4 id="total">$/.'.$total.'</h4><input type="hidden" name="total" id="total"></th> 
+                                    
+                                    <th><h4 id="totalL">$/.'.$total.'</h4><input type="hidden" name="total" id="total"></th> 
                                 </tfoot>';
 	break;
 
 	case 'listar':
 		$rspta=$egreso->listar();
  		//Vamos a declarar un array
- 		$data= Array();
+		 $data= Array();
+		 
+		 $url='../reportes/egreso_bienes_Factura.php?id=';
+
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>($reg->estado=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_bienes.')"><i class="fa fa-eye"></i></button>'.
- 					' <button class="btn btn-danger" onclick="anular('.$reg->idegreso_bienes.')"><i class="fa fa-close"></i></button>':
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_bienes.')"><i class="fa fa-eye"></i></button>',
+ 				"0"=>(($reg->estado=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_bienes.')"><i class="fa fa-eye"></i></button>'.
+				 ' <button class="btn btn-danger" onclick="anular('.$reg->idegreso_bienes.')"><i class="fa fa-close"></i></button>':
+				 '<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_bienes.')"><i class="fa fa-eye"></i></button>').
+				 '<a target="_blank" href="'.$url.$reg->idegreso_bienes.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,
  				"2"=>$reg->cedula,
  				"3"=>$reg->lugar,
@@ -135,6 +140,9 @@ switch ($_GET["op"]){
 		$personas = new Personas();
 
 		$rspta = $personas->select();
+
+		echo '<option>--SELECCIONE--</option>';
+
 
 		while ($reg = $rspta->fetch_object())
 				{

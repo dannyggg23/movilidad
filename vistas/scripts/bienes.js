@@ -31,6 +31,9 @@ function limpiar() {
     $("#valor").val("");
     $("#tipo").val("");
 
+    $("#categorias_bienes_idcategorias_bienes").val("");
+    $('#categorias_bienes_idcategorias_bienes').selectpicker('refresh');
+
 }
 
 //Función mostrar formulario
@@ -41,6 +44,7 @@ function mostrarform(flag) {
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
+        $("#imagenmuestra").hide();
     } else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
@@ -109,6 +113,8 @@ function mostrar(idbienes) {
     $.post("../ajax/bienes.php?op=mostrar", { idbienes: idbienes }, function(data, status) {
         data = JSON.parse(data);
         mostrarform(true);
+
+        $("#imagenmuestra").show();
 
         $("#categorias_bienes_idcategorias_bienes").val(data.categorias_bienes_idcategorias_bienes);
         $('#categorias_bienes_idcategorias_bienes').selectpicker('refresh');

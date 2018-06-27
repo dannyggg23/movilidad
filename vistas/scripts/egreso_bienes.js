@@ -23,10 +23,13 @@ function limpiar() {
     $("#idegreso_bienes").val("");
     $("#lugar").val("");
     $("#descripcion").val("");
+
     $("#personas_idcajeros").val("");
     $('#personas_idcajeros').selectpicker('refresh');
 
     $("#numero_egreso").val("");
+    $("#calle").val("");
+    $("#interseccion").val("");
 
 
     $("#total").val("");
@@ -159,6 +162,8 @@ function mostrar(idegreso_bienes) {
         $("#descripcion").val(data.descripcion);
 
         $("#numero_egreso").val(data.numero_egreso);
+        $("#calle").val(data.calle);
+        $("#interseccion").val(data.interseccion);
         $("#fecha").val(data.fecha);
         $("#total").val(data.total);
 

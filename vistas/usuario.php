@@ -61,7 +61,7 @@ if ($_SESSION['acceso']==1)
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Nombre(*):</label>
                             <input type="hidden" name="idusuario" id="idusuario">
-                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Ingrese Nombre" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo Documento(*):</label>
@@ -73,31 +73,31 @@ if ($_SESSION['acceso']==1)
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Número(*):</label>
-                            <input type="text" class="form-control" name="num_documento" id="num_documento" maxlength="20" placeholder="Documento" required>
+                            <input type="text" class="form-control" name="num_documento" id="num_documento" maxlength="20" placeholder="Ingrese Numero" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Dirección:</label>
-                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Dirección" maxlength="70">
+                            <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese Dirección" maxlength="70">
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Teléfono:</label>
-                            <input type="text" class="form-control" name="telefono" id="telefono" maxlength="20" placeholder="Teléfono">
+                            <input type="text" class="form-control" name="telefono" id="telefono" maxlength="20" placeholder="Ingrese Teléfono">
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Email:</label>
-                            <input type="email" class="form-control" name="email" id="email" maxlength="50" placeholder="Email">
+                            <input type="email" class="form-control" name="email" id="email" maxlength="50" placeholder="Ingrese Email">
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Cargo:</label>
-                            <input type="text" class="form-control" name="cargo" id="cargo" maxlength="20" placeholder="Cargo">
+                            <label>Cargo(*):</label>
+                            <input type="text" class="form-control" name="cargo" id="cargo" maxlength="20" placeholder="Ingrese Cargo">
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Login (*):</label>
-                            <input type="text" class="form-control" name="login" id="login" maxlength="20" placeholder="Login" required>
+                            <input type="text" class="form-control" name="login" id="login" maxlength="20" placeholder="Ingrese Login" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Clave (*):</label>
-                            <input type="password" class="form-control" name="clave" id="clave" maxlength="64" placeholder="Clave" required>
+                            <input type="password" class="form-control" name="clave" id="clave" maxlength="64" placeholder="Ingrese Clave" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Permisos:</label>

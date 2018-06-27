@@ -59,6 +59,17 @@ Class Ingreso_bienes
 		$sql="SELECT ingreso_bienes.*,usuario.nombre FROM `ingreso_bienes` INNER JOIN usuario ON usuario.idusuario=ingreso_bienes.usuario_idusuario";
 		return ejecutarConsulta($sql);		
 	}
+	public function ingreso_bienes_cabecera($id)
+	{
+		$sql="SELECT ingreso_bienes.*,usuario.nombre FROM `ingreso_bienes` INNER JOIN usuario ON usuario.idusuario=ingreso_bienes.usuario_idusuario WHERE ingreso_bienes.idingreso_bienes='$id'";
+		return ejecutarConsulta($sql);		
+	}
+
+	public function detalle_bienes_cabecera($id)
+	{
+		$sql="SELECT detalle_ingreso_bienes.*,bienes.nombre,bienes.codigo FROM `detalle_ingreso_bienes` INNER JOIN bienes on bienes.idbienes=detalle_ingreso_bienes.bienes_idbienes where detalle_ingreso_bienes.ingreso_bienes_idingreso_bienes='$id'";
+		return ejecutarConsulta($sql);		
+	}
 }
 
 ?>

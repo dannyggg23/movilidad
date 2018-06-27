@@ -22,7 +22,7 @@ if ($_SESSION['catalogos']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Bienes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button> <a href="../reportes/rptarticulos.php" target="_blank"><button class="btn btn-info">Reporte</button></a></h1>
+                          <h1 class="box-title">Especies <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -63,7 +63,7 @@ if ($_SESSION['catalogos']==1)
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre(*):</label>
                             <input type="hidden" name="idespecies" id="idespecies">
-                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Ingrese el Nombre" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Categoría(*):</label>
@@ -71,22 +71,22 @@ if ($_SESSION['catalogos']==1)
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Stock(*):</label>
-                            <input type="number" class="form-control" name="stock" id="stock" required>
+                            <input type="number" class="form-control" name="stock" id="stock" placeholder="Ingrese el stock" required>
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Desde:</label>
-                            <input type="number" class="form-control" name="desde" id="desde"  placeholder="Desde">
+                            <input type="number" class="form-control" name="desde" id="desde"  placeholder="Ingrese la numeración Desde" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Hasta:</label>
-                            <input type="number" class="form-control" name="hasta" id="hasta"  placeholder="Hasta">
+                            <input type="number" class="form-control" name="hasta" id="hasta"  placeholder="Ingrese la numeración Hasta" required>
                           </div>
 
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Descripción:</label>
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripción">
+                            <label>Descripción(*):</label>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Ingrese una Descripción" required>
                           </div>
 
                           
@@ -99,8 +99,8 @@ if ($_SESSION['catalogos']==1)
                           </div>
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Código:</label>
-                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Código Barras">
+                            <label>Código(*):</label>
+                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Ingrese un Código único" required>
                         
                           </div>
 

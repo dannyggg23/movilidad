@@ -22,7 +22,7 @@ if ($_SESSION['catalogos']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Personas <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
+                          <h1 class="box-title">Seguimiento de bienes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -32,41 +32,55 @@ if ($_SESSION['catalogos']==1)
                         <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
                           <thead>
                             <th>Opciones</th>
-                            <th>Cédula</th>
-                            <th>Nombre</th>
-                            <th>Función</th>
+                            <th>Egreso</th>
+                            <th>Persona</th>
+                            <th>Fecha</th>
+                            <th>Imagen</th>
                             <th>Estado</th>
                           </thead>
                           <tbody>                            
                           </tbody>
                           <tfoot>
                           <th>Opciones</th>
-                            <th>Cédula</th>
-                            <th>Nombre</th>
-                            <th>Función</th>
+                            <th>Egreso</th>
+                            <th>Persona</th>
+                            <th>Fecha</th>
+                            <th>Imagen</th>
                             <th>Estado</th>
                           </tfoot>
                         </table>
                     </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
+                          <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <label>Fecha(*):</label>
+                            <input type="hidden" name="idseguimiento_egrese_bienes" id="idseguimiento_egrese_bienes">
+                            <input type="date" class="form-control" name="fecha" id="fecha"  required>
+                          </div>
+
+                           <div class="form-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                            <label>Descripción(*):</label>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Ingrese Descripción" required>
+                          </div>
+
+                         
+                         
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                           
-                            <label>Cédula(*):</label>
-                            <input type="hidden" name="idcajeros" id="idcajeros">
-                            <input type="text" class="form-control" name="cedula" id="cedula" maxlength="13" placeholder="Ingrese Cedula" required>
+                            <label>Numero de egreso(*):</label>
+                            <select id="egreso_bienes_idegreso_bienes" name="egreso_bienes_idegreso_bienes" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>
+                          
 
-                        
+                    
 
-                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Nombre(*):</label>
-                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Ingrese Nombre" required>
-                          </div>
+                         
+                          
 
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Función(*):</label>
-                            <input type="text" class="form-control" name="funcion" id="funcion" maxlength="100" placeholder="Ingrese Funcion" required>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Imagen:</label>
+                            <input type="file" class="form-control" name="imagen" id="imagen">
+                            <input type="hidden" name="imagenactual" id="imagenactual">
+                            <img src="" width="150px" height="120px" id="imagenmuestra">
                           </div>
 
 
@@ -94,7 +108,7 @@ else
 require 'footer.php';
 ?>
 
-<script type="text/javascript" src="scripts/cajeros.js"></script>
+<script type="text/javascript" src="scripts/seguimiento.js"></script>
 
 <?php 
 }

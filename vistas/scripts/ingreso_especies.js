@@ -231,10 +231,13 @@ function modificarSubototales() {
 
 function calcularTotales() {
     var sub = document.getElementsByName("subtotal");
+    var cant = document.getElementsByName("cantidad[]");
     var total = 0.0;
 
     for (var i = 0; i < sub.length; i++) {
-        total += Number(document.getElementsByName("subtotal")[i].value.replace(/[^0-9\.-]+/g, ""));
+        var inpC = cant[i];
+
+        total += Number(inpC.value.replace(/[^0-9\.-]+/g, ""));
     }
     $("#totalL").html("/. " + total);
     $("#total").val(total);

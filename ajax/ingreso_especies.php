@@ -46,9 +46,9 @@ switch ($_GET["op"]){
 		echo '<thead style="background-color:#A9D0F5">
                                     <th>Opciones</th>
                                     <th>Artículo</th>
-                                    <th>Cantidad</th>
                                     <th>Desde</th>
                                     <th>Hasta</th>
+                                    <th>Cantidad</th>
                                 </thead>';
 
 		while ($reg = $rspta->fetch_object())
@@ -61,8 +61,8 @@ switch ($_GET["op"]){
                                     <th></th>
                                     <th></th>
                                     <th></th>
-                                    <th></th>
-                                    <th><h4 id="total">S/.'.$total.'</h4><input type="hidden" name="total" id="total"></th> 
+                                
+                                    <th><h4 id="totalL">S/.'.$total.'</h4><input type="hidden" name="total" id="total"></th> 
                                 </tfoot>';
 	break;
 

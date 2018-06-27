@@ -22,7 +22,7 @@ if ($_SESSION['catalogos']==1)
               <div class="col-md-12">
                   <div class="box">
                     <div class="box-header with-border">
-                          <h1 class="box-title">Bienes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button> <a href="../reportes/rptarticulos.php" target="_blank"><button class="btn btn-info">Reporte</button></a></h1>
+                          <h1 class="box-title">Bienes <button class="btn btn-success" id="btnagregar" onclick="mostrarform(true)"><i class="fa fa-plus-circle"></i> Agregar</button></h1>
                         <div class="box-tools pull-right">
                         </div>
                     </div>
@@ -63,7 +63,7 @@ if ($_SESSION['catalogos']==1)
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre(*):</label>
                             <input type="hidden" name="idbienes" id="idbienes">
-                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
+                            <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Ingrese el nuevo Nombre" required>
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Categoría(*):</label>
@@ -71,22 +71,23 @@ if ($_SESSION['catalogos']==1)
                           </div>
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Stock(*):</label>
-                            <input type="number" class="form-control" name="stock" id="stock" required>
+                            <input type="number" class="form-control" placeholder="Stock del anuevo articulo" name="stock" id="stock" required>
                           </div>
 
                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Tipo:</label>
-                            <input type="text" class="form-control" name="tipo" id="tipo" maxlength="256" placeholder="Descripción">
+                            <input type="text" class="form-control" name="tipo" id="tipo" maxlength="45" placeholder="De qué tipo es el articulo --Metros-- --Litros-- --metal--" required>
                           </div>
+
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Valor:</label>
-                            <input type="text" class="form-control" name="valor" id="valor" maxlength="256" placeholder="Descripción">
+                            <input type="text" class="form-control" name="valor" id="valor" maxlength="45" placeholder="Descripción" required>
                           </div>
 
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Descripción:</label>
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripción">
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="200" placeholder="Ingrese una descripción del artículo">
                           </div>
 
                           
@@ -100,7 +101,7 @@ if ($_SESSION['catalogos']==1)
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Código:</label>
-                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Código Barras">
+                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Ingrese un código único" required>
                         
                           </div>
 
