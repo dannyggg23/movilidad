@@ -65,7 +65,7 @@ Class Seguimiento
         FROM
         `seguimiento_egreso_bienes`
         INNER JOIN `egreso_bienes` ON (`seguimiento_egreso_bienes`.`egreso_bienes_idegreso_bienes` = `egreso_bienes`.`idegreso_bienes`)
-        INNER JOIN `personas` ON (`egreso_bienes`.`personas_idcajeros` = `personas`.`idcajeros`)";
+        INNER JOIN `personas` ON (`egreso_bienes`.`personas_idcajeros` = `personas`.`idcajeros`) ORDER BY fecha desc";
 		return ejecutarConsulta($sql);		
 	}
 	

@@ -69,13 +69,16 @@ switch ($_GET["op"]){
 	case 'listar':
 		$rspta=$ingreso->listar();
  		//Vamos a declarar un array
- 		$data= Array();
+		 $data= Array();
+		 $url='../reportes/ingreso_especies_Factura.php?id=';
+		 
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>($reg->condicion=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_especies.')"><i class="fa fa-eye"></i></button>'.
- 					' <button class="btn btn-danger" onclick="anular('.$reg->idingreso_especies.')"><i class="fa fa-close"></i></button>':
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_especies.')"><i class="fa fa-eye"></i></button>',
+ 				"0"=>(($reg->condicion=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_especies.')"><i class="fa fa-eye"></i></button>'.
+				 ' <button class="btn btn-danger" onclick="anular('.$reg->idingreso_especies.')"><i class="fa fa-close"></i></button>':
+				 '<button class="btn btn-warning" onclick="mostrar('.$reg->idingreso_especies.')"><i class="fa fa-eye"></i></button>').
+				 '<a target="_blank" href="'.$url.$reg->idingreso_especies.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,
  				"2"=>$reg->ubicacion,
  				"3"=>$reg->detalle,

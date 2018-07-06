@@ -56,7 +56,7 @@ Class Ingreso_bienes
 	//Implementar un método para listar los registros
 	public function listar()
 	{
-		$sql="SELECT ingreso_bienes.*,usuario.nombre FROM `ingreso_bienes` INNER JOIN usuario ON usuario.idusuario=ingreso_bienes.usuario_idusuario";
+		$sql="SELECT ingreso_bienes.*,usuario.nombre FROM `ingreso_bienes` INNER JOIN usuario ON usuario.idusuario=ingreso_bienes.usuario_idusuario ORDER BY fecha desc";
 		return ejecutarConsulta($sql);		
 	}
 	public function ingreso_bienes_cabecera($id)

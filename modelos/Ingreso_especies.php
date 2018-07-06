@@ -65,8 +65,43 @@ Class Ingreso_especies
 	//Implementar un método para listar los registros
 	public function listar()
 	{
-		$sql="SELECT ingreso_especies.*,usuario.nombre FROM `ingreso_especies` INNER JOIN usuario ON usuario.idusuario=ingreso_especies.usuario_idusuario";
+		$sql="SELECT ingreso_especies.*,usuario.nombre FROM `ingreso_especies` INNER JOIN usuario ON usuario.idusuario=ingreso_especies.usuario_idusuario ORDER BY fecha desc";
 		return ejecutarConsulta($sql);		
+	}
+
+	public function ingreso_especies_cabecera($idingreso_especies)
+	{
+		$sql="SELECT 
+		`ingreso_especies`.`idingreso_especies`,
+		`ingreso_especies`.`fecha`,
+		`ingreso_especies`.`numero_docuemnto`,
+		`ingreso_especies`.`ubicacion`,
+		`ingreso_especies`.`detalle`,
+		`ingreso_especies`.`total`,
+		`ingreso_especies`.`condicion`,
+		`usuario`.`nombre`
+	    FROM
+		`ingreso_especies`
+		INNER JOIN `usuario` ON (`ingreso_especies`.`usuario_idusuario` = `usuario`.`idusuario`)	   
+		WHERE idingreso_especies='$idingreso_especies' ";
+		return ejecutarConsulta($sql);
+	}
+
+	public function detalles_especies_cabecera($idingreso)
+	{
+		$sql="SELECT 
+		`detalle_ingreso_especies`.`cantidad`,
+		`detalle_ingreso_especies`.`desde`,
+		`detalle_ingreso_especies`.`hasta`,
+		`detalle_ingreso_especies`.`ingreso_especies_idingreso_especies`,
+		`detalle_ingreso_especies`.`iddetalle_ingreso_especies`,
+		`especies`.`nombre`,
+		`especies`.`codigo`
+	    FROM
+		`detalle_ingreso_especies`
+		INNER JOIN `especies` ON (`detalle_ingreso_especies`.`especies_idespecies` = `especies`.`idespecies`)
+	    where detalle_ingreso_especies.ingreso_especies_idingreso_especies='$idingreso'";
+		return ejecutarConsulta($sql);
 	}
 }
 

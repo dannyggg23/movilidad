@@ -60,7 +60,7 @@ Class Egreso_bienes
 	//Implementar un método para listar los registros
 	public function listar()
 	{
-		$sql="SELECT egreso_bienes.*,usuario.nombre,personas.cedula FROM `egreso_bienes` INNER JOIN usuario ON usuario.idusuario=egreso_bienes.usuario_idusuario INNER JOIN personas ON personas.idcajeros=egreso_bienes.personas_idcajeros";
+		$sql="SELECT egreso_bienes.*,usuario.nombre,personas.cedula FROM `egreso_bienes` INNER JOIN usuario ON usuario.idusuario=egreso_bienes.usuario_idusuario INNER JOIN personas ON personas.idcajeros=egreso_bienes.personas_idcajeros ORDER BY fecha desc";
 		return ejecutarConsulta($sql);		
 	}
 	public function select()

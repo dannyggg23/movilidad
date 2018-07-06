@@ -44,7 +44,7 @@ switch ($_GET["op"]){
 		$id=$_GET['id'];
 
         $rspta = $egreso->listarDetalle($id);
-        
+         
 		$total=0;
 		echo '<thead style="background-color:#A9D0F5">
                                     <th>Opciones</th>
@@ -71,13 +71,16 @@ switch ($_GET["op"]){
 	case 'listar':
 		$rspta=$egreso->listar();
  		//Vamos a declarar un array
- 		$data= Array();
+		 $data= Array();
+		 
+		 $url='../reportes/egreso_especies_factura.php?id=';
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
- 				"0"=>($reg->condicion=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_especies.')"><i class="fa fa-eye"></i></button>'.
- 					' <button class="btn btn-danger" onclick="anular('.$reg->idegreso_especies.')"><i class="fa fa-close"></i></button>':
- 					'<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_especies.')"><i class="fa fa-eye"></i></button>',
+ 				"0"=>(($reg->condicion=='Aceptado')?'<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_especies.')"><i class="fa fa-eye"></i></button>'.
+				 ' <button class="btn btn-danger" onclick="anular('.$reg->idegreso_especies.')"><i class="fa fa-close"></i></button>':
+				 '<button class="btn btn-warning" onclick="mostrar('.$reg->idegreso_especies.')"><i class="fa fa-eye"></i></button>').
+				 '<a target="_blank" href="'.$url.$reg->idegreso_especies.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,	
  				"2"=>$reg->numero_documento,
  				"3"=>$reg->persona,
