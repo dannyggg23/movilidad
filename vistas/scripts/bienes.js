@@ -30,6 +30,7 @@ function limpiar() {
     $("#idbienes").val("");
     $("#valor").val("");
     $("#tipo").val("");
+    $("#imagen").val("");
 
     $("#categorias_bienes_idcategorias_bienes").val("");
     $('#categorias_bienes_idcategorias_bienes').selectpicker('refresh');
@@ -45,6 +46,8 @@ function mostrarform(flag) {
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
         $("#imagenmuestra").hide();
+        $("#stock").val("0");
+
     } else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
@@ -79,7 +82,7 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //Paginación
+        "iDisplayLength": 20, //Paginación
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)

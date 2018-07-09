@@ -132,9 +132,11 @@ switch ($_GET["op"]){
 
 		$rspta = $personas->select();
 
+		echo '<option>--SELECCIONE--</option>';
+
 		while ($reg = $rspta->fetch_object())
 				{
-					echo '<option value=' . $reg->idcajeros . '>' . $reg->cedula . '</option>';
+					echo '<option value=' . $reg->idcajeros . '>' . $reg->nombre . '</option>';
 				}
 	break;
 }

@@ -60,7 +60,7 @@ if($_SESSION['bienes']==1)
                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label>Ubicación(*):</label>
                             <input type="hidden" name="idingreso_bienes" id="idingreso_bienes">
-                            <input type="text" class="form-control" name="ubicacion" id="ubicacion" maxlength="7" placeholder="Ingrese la Ubicación" required>
+                            <input type="text" class="form-control" name="ubicacion" id="ubicacion" maxlength="200" placeholder="Ingrese la Ubicación" required>
                           </div>
                           <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Fecha(*):</label>
@@ -68,7 +68,7 @@ if($_SESSION['bienes']==1)
                           </div>
                            <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
                             <label>Detalle:</label>
-                              <input type="text" class="form-control" name="detalle" id="detalle" maxlength="10" placeholder="Ingrese el Detalle">
+                              <input type="text" class="form-control" name="detalle" id="detalle" maxlength="200" placeholder="Ingrese el Detalle">
                           </div>
                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                             <label>Número(*):</label>

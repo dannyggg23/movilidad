@@ -66,8 +66,9 @@ switch ($_GET["op"]){
  				"1"=>$reg->numero_egreso,
  				"2"=>$reg->nombre,
  				"3"=>$reg->fecha,
- 				"4"=>"<img src='../files/seguimiento/".$reg->imagen."' height='100px' width='100px' >",
- 				"5"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':
+ 				"4"=>$reg->descripcion,
+ 				"5"=>"<img src='../files/seguimiento/".$reg->imagen."' height='100px' width='100px' >",
+ 				"6"=>($reg->condicion)?'<span class="label bg-green">Activado</span>':
  				'<span class="label bg-red">Desactivado</span>'
  				);
  		}

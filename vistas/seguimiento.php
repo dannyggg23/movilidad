@@ -35,6 +35,7 @@ if ($_SESSION['catalogos']==1)
                             <th>Egreso</th>
                             <th>Persona</th>
                             <th>Fecha</th>
+                            <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Estado</th>
                           </thead>
@@ -45,6 +46,7 @@ if ($_SESSION['catalogos']==1)
                             <th>Egreso</th>
                             <th>Persona</th>
                             <th>Fecha</th>
+                            <th>Descripción</th>
                             <th>Imagen</th>
                             <th>Estado</th>
                           </tfoot>

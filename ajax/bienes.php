@@ -69,7 +69,7 @@ switch ($_GET["op"]){
  				"1"=>$reg->nombre,
  				"2"=>$reg->categoria,
  				"3"=>$reg->codigo,
- 				"4"=>$reg->stock,
+ 				"4"=>($reg->stock < 50 )?'<button class="btn btn-danger" >'.$reg->stock.'</button>':'<button class="btn btn-primary" >'.$reg->stock.'</button>',
  				"5"=>$reg->tipo,
  				"6"=>$reg->valor,
  				"7"=>$reg->descripcion,

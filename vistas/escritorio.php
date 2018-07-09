@@ -176,7 +176,7 @@ if($_SESSION['escritorio']==1)
                     <strong>  <?php  echo $totalnae; ?> </strong>
                     </h4>
                     <p>Alerta Especies</p>
-                    <small>Tiene menos de 50 unidades en Artículos</small>
+                    <small>Tiene menos de 1000 unidades en Artículos</small>
 
                     </div>
                     <div class="icon">

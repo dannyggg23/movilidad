@@ -258,18 +258,18 @@ function addClientAdresse( $cliente,$domicilio,$num_documento,$email,$telefono )
 	$y1     = 40;
 	$this->SetXY( $r1, $y1+15);
 	$this->SetFont( "Arial", "B", 9);
-	$this->MultiCell( 60, 4, "UBICACION");
+	$this->MultiCell( 200, 4, "UBICACION");
 	$this->SetXY( $r1, $y1+19);
 	$this->SetFont( "Arial", "", 9);
-	$this->MultiCell( 150, 4, $cliente);
+	$this->MultiCell( 200, 4, $cliente);
 	$this->SetXY( $r1, $y1+23);
-	$this->MultiCell( 150, 4, $domicilio);
+	$this->MultiCell( 200, 4, $domicilio);
 	$this->SetXY( $r1, $y1+27);
-	$this->MultiCell( 150, 4, $num_documento);
+	$this->MultiCell( 200, 4, $num_documento);
 	$this->SetXY( $r1, $y1+20);
-	$this->MultiCell( 150, 4, $email);
+	$this->MultiCell( 200, 4, $email);
 	$this->SetXY( $r1, $y1+15);
-	$this->MultiCell( 150, 4, $telefono);
+	$this->MultiCell( 200, 4, $telefono);
 }
 
 // Mode of payment

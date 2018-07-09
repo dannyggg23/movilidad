@@ -30,6 +30,8 @@ function limpiar() {
     $("#idespecies").val("");
     $("#desde").val("");
     $("#hasta").val("");
+    $("#imagen").val("");
+
 
     $("#categorias_especies_idcategorias_especies").val("");
     $('#categorias_especies_idcategorias_especies').selectpicker('refresh');
@@ -45,6 +47,9 @@ function mostrarform(flag) {
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
         $("#imagenmuestra").hide();
+        $("#stock").val("0");
+        $("#desde").val("0");
+        $("#hasta").val("0");
     } else {
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
@@ -79,7 +84,7 @@ function listar() {
             }
         },
         "bDestroy": true,
-        "iDisplayLength": 5, //Paginación
+        "iDisplayLength": 20, //Paginación
         "order": [
                 [0, "desc"]
             ] //Ordenar (columna,orden)

@@ -23,7 +23,7 @@ Class Consultas
 
 
   public function NUMbienes(){
-    $sql="SELECT COUNT(bienes.idbienes) as NUMbienes FROM `bienes` WHERE bienes.idbienes=1";
+    $sql="SELECT COUNT(bienes.idbienes) as NUMbienes FROM `bienes` WHERE bienes.condicion=1";
     return ejecutarConsulta($sql);
   }
 
@@ -38,12 +38,12 @@ Class Consultas
   }
 
   public function NUMalertabienes(){
-    $sql="SELECT COUNT(bienes.idbienes) as NUMalertabienes FROM `bienes` WHERE bienes.idbienes=1 AND bienes.stock<50";
+    $sql="SELECT COUNT(bienes.idbienes) as NUMalertabienes FROM `bienes` WHERE bienes.condicion=1 AND bienes.stock<50";
     return ejecutarConsulta($sql);
   }
 
   public function NUMalertaespecies(){
-    $sql="SELECT COUNT(especies.idespecies) as NUMalertaespecies FROM `especies` WHERE especies.condicion=1 AND especies.stock < 50";
+    $sql="SELECT COUNT(especies.idespecies) as NUMalertaespecies FROM `especies` WHERE especies.condicion=1 AND especies.stock <= 1000";
     return ejecutarConsulta($sql);
   }
 

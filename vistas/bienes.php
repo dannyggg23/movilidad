@@ -81,7 +81,7 @@ if ($_SESSION['catalogos']==1)
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Valor:</label>
-                            <input type="text" class="form-control" name="valor" id="valor" maxlength="45" placeholder="Descripción" required>
+                            <input type="text" class="form-control" name="valor" id="valor" maxlength="45" placeholder="Valor del producto" required>
                           </div>
 
 
