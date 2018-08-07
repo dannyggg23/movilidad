@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2018/07/08" author="e.World Technology Ltd.">
+  <project id="{A239591B-D32A-44C0-8F76-9EB2B0D52913}" file="" name="project2" product="PHPReportMaker" version="11.0" datetime="2018/07/08 20:29:16" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;">
+    <table id="bienes" name="bienes" caption="bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="bienes_por_categorias" name="bienes_por_categorias" caption="bienes por categorias" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="categorias_bienes" name="categorias_bienes" caption="categorias bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="categorias_especies" name="categorias_especies" caption="categorias especies" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="detalle_egreso_bienes" name="detalle_egreso_bienes" caption="detalle egreso bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="detalle_egreso_especies" name="detalle_egreso_especies" caption="detalle egreso especies" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="detalle_ingreso_bienes" name="detalle_ingreso_bienes" caption="detalle ingreso bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="detalle_ingreso_especies" name="detalle_ingreso_especies" caption="detalle ingreso especies" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="egreso_bienes" name="egreso_bienes" caption="egreso bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="egreso_especies" name="egreso_especies" caption="egreso especies" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="especies" name="especies" caption="especies" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ingreso_bienes" name="ingreso_bienes" caption="ingreso bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="ingreso_especies" name="ingreso_especies" caption="ingreso especies" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="permiso" name="permiso" caption="permiso" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="personas" name="personas" caption="personas" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="seguimiento_egreso_bienes" name="seguimiento_egreso_bienes" caption="seguimiento egreso bienes" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="usuario" name="usuario" caption="usuario" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="usuario_permiso" name="usuario_permiso" caption="usuario permiso" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="especies_por_categoria" name="especies_por_categoria" caption="especies por categoria" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="Bienes_Categorias" name="Bienes-Categorias" caption="Bienes Categorias" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+    <table id="Especies_Categorias" name="Especies-Categorias" caption="Especies Categorias" userlevel="-2,&quot;Anonymous&quot;,0;" priv="1" />
+  </project>
+</configuration>

@@ -1,0 +1,1318 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ew-language date="2018/7/9" version="11.0.0" id="en" name="English" desc="English" author="e.World Technology Ltd.">
+  <!-- 
+	*** Important Notes:
+	1. Language ID should follow: https://developers.google.com/recaptcha/docs/language,
+	2. Locale settings are placed in a separate locale files under the "locales" folder,
+	3. Locale files must be named with language ID of language file (and converted to lowercase), e.g. en.json,
+	4. Locale files are ALWAYS used, regardless of whether the project is single language or multiple language.
+-->
+  <global>
+    <phrase id="aggregatecolon" value=": " />
+    <!-- v10 -->
+    <phrase id="aggregateequal" value="=" />
+    <!-- v10 -->
+    <phrase id="allrecords" value="All" />
+    <phrase id="alwaysask" value="Always ask for my user name and password" />
+    <!-- Deprecated since v11 -->
+    <phrase id="autologin" value="Auto login until I logout explicitly" />
+    <!-- Deprecated since v11 -->
+    <phrase id="backtologin" value="Back to Login Page" />
+    <phrase id="booleanno" value="No" />
+    <phrase id="booleanyes" value="Yes" />
+    <phrase id="breadcrumbdivider" value="/" />
+    <phrase id="browsernoflashsupport" value="Your browser does not support Flash player." client="1" />
+    <phrase id="buttonexport" value="Export" class="icon-export ewIcon" />
+    <!-- v8 -->
+    <phrase id="cancel" value="Cancel" client="1" />
+    <!-- v8 -->
+    <phrase id="cancelbtn" value="Cancel" client="1" />
+    <!-- v10 -->
+    <phrase id="chartorder" value="Order by" />
+    <phrase id="chartorderxasc" value="Labels Ascending" />
+    <phrase id="chartorderxdesc" value="Labels Descending" />
+    <phrase id="chartorderyasc" value="Values Ascending" />
+    <phrase id="chartorderydesc" value="Values Descending" />
+    <phrase id="clickrecaptcha" value="Please click reCAPTCHA" client="1" />
+    <!-- v9 -->
+    <phrase id="clicktodrilldown" value="Click to drill down" />
+    <phrase id="closebtn" value="Close" client="1" />
+    <!-- v10 -->
+    <phrase id="copytoclipboard" value="Copy to clipboard" />
+    <!-- v10 -->
+    <phrase id="countselected" value="%s selected" client="1" />
+    <!-- v9 -->
+    <phrase id="ctbsumhead" value="Summary" />
+    <!-- v10 -->
+    <phrase id="currentfilters" value="Current filters:" />
+    <phrase id="deletefilter" value="Delete filter" />
+    <!-- v8 -->
+    <phrase id="deletefilterconfirm" value="Delete filter %s?" client="1" />
+    <!-- v8 -->
+    <phrase id="drilldownallrecords" value="All records" />
+    <phrase id="drilldownfilters" value="Drill down filters:" />
+    <phrase id="enterfiltername" value="Enter filter name" client="1" />
+    <!-- v8 -->
+    <phrase id="entersenderemail" value="Please enter sender email" client="1" />
+    <phrase id="enterpropersenderemail" value="Exceed maximum sender email count or email address incorrect" client="1" />
+    <phrase id="enterrecipientemail" value="Please enter recipient email" client="1" />
+    <phrase id="enterproperrecipientemail" value="Exceed maximum recipient email count or email address incorrect" client="1" />
+    <phrase id="enterproperccemail" value="Exceed maximum cc email count or email address incorrect" client="1" />
+    <phrase id="enterproperbccemail" value="Exceed maximum bcc email count or email address incorrect" client="1" />
+    <phrase id="entersubject" value="Please enter subject" client="1" />
+    <phrase id="emailformsender" value="From" />
+    <phrase id="emailformrecipient" value="To" />
+    <phrase id="emailformcc" value="Cc" />
+    <phrase id="emailformbcc" value="Bcc" />
+    <phrase id="emailformsubject" value="Subject" />
+    <phrase id="emailformmessage" value="Message" />
+    <phrase id="emailformcontenttype" value="Send as" />
+    <phrase id="emailformcontenttypeurl" value="URL" />
+    <phrase id="emailformcontenttypehtml" value="HTML" />
+    <phrase id="emptylabel" value="(Empty)" />
+    <phrase id="enterpassword" value="Please enter password" client="1" />
+    <phrase id="enterpwd" value="Please enter password" client="1" />
+    <phrase id="entersearchcriteria" value="Please enter search criteria" />
+    <phrase id="enteruid" value="Please enter user ID" client="1" />
+    <phrase id="entervalidatecode" value="Please enter the validation code shown" client="1" />
+    <phrase id="exceedmaxemailexport" value="Exceed maximum export email count. Please try again later." />
+    <phrase id="exportchart" value="Exporting chart: " client="1" />
+    <phrase id="exportchartdata" value="Exporting chart data" client="1" />
+    <phrase id="exportcharterror" value="Failed to export chart: " client="1" />
+    <phrase id="exporting" value="Exporting, please wait..." client="1" />
+    <!-- v11 -->
+    <phrase id="exportingchart" value="Exporting chart (%c of %t), please wait..." client="1" />
+    <phrase id="exporttoemail" value="Email" class="icon-email ewIcon" client="1" />
+    <!-- v8 -->
+    <phrase id="exporttoexcel" value="Export to Excel" class="icon-excel ewIcon" />
+    <!-- v8 -->
+    <phrase id="exporttopdf" value="Export to PDF" class="icon-pdf ewIcon" />
+    <!-- v8 -->
+    <phrase id="exporttoword" value="Export to Word" class="icon-word ewIcon" />
+    <!-- v8 -->
+    <phrase id="failedtoexport" value="Failed to Export" client="1" />
+    <!-- v11 -->
+    <phrase id="fieldrequiredindicator" value="&lt;span class=&quot;ewRequired&quot;&gt;&amp;nbsp;*&lt;/span&gt;" />
+    <phrase id="filter" value="Filter" />
+    <!-- v8 -->
+    <phrase id="filtername" value="Filter name" client="1" />
+    <!-- v8 -->
+    <phrase id="filters" value="Filters" class="icon-filter ewIcon" />
+    <!-- v8 -->
+    <phrase id="generate" value="Generate" client="1" />
+    <!-- v10 -->
+    <phrase id="generatereporturl" value="Generate Report URL" client="1" />
+    <!-- v10 -->
+    <phrase id="generatesuccess" value="Success" />
+    <!-- v10 -->
+    <phrase id="homepage" value="Home" class="glyphicon glyphicon-home ewIcon" />
+    <!-- v8 -->
+    <phrase id="incorrectcreditcard" value="Incorrect credit card number" client="1" />
+    <phrase id="incorrectdate" value="Incorrect date (%s)" />
+    <!-- v10 -->
+    <phrase id="incorrectdateymd" value="Incorrect date, format = yyyy%smm%sdd" />
+    <phrase id="incorrectdatemdy" value="Incorrect date, format = mm%sdd%syyyy" />
+    <phrase id="incorrectdatedmy" value="Incorrect date, format = dd%smm%syyyy" />
+    <phrase id="incorrectshortdateymd" value="Incorrect date, format = yy%smm%sdd" />
+    <phrase id="incorrectshortdatemdy" value="Incorrect date, format = mm%sdd%syy" />
+    <phrase id="incorrectshortdatedmy" value="Incorrect date, format = dd%smm%syy" />
+    <phrase id="incorrectemail" value="Incorrect email" client="1" />
+    <phrase id="incorrectfield" value="Incorrect field" client="1" />
+    <phrase id="incorrectfloat" value="Incorrect floating point number" client="1" />
+    <phrase id="incorrectguid" value="Incorrect GUID" client="1" />
+    <phrase id="incorrectinteger" value="Incorrect integer" client="1" />
+    <phrase id="incorrectphone" value="Incorrect phone number" client="1" />
+    <phrase id="incorrectrange" value="Number must be between %1 and %2" client="1" />
+    <phrase id="incorrectregexp" value="Regular expression not matched" client="1" />
+    <phrase id="incorrectssn" value="Incorrect Social Security Number" client="1" />
+    <phrase id="incorrecttime" value="Incorrect time (hh:mm:ss)" client="1" />
+    <phrase id="incorrectzip" value="Incorrect ZIP code" client="1" />
+    <phrase id="invalidpostrequest" value="Invalid post request" />
+    <!-- v8 -->
+    <phrase id="invaliduidpwd" value="Incorrect user ID or password" />
+    <phrase id="language" value="Language" />
+    <phrase id="loading" value="Loading%s..." client="1" />
+    <phrase id="login" value="Login" />
+    <phrase id="loginfacebook" value="Login with Facebook" />
+    <!-- v11 -->
+    <phrase id="loginfailed" value="Login with %p failed" />
+    <!-- v11 -->
+    <phrase id="logingoogle" value="Login with Google" />
+    <!-- v11 -->
+    <phrase id="loginoptions" value="Options" />
+    <!-- v8 -->
+    <phrase id="loginor" value="- OR -" />
+    <!-- v11 -->
+    <phrase id="loginpage" value="Login Page" />
+    <phrase id="logout" value="Logout" />
+    <phrase id="lookuplink" value="Lookup - %s" class="glyphicon glyphicon-search ewIcon" />
+    <!-- v10 -->
+    <phrase id="messageok" value="OK" client="1" />
+    <!-- v9 -->
+    <phrase id="midnight" value="midnight" />
+    <!-- v10 -->
+    <phrase id="mobilemenu" value="Menu" />
+    <phrase id="monthjan" value="Jan" />
+    <phrase id="monthfeb" value="Feb" />
+    <phrase id="monthmar" value="Mar" />
+    <phrase id="monthapr" value="Apr" />
+    <phrase id="monthmay" value="May" />
+    <phrase id="monthjun" value="Jun" />
+    <phrase id="monthjul" value="Jul" />
+    <phrase id="monthaug" value="Aug" />
+    <phrase id="monthsep" value="Sep" />
+    <phrase id="monthoct" value="Oct" />
+    <phrase id="monthnov" value="Nov" />
+    <phrase id="monthdec" value="Dec" />
+    <phrase id="more" value="More" client="1" />
+    <!-- v11 -->
+    <phrase id="next" value="Next" />
+    <phrase id="noon" value="noon" />
+    <!-- v10 -->
+    <phrase id="nopermission" value="You do not have permission to access the page." />
+    <phrase id="norecord" value="No records found" client="1" />
+    <!-- v10 -->
+    <phrase id="noreportorcharts" value="No report or charts is selected for generation. Please check your report/charts settings." />
+    <phrase id="nodistinctcolvals" value="No distinct column values for SQL: " />
+    <phrase id="nulllabel" value="(Null)" />
+    <phrase id="of" value="of" client="1" />
+    <!-- v10 -->
+    <phrase id="page" value="Page" client="1" />
+    <!-- v10 -->
+    <phrase id="pagerfirst" value="First" />
+    <phrase id="pagerlast" value="Last" />
+    <phrase id="pagernext" value="Next" />
+    <phrase id="pagerprevious" value="Previous" />
+    <phrase id="password" value="Password" />
+    <phrase id="pleaseselect" value="Please select" client="1" />
+    <!-- v9 -->
+    <phrase id="popupall" value="(All)" client="1" />
+    <phrase id="popupfrom" value="From" client="1" />
+    <phrase id="popupnovalue" value="No value selected!" client="1" />
+    <phrase id="popupselect" value="Please Select" client="1" />
+    <phrase id="popupto" value="To" client="1" />
+    <phrase id="prev" value="Prev" />
+    <phrase id="primarykeyunspecified" value="Primary key unspecified" />
+    <phrase id="printerfriendly" value="Printer Friendly" class="icon-print ewIcon" />
+    <!-- v8 -->
+    <phrase id="group" value="Groups" />
+    <phrase id="groupsperpage" value="Groups per page" />
+    <phrase id="qtr1" value="1st Quarter" />
+    <phrase id="qtr2" value="2nd Quarter" />
+    <phrase id="qtr3" value="3rd Quarter" />
+    <phrase id="qtr4" value="4th Quarter" />
+    <phrase id="record" value="Records" client="1" />
+    <!-- v10 -->
+    <phrase id="recordsperpage" value="Page size" client="1" />
+    <!-- v10 -->
+    <phrase id="rememberme" value="Remember me" />
+    <phrase id="report" value="Reports" />
+    <phrase id="reportformtype" value="Report type" />
+    <!-- v10 -->
+    <phrase id="reportformprint" value="Print" />
+    <!-- v10 -->
+    <phrase id="reportformword" value="Word" />
+    <!-- v10 -->
+    <phrase id="reportformexcel" value="Excel" />
+    <!-- v10 -->
+    <phrase id="reportformpdf" value="PDF" />
+    <!-- v10 -->
+    <phrase id="reportformemail" value="Email" />
+    <!-- v10 -->
+    <phrase id="reportformusername" value="User name" />
+    <!-- v10 -->
+    <phrase id="reportformuserdefault" value="Administrator" />
+    <!-- v10 -->
+    <phrase id="reportformfiltername" value="Filter name" />
+    <!-- v10 -->
+    <phrase id="reportformfilternone" value="None" />
+    <!-- v10 -->
+    <phrase id="reportformfiltercurrent" value="Current" />
+    <!-- v10 -->
+    <phrase id="reportformpageoption" value="Pages" />
+    <!-- v10 -->
+    <phrase id="reportformallpages" value="All" />
+    <!-- v10 -->
+    <phrase id="reportformfirstpage" value="First" />
+    <!-- v10 -->
+    <phrase id="reportformsender" value="From" />
+    <!-- v10 -->
+    <phrase id="reportformrecipient" value="To" />
+    <!-- v10 -->
+    <phrase id="reportformcc" value="Cc" />
+    <!-- v10 -->
+    <phrase id="reportformbcc" value="Bcc" />
+    <!-- v10 -->
+    <phrase id="reportformsubject" value="Subject" />
+    <!-- v10 -->
+    <phrase id="reportformresponsetype" value="Response type" />
+    <!-- v10 -->
+    <phrase id="reportformresponsetypejson" value="JSON" />
+    <!-- v10 -->
+    <phrase id="reportformresponsetypefile" value="File" />
+    <!-- v10 -->
+    <phrase id="reportformshowcurrentfilter" value="Show filters" />
+    <!-- v10 -->
+    <phrase id="reportformurl" value="URL" />
+    <!-- v10 -->
+    <phrase id="reportgenerateddate" value="Report generated at " />
+    <!-- v10 -->
+    <phrase id="reset" value="Reset" />
+    <phrase id="resetallfilter" value="Reset all filters" class="icon-reset-search ewIcon" />
+    <!-- v8 -->
+    <phrase id="resetsearch" value="Reset search criteria" />
+    <phrase id="rptavg" value="AVG" />
+    <phrase id="rptcnt" value="COUNT" />
+    <phrase id="rptdtlrec" value=" detail records" />
+    <phrase id="rptgrandsummary" value="Grand Summary" />
+    <phrase id="rptmax" value="MAX" />
+    <phrase id="rptmin" value="MIN" />
+    <phrase id="rptpagesummary" value="Page Summary" />
+    <phrase id="rptsum" value="SUM" />
+    <phrase id="rptsumhead" value="Summary for %c: %v" />
+    <!-- v9 -->
+    <phrase id="savecurrentfilter" value="Save current filter" />
+    <phrase id="saveusername" value="Save my user name" />
+    <!-- Deprecated since v11 -->
+    <phrase id="search" value="Search" client="1" />
+    <!-- v10 -->
+    <phrase id="searchbtn" value="Filter Panel" class="glyphicon glyphicon-search ewIcon" />
+    <phrase id="selectall" value="(All)" />
+    <phrase id="selectbtn" value="Select" client="1" />
+    <!-- v10 -->
+    <phrase id="sendemailbtn" value="Send" client="1" />
+    <phrase id="sendemailsuccess" value="Email sent successfully" client="1" />
+    <phrase id="servercommunicationerror" value="An error occured while communicating to the server." />
+    <!-- v10 -->
+    <phrase id="sessionwillexpire" value="Your session will expire in %s seconds. Click OK to continue your session." client="1" />
+    <!-- v9 -->
+    <phrase id="sessionexpired" value="Your session has expired." client="1" />
+    <!-- v9 -->
+    <phrase id="showall" value="Show all" />
+    <phrase id="summary" value="Summary" />
+    <phrase id="summarycolon" value=": " />
+    <!-- v10 -->
+    <phrase id="tasks" value="Tasks" />
+    <phrase id="to" value="to" />
+    <phrase id="top" value="Top" />
+    <phrase id="total" value="Total" />
+    <phrase id="useradministrator" value="Administrator" client="1" />
+    <!-- v9 -->
+    <phrase id="useranonymous" value="Anonymous" client="1" />
+    <!-- v9 -->
+    <phrase id="userdefault" value="Default" client="1" />
+    <!-- v9 -->
+    <phrase id="username" value="User name" />
+    <phrase id="usernotfound" value="User '%u' not found" />
+    <!-- v11 -->
+    <phrase id="valuenotexist" value="Value does not exist" client="1" />
+    <!-- v8 -->
+    <phrase id="viewimage" value="Click to view image" />
+    <!-- v8 -->
+    <phrase id="week" value="Week" />
+    <phrase id="year" value="Year" />
+    <!-- Search Operators -->
+    <phrase id="=" value="&amp;nbsp;" />
+    <!-- v9 -->
+    <phrase id="equal" value="=" />
+    <!-- v9 -->
+    <phrase id="&lt;&gt;" value="&amp;lt;&amp;gt;" />
+    <phrase id="&lt;" value="&amp;lt;" />
+    <phrase id="&lt;=" value="&amp;lt;=" />
+    <phrase id="&gt;" value="&amp;gt;" />
+    <phrase id="&gt;=" value="&amp;gt;=" />
+    <phrase id="like" value="contains" />
+    <phrase id="not like" value="not contains" />
+    <phrase id="starts with" value="starts with" />
+    <phrase id="ends with" value="ends with" />
+    <phrase id="is null" value="is null" />
+    <phrase id="is not null" value="is not null" />
+    <phrase id="between" value="between" />
+    <phrase id="and" value="and" />
+    <phrase id="or" value="or" />
+    <phrase id="am" value="AM" />
+    <!-- v10 -->
+    <phrase id="pm" value="PM" />
+    <!-- v10 -->
+    <!-- Menu Prefix/Suffix -->
+    <phrase id="simplereportmenuitemprefix" value="" />
+    <phrase id="simplereportmenuitemsuffix" value="" />
+    <phrase id="detailsummaryreportmenuitemprefix" value="" />
+    <phrase id="detailsummaryreportmenuitemsuffix" value="" />
+    <phrase id="crosstabreportmenuitemprefix" value="" />
+    <phrase id="crosstabreportmenuitemsuffix" value="" />
+    <phrase id="chartreportmenuitemprefix" value="" />
+    <phrase id="chartreportmenuitemsuffix" value="" />
+    <!-- Advanced Filter -->
+    <phrase id="future" value="Future" />
+    <phrase id="past" value="Past" />
+    <phrase id="last14days" value="Last 14 days" />
+    <phrase id="last30days" value="Last 30 days" />
+    <phrase id="last7days" value="Last 7 days" />
+    <phrase id="next14days" value="Next 14 days" />
+    <phrase id="next30days" value="Next 30 days" />
+    <phrase id="next7days" value="Next 7 days" />
+    <phrase id="today" value="Today" />
+    <phrase id="tomorrow" value="Tomorrow" />
+    <phrase id="yesterday" value="Yesterday" />
+    <phrase id="lastmonth" value="Last month" />
+    <phrase id="nextmonth" value="Next month" />
+    <phrase id="thismonth" value="This month" />
+    <phrase id="lasttwoweeks" value="Last two weeks" />
+    <phrase id="lastweek" value="Last week" />
+    <phrase id="nexttwoweeks" value="Next two weeks" />
+    <phrase id="nextweek" value="Next week" />
+    <phrase id="thisweek" value="This week" />
+    <phrase id="lastyear" value="Last year" />
+    <phrase id="nextyear" value="Next year" />
+    <phrase id="thisyear" value="This year" />
+  </global>
+  <project>
+    <phrase id="footertext" value="2018-UNIANDES-Todos los derechos reservados" />
+    <menu id="1">
+      <phrase id="menutext" value="bienes" />
+    </menu>
+    <menu id="2">
+      <phrase id="menutext" value="bienes por categorias" />
+    </menu>
+    <menu id="3">
+      <phrase id="menutext" value="categorias bienes" />
+    </menu>
+    <menu id="4">
+      <phrase id="menutext" value="categorias especies" />
+    </menu>
+    <menu id="5">
+      <phrase id="menutext" value="detalle egreso bienes" />
+    </menu>
+    <menu id="6">
+      <phrase id="menutext" value="detalle egreso especies" />
+    </menu>
+    <menu id="7">
+      <phrase id="menutext" value="detalle ingreso bienes" />
+    </menu>
+    <menu id="8">
+      <phrase id="menutext" value="detalle ingreso especies" />
+    </menu>
+    <menu id="9">
+      <phrase id="menutext" value="egreso bienes" />
+    </menu>
+    <menu id="10">
+      <phrase id="menutext" value="egreso especies" />
+    </menu>
+    <menu id="11">
+      <phrase id="menutext" value="especies" />
+    </menu>
+    <menu id="12">
+      <phrase id="menutext" value="ingreso bienes" />
+    </menu>
+    <menu id="13">
+      <phrase id="menutext" value="ingreso especies" />
+    </menu>
+    <menu id="14">
+      <phrase id="menutext" value="permiso" />
+    </menu>
+    <menu id="15">
+      <phrase id="menutext" value="personas" />
+    </menu>
+    <menu id="16">
+      <phrase id="menutext" value="seguimiento egreso bienes" />
+    </menu>
+    <menu id="17">
+      <phrase id="menutext" value="usuario" />
+    </menu>
+    <menu id="18">
+      <phrase id="menutext" value="usuario permiso" />
+    </menu>
+    <menu id="19">
+      <phrase id="menutext" value="especies por categoria" />
+    </menu>
+    <menu id="20">
+      <phrase id="menutext" value="Bienes Categorias" />
+    </menu>
+    <menu id="21">
+      <phrase id="menutext" value="Especies Categorias" />
+    </menu>
+    <menu id="22">
+      <phrase id="menutext" value="r ingreso bienes" />
+    </menu>
+    <menu id="23">
+      <phrase id="menutext" value="Ingreso Bienes" />
+    </menu>
+    <menu id="24">
+      <phrase id="menutext" value="Detalle de Ingreso" />
+    </menu>
+    <menu id="25">
+      <phrase id="menutext" value="r egreso bienes" />
+    </menu>
+    <menu id="26">
+      <phrase id="menutext" value="DETALLE EGRESO" />
+    </menu>
+    <menu id="27">
+      <phrase id="menutext" value="Egreso Bienes" />
+    </menu>
+    <menu id="28">
+      <phrase id="menutext" value="r ingreso especies" />
+    </menu>
+    <menu id="29">
+      <phrase id="menutext" value="r detalle ingreso especies" />
+    </menu>
+    <menu id="30">
+      <phrase id="menutext" value="Ingreso Especies" />
+    </menu>
+    <menu id="31">
+      <phrase id="menutext" value="r egreso especies" />
+    </menu>
+    <menu id="32">
+      <phrase id="menutext" value="r detalle egreso especies" />
+    </menu>
+    <menu id="33">
+      <phrase id="menutext" value="Egreso Especies" />
+    </menu>
+    <table id="bienes">
+      <phrase id="tblcaption" value="bienes" />
+      <field id="idbienes">
+        <phrase id="fldcaption" value="idbienes" />
+      </field>
+      <field id="codigo">
+        <phrase id="fldcaption" value="codigo" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="descripcion" />
+      </field>
+      <field id="tipo">
+        <phrase id="fldcaption" value="tipo" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="imagen" />
+      </field>
+      <field id="valor">
+        <phrase id="fldcaption" value="valor" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+      <field id="categorias_bienes_idcategorias_bienes">
+        <phrase id="fldcaption" value="categorias bienes idcategorias bienes" />
+      </field>
+      <field id="stock">
+        <phrase id="fldcaption" value="stock" />
+      </field>
+    </table>
+    <table id="bienes_por_categorias">
+      <phrase id="tblcaption" value="bienes por categorias" />
+      <field id="codigo">
+        <phrase id="fldcaption" value="codigo" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="descripcion" />
+      </field>
+      <field id="tipo">
+        <phrase id="fldcaption" value="tipo" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="imagen" />
+      </field>
+      <field id="valor">
+        <phrase id="fldcaption" value="valor" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+      <field id="stock">
+        <phrase id="fldcaption" value="stock" />
+      </field>
+      <field id="cateroria">
+        <phrase id="fldcaption" value="cateroria" />
+      </field>
+      <field id="idbienes">
+        <phrase id="fldcaption" value="idbienes" />
+      </field>
+    </table>
+    <table id="categorias_bienes">
+      <phrase id="tblcaption" value="categorias bienes" />
+      <field id="idcategorias_bienes">
+        <phrase id="fldcaption" value="idcategorias bienes" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="estado" />
+      </field>
+    </table>
+    <table id="categorias_especies">
+      <phrase id="tblcaption" value="categorias especies" />
+      <field id="idcategorias_especies">
+        <phrase id="fldcaption" value="idcategorias especies" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="estado" />
+      </field>
+    </table>
+    <table id="detalle_egreso_bienes">
+      <phrase id="tblcaption" value="detalle egreso bienes" />
+      <field id="iddetalle_egreso_bienes">
+        <phrase id="fldcaption" value="iddetalle egreso bienes" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="cantidad" />
+      </field>
+      <field id="precio">
+        <phrase id="fldcaption" value="precio" />
+      </field>
+      <field id="egreso_bienes_idegreso_bienes">
+        <phrase id="fldcaption" value="egreso bienes idegreso bienes" />
+      </field>
+      <field id="bienes_idbienes">
+        <phrase id="fldcaption" value="bienes idbienes" />
+      </field>
+    </table>
+    <table id="detalle_egreso_especies">
+      <phrase id="tblcaption" value="detalle egreso especies" />
+      <field id="iddetalle_egreso_especies">
+        <phrase id="fldcaption" value="iddetalle egreso especies" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="cantidad" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="desde" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="hasta" />
+      </field>
+      <field id="egreso_especies_idegreso_especies">
+        <phrase id="fldcaption" value="egreso especies idegreso especies" />
+      </field>
+      <field id="especies_idespecies">
+        <phrase id="fldcaption" value="especies idespecies" />
+      </field>
+    </table>
+    <table id="detalle_ingreso_bienes">
+      <phrase id="tblcaption" value="detalle ingreso bienes" />
+      <field id="iddetalle_ingreso_bienes">
+        <phrase id="fldcaption" value="iddetalle ingreso bienes" />
+      </field>
+      <field id="consto_unitario">
+        <phrase id="fldcaption" value="consto unitario" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="cantidad" />
+      </field>
+      <field id="bienes_idbienes">
+        <phrase id="fldcaption" value="bienes idbienes" />
+      </field>
+      <field id="ingreso_bienes_idingreso_bienes">
+        <phrase id="fldcaption" value="ingreso bienes idingreso bienes" />
+      </field>
+    </table>
+    <table id="detalle_ingreso_especies">
+      <phrase id="tblcaption" value="detalle ingreso especies" />
+      <field id="iddetalle_ingreso_especies">
+        <phrase id="fldcaption" value="iddetalle ingreso especies" />
+      </field>
+      <field id="ingreso_especies_idingreso_especies">
+        <phrase id="fldcaption" value="ingreso especies idingreso especies" />
+      </field>
+      <field id="especies_idespecies">
+        <phrase id="fldcaption" value="especies idespecies" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="cantidad" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="desde" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="hasta" />
+      </field>
+    </table>
+    <table id="egreso_bienes">
+      <phrase id="tblcaption" value="egreso bienes" />
+      <field id="idegreso_bienes">
+        <phrase id="fldcaption" value="idegreso bienes" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="total" />
+      </field>
+      <field id="lugar">
+        <phrase id="fldcaption" value="lugar" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="descripcion" />
+      </field>
+      <field id="personas_idcajeros">
+        <phrase id="fldcaption" value="personas idcajeros" />
+      </field>
+      <field id="usuario_idusuario">
+        <phrase id="fldcaption" value="usuario idusuario" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="estado" />
+      </field>
+      <field id="numero_egreso">
+        <phrase id="fldcaption" value="numero egreso" />
+      </field>
+      <field id="calle">
+        <phrase id="fldcaption" value="calle" />
+      </field>
+      <field id="interseccion">
+        <phrase id="fldcaption" value="interseccion" />
+      </field>
+    </table>
+    <table id="egreso_especies">
+      <phrase id="tblcaption" value="egreso especies" />
+      <field id="idegreso_especies">
+        <phrase id="fldcaption" value="idegreso especies" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="numero_documento">
+        <phrase id="fldcaption" value="numero documento" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="ubicacion" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="detalle" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="total" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+      <field id="usuario_idusuario">
+        <phrase id="fldcaption" value="usuario idusuario" />
+      </field>
+      <field id="personas_idcajeros">
+        <phrase id="fldcaption" value="personas idcajeros" />
+      </field>
+    </table>
+    <table id="especies">
+      <phrase id="tblcaption" value="especies" />
+      <field id="idespecies">
+        <phrase id="fldcaption" value="idespecies" />
+      </field>
+      <field id="categorias_especies_idcategorias_especies">
+        <phrase id="fldcaption" value="categorias especies idcategorias especies" />
+      </field>
+      <field id="codigo">
+        <phrase id="fldcaption" value="codigo" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="descripcion" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="imagen" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+      <field id="stock">
+        <phrase id="fldcaption" value="stock" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="hasta" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="desde" />
+      </field>
+    </table>
+    <table id="ingreso_bienes">
+      <phrase id="tblcaption" value="ingreso bienes" />
+      <field id="idingreso_bienes">
+        <phrase id="fldcaption" value="idingreso bienes" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="ubicacion" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="detalle" />
+      </field>
+      <field id="numero_ingreso">
+        <phrase id="fldcaption" value="numero ingreso" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="estado" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="total" />
+      </field>
+      <field id="usuario_idusuario">
+        <phrase id="fldcaption" value="usuario idusuario" />
+      </field>
+      <field id="n_documento">
+        <phrase id="fldcaption" value="n documento" />
+      </field>
+    </table>
+    <table id="ingreso_especies">
+      <phrase id="tblcaption" value="ingreso especies" />
+      <field id="idingreso_especies">
+        <phrase id="fldcaption" value="idingreso especies" />
+      </field>
+      <field id="usuario_idusuario">
+        <phrase id="fldcaption" value="usuario idusuario" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="numero_docuemnto">
+        <phrase id="fldcaption" value="numero docuemnto" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="ubicacion" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="detalle" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="total" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+    </table>
+    <table id="permiso">
+      <phrase id="tblcaption" value="permiso" />
+      <field id="idpermiso">
+        <phrase id="fldcaption" value="idpermiso" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+    </table>
+    <table id="personas">
+      <phrase id="tblcaption" value="personas" />
+      <field id="idcajeros">
+        <phrase id="fldcaption" value="idcajeros" />
+      </field>
+      <field id="cedula">
+        <phrase id="fldcaption" value="cedula" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="funcion">
+        <phrase id="fldcaption" value="funcion" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+    </table>
+    <table id="seguimiento_egreso_bienes">
+      <phrase id="tblcaption" value="seguimiento egreso bienes" />
+      <field id="idseguimiento_egrese_bienes">
+        <phrase id="fldcaption" value="idseguimiento egrese bienes" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="descripcion" />
+      </field>
+      <field id="egreso_bienes_idegreso_bienes">
+        <phrase id="fldcaption" value="egreso bienes idegreso bienes" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="imagen" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+    </table>
+    <table id="usuario">
+      <phrase id="tblcaption" value="usuario" />
+      <field id="idusuario">
+        <phrase id="fldcaption" value="idusuario" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+      <field id="tipo_documento">
+        <phrase id="fldcaption" value="tipo documento" />
+      </field>
+      <field id="num_documento">
+        <phrase id="fldcaption" value="num documento" />
+      </field>
+      <field id="direccion">
+        <phrase id="fldcaption" value="direccion" />
+      </field>
+      <field id="telefono">
+        <phrase id="fldcaption" value="telefono" />
+      </field>
+      <field id="_email">
+        <phrase id="fldcaption" value="email" />
+      </field>
+      <field id="cargo">
+        <phrase id="fldcaption" value="cargo" />
+      </field>
+      <field id="login">
+        <phrase id="fldcaption" value="login" />
+      </field>
+      <field id="clave">
+        <phrase id="fldcaption" value="clave" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="imagen" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="condicion" />
+      </field>
+    </table>
+    <table id="usuario_permiso">
+      <phrase id="tblcaption" value="usuario permiso" />
+      <field id="idusuario_permiso">
+        <phrase id="fldcaption" value="idusuario permiso" />
+      </field>
+      <field id="idusuario">
+        <phrase id="fldcaption" value="idusuario" />
+      </field>
+      <field id="idpermiso">
+        <phrase id="fldcaption" value="idpermiso" />
+      </field>
+    </table>
+    <table id="especies_por_categoria">
+      <phrase id="tblcaption" value="especies por categoria" />
+      <field id="idespecies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="codigo">
+        <phrase id="fldcaption" value="Código" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="Nombre" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="Descripción" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="Imagen" />
+      </field>
+      <field id="stock">
+        <phrase id="fldcaption" value="Stock" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="Desde" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="Hasta" />
+      </field>
+      <field id="categoria">
+        <phrase id="fldcaption" value="Categoría" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="Estado" />
+      </field>
+    </table>
+    <table id="bienes_categorias">
+      <phrase id="tblcaption" value="Bienes Categorias" />
+      <field id="idbienes">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="codigo">
+        <phrase id="fldcaption" value="Código" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="Nombre" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="Descripción" />
+      </field>
+      <field id="tipo">
+        <phrase id="fldcaption" value="Tipo" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="Imagen" />
+      </field>
+      <field id="stock">
+        <phrase id="fldcaption" value="Stock" />
+      </field>
+      <field id="valor">
+        <phrase id="fldcaption" value="Valor" />
+      </field>
+      <field id="cateroria">
+        <phrase id="fldcaption" value="Categoría" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="Condición" />
+      </field>
+    </table>
+    <table id="especies_categorias">
+      <phrase id="tblcaption" value="Especies Categorias" />
+      <field id="idespecies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="codigo">
+        <phrase id="fldcaption" value="Código" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="Nombre" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="Descripción" />
+      </field>
+      <field id="imagen">
+        <phrase id="fldcaption" value="Imagen" />
+      </field>
+      <field id="stock">
+        <phrase id="fldcaption" value="Stock" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="Desde" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="Hasta" />
+      </field>
+      <field id="categoria">
+        <phrase id="fldcaption" value="Categoría" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="Estado" />
+      </field>
+    </table>
+    <table id="r_ingreso_bienes">
+      <phrase id="tblcaption" value="r ingreso bienes" />
+      <field id="idingreso_bienes">
+        <phrase id="fldcaption" value="idingreso bienes" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="ubicacion" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="detalle" />
+      </field>
+      <field id="numero_ingreso">
+        <phrase id="fldcaption" value="numero ingreso" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="fecha" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="estado" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="total" />
+      </field>
+      <field id="n_documento">
+        <phrase id="fldcaption" value="n documento" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="nombre" />
+      </field>
+    </table>
+    <table id="ingreso_bienes">
+      <phrase id="tblcaption" value="Ingreso Bienes" />
+      <field id="idingreso_bienes">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="numero_ingreso">
+        <phrase id="fldcaption" value="N INGRESO" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="UBICACION" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="DETALLE" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="n_documento">
+        <phrase id="fldcaption" value="n documento" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+    <table id="r_detalle_ingreso_bienes">
+      <phrase id="tblcaption" value="Detalle de Ingreso" />
+      <field id="iddetalle_ingreso_bienes">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="consto_unitario">
+        <phrase id="fldcaption" value="COSTO UNITARIO" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="CANTIDAD" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="PRODUCTO" />
+      </field>
+      <field id="ingreso_bienes_idingreso_bienes">
+        <phrase id="fldcaption" value="ID INGRESO" />
+      </field>
+    </table>
+    <table id="r_egreso_bienes">
+      <phrase id="tblcaption" value="r egreso bienes" />
+      <field id="idegreso_bienes">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="numero_egreso">
+        <phrase id="fldcaption" value="NUMERO EGRESO" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="usuario">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="PERSONA" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="DESCRIPCION" />
+      </field>
+      <field id="lugar">
+        <phrase id="fldcaption" value="LUGAR" />
+      </field>
+      <field id="calle">
+        <phrase id="fldcaption" value="AVENIDA" />
+      </field>
+      <field id="interseccion">
+        <phrase id="fldcaption" value="INTERSECCION" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+    <table id="r_detalle_egreso_bienes">
+      <phrase id="tblcaption" value="DETALLE EGRESO" />
+      <field id="iddetalle_egreso_bienes">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="ARTICULO" />
+      </field>
+      <field id="precio">
+        <phrase id="fldcaption" value="PRECIO" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="CANTIDAD" />
+      </field>
+      <field id="egreso_bienes_idegreso_bienes">
+        <phrase id="fldcaption" value="ID EGRESO" />
+      </field>
+    </table>
+    <table id="egreso_bienes">
+      <phrase id="tblcaption" value="Egreso Bienes" />
+      <field id="idegreso_bienes">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="numero_egreso">
+        <phrase id="fldcaption" value="NUMERO EGRESO" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="usuario">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="PERSONA" />
+      </field>
+      <field id="descripcion">
+        <phrase id="fldcaption" value="DESCRIPCION" />
+      </field>
+      <field id="lugar">
+        <phrase id="fldcaption" value="LUGAR" />
+      </field>
+      <field id="calle">
+        <phrase id="fldcaption" value="AVENIDA" />
+      </field>
+      <field id="interseccion">
+        <phrase id="fldcaption" value="INTERSECCION" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="estado">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+    <table id="r_ingreso_especies">
+      <phrase id="tblcaption" value="r ingreso especies" />
+      <field id="idingreso_especies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="numero_docuemnto">
+        <phrase id="fldcaption" value="N DOCUMENTO" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="UBICACION" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="DETALLE" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+    <table id="r_detalle_ingreso_especies">
+      <phrase id="tblcaption" value="r detalle ingreso especies" />
+      <field id="iddetalle_ingreso_especies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="ARTICULO" />
+      </field>
+      <field id="ingreso_especies_idingreso_especies">
+        <phrase id="fldcaption" value="ID INGRESO" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="CANTIDAD" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="DESDE" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="HASTA" />
+      </field>
+    </table>
+    <table id="ingreso_especies">
+      <phrase id="tblcaption" value="Ingreso Especies" />
+      <field id="idingreso_especies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="numero_docuemnto">
+        <phrase id="fldcaption" value="N DOCUMENTO" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="UBICACION" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="DETALLE" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+    <table id="r_egreso_especies">
+      <phrase id="tblcaption" value="r egreso especies" />
+      <field id="idegreso_especies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="numero_documento">
+        <phrase id="fldcaption" value="N DOCUMENTO" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="persona">
+        <phrase id="fldcaption" value="PERSONA" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="UBICACION" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="DETALLE" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+    <table id="r_detalle_egreso_especies">
+      <phrase id="tblcaption" value="r detalle egreso especies" />
+      <field id="iddetalle_egreso_especies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="ARTICULO" />
+      </field>
+      <field id="cantidad">
+        <phrase id="fldcaption" value="CANTIDAD" />
+      </field>
+      <field id="desde">
+        <phrase id="fldcaption" value="DESDE" />
+      </field>
+      <field id="hasta">
+        <phrase id="fldcaption" value="HASTA" />
+      </field>
+      <field id="egreso_especies_idegreso_especies">
+        <phrase id="fldcaption" value="ID EGRESO" />
+      </field>
+    </table>
+    <table id="egreso_especies">
+      <phrase id="tblcaption" value="Egreso Especies" />
+      <field id="idegreso_especies">
+        <phrase id="fldcaption" value="ID" />
+      </field>
+      <field id="numero_documento">
+        <phrase id="fldcaption" value="N DOCUMENTO" />
+      </field>
+      <field id="fecha">
+        <phrase id="fldcaption" value="FECHA" />
+      </field>
+      <field id="nombre">
+        <phrase id="fldcaption" value="USUARIO" />
+      </field>
+      <field id="persona">
+        <phrase id="fldcaption" value="PERSONA" />
+      </field>
+      <field id="ubicacion">
+        <phrase id="fldcaption" value="UBICACION" />
+      </field>
+      <field id="detalle">
+        <phrase id="fldcaption" value="DETALLE" />
+      </field>
+      <field id="total">
+        <phrase id="fldcaption" value="TOTAL" />
+      </field>
+      <field id="condicion">
+        <phrase id="fldcaption" value="ESTADO" />
+      </field>
+    </table>
+  </project>
+</ew-language>

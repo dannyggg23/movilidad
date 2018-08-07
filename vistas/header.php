@@ -176,30 +176,9 @@ if (strlen(session_id()) < 1)
 
 
           <li class="treeview">
-              <a href="#">
-                <i class="fa fa-bar-chart"></i> <span>Consultass</span>
+              <a target="_blank" href="../reportesmovilidad">
+                <i class="fa fa-bar-chart"></i> <span>Consultas</span>
                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="cpagos.php"><i class="fa fa-circle-o"></i> Consulta</a></li>
-                 <li><a href="cfichas.php"><i class="fa fa-circle-o"></i> Consulta</a></li>
-                <li><a href="cdeudores.php"><i class="fa fa-circle-o"></i> Consulta</a></li>
-              </ul>
-            </li>
-
-
-
-            <li>
-              <a href="#">
-                <i class="fa fa-plus-square"></i> <span>Ayuda</span>
-                <small class="label pull-right bg-red">PDF</small>
-              </a>
-            </li>
-
-            <li>
-              <a href="#">
-                <i class="fa fa-info-circle"></i> <span>Acerca De...</span>
-                <small class="label pull-right bg-yellow">IT</small>
               </a>
             </li>
 
