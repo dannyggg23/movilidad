@@ -58,23 +58,25 @@ if ($_SESSION['acceso']==1)
                     </div>
                     <div class="panel-body" id="formularioregistros">
                         <form name="formulario" id="formulario" method="POST">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Tipo Documento(*):</label>
+                            <select class="form-control select-picker" name="tipo_documento" id="tipo_documento" required>
+                            <option value="CEDULA">CEDULA</option>
+                              <option value="DNI">PASAPORTE</option>
+                              <option value="RUC">RUC</option>
+                              
+                            </select>
+                          </div>
+                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label>Número(*):</label>
+                            <input type="text" class="form-control" name="num_documento" id="num_documento" onblur="validarcedula()" maxlength="20" placeholder="Ingrese Numero" required>
+                          </div>
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label>Nombre(*):</label>
                             <input type="hidden" name="idusuario" id="idusuario">
                             <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Ingrese Nombre" required>
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Tipo Documento(*):</label>
-                            <select class="form-control select-picker" name="tipo_documento" id="tipo_documento" required>
-                              <option value="DNI">DNI</option>
-                              <option value="RUC">RUC</option>
-                              <option value="CEDULA">CEDULA</option>
-                            </select>
-                          </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Número(*):</label>
-                            <input type="text" class="form-control" name="num_documento" id="num_documento" maxlength="20" placeholder="Ingrese Numero" required>
-                          </div>
+                        
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Dirección:</label>
                             <input type="text" class="form-control" name="direccion" id="direccion" placeholder="Ingrese Dirección" maxlength="70">

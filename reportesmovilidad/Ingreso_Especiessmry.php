@@ -760,11 +760,7 @@ class crIngreso_Especies_summary extends crIngreso_Especies {
 
 	// Get count
 	function GetCnt($sql) {
-		$conn = &$this->Connection();
-		$rscnt = $conn->Execute($sql);
-		$cnt = ($rscnt) ? $rscnt->RecordCount() : 0;
-		if ($rscnt) $rscnt->Close();
-		return $cnt;
+		return $this->getRecordCount($sql);
 	}
 
 	// Get recordset

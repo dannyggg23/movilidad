@@ -760,11 +760,7 @@ class crIngreso_Bienes_summary extends crIngreso_Bienes {
 
 	// Get count
 	function GetCnt($sql) {
-		$conn = &$this->Connection();
-		$rscnt = $conn->Execute($sql);
-		$cnt = ($rscnt) ? $rscnt->RecordCount() : 0;
-		if ($rscnt) $rscnt->Close();
-		return $cnt;
+		return $this->getRecordCount($sql);
 	}
 
 	// Get recordset

@@ -6,16 +6,16 @@ ob_start();
 <?php include_once ((EW_USE_ADODB) ? "adodb5/adodb.inc.php" : "phprptinc/ewmysql.php") ?>
 <?php include_once "rphpfn11.php" ?>
 <?php include_once "rusrfn11.php" ?>
-<?php include_once "Especies_Categoriassmryinfo.php" ?>
+<?php include_once "Egreso_Bienes_Proyectosmryinfo.php" ?>
 <?php
 
 //
 // Page class
 //
 
-$Especies_Categorias_summary = NULL; // Initialize page object first
+$Egreso_Bienes_Proyecto_summary = NULL; // Initialize page object first
 
-class crEspecies_Categorias_summary extends crEspecies_Categorias {
+class crEgreso_Bienes_Proyecto_summary extends crEgreso_Bienes_Proyecto {
 
 	// Page ID
 	var $PageID = 'summary';
@@ -24,7 +24,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 	var $ProjectID = "{04F6FC29-9BA8-4256-B631-5194ABED24B7}";
 
 	// Page object name
-	var $PageObjName = 'Especies_Categorias_summary';
+	var $PageObjName = 'Egreso_Bienes_Proyecto_summary';
 
 	// Page headings
 	var $Heading = '';
@@ -224,10 +224,10 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Parent constuctor
 		parent::__construct();
 
-		// Table object (Especies_Categorias)
-		if (!isset($GLOBALS["Especies_Categorias"])) {
-			$GLOBALS["Especies_Categorias"] = &$this;
-			$GLOBALS["Table"] = &$GLOBALS["Especies_Categorias"];
+		// Table object (Egreso_Bienes_Proyecto)
+		if (!isset($GLOBALS["Egreso_Bienes_Proyecto"])) {
+			$GLOBALS["Egreso_Bienes_Proyecto"] = &$this;
+			$GLOBALS["Table"] = &$GLOBALS["Egreso_Bienes_Proyecto"];
 		}
 
 		// Initialize URLs
@@ -242,7 +242,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 
 		// Table name (for backward compatibility)
 		if (!defined("EWR_TABLE_NAME"))
-			define("EWR_TABLE_NAME", 'Especies-Categorias', TRUE);
+			define("EWR_TABLE_NAME", 'Egreso-Bienes-Proyecto', TRUE);
 
 		// Start timer
 		if (!isset($GLOBALS["grTimer"]))
@@ -267,7 +267,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Filter options
 		$this->FilterOptions = new crListOptions();
 		$this->FilterOptions->Tag = "div";
-		$this->FilterOptions->TagClassName = "ewFilterOption fEspecies_Categoriassummary";
+		$this->FilterOptions->TagClassName = "ewFilterOption fEgreso_Bienes_Proyectosummary";
 
 		// Generate report options
 		$this->GenerateOptions = new crListOptions();
@@ -350,7 +350,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Export to Email
 		$item = &$this->ExportOptions->Add("email");
 		$url = $this->PageUrl() . "export=email";
-		$item->Body = "<a class=\"ewrExportLink ewEmail\" title=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" data-caption=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" id=\"emf_Especies_Categorias\" href=\"javascript:void(0);\" onclick=\"ewr_EmailDialogShow({lnk:'emf_Especies_Categorias',hdr:ewLanguage.Phrase('ExportToEmail'),url:'$url',exportid:'$exportid',el:this});\">" . $ReportLanguage->Phrase("ExportToEmail") . "</a>";
+		$item->Body = "<a class=\"ewrExportLink ewEmail\" title=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" data-caption=\"" . ewr_HtmlEncode($ReportLanguage->Phrase("ExportToEmail", TRUE)) . "\" id=\"emf_Egreso_Bienes_Proyecto\" href=\"javascript:void(0);\" onclick=\"ewr_EmailDialogShow({lnk:'emf_Egreso_Bienes_Proyecto',hdr:ewLanguage.Phrase('ExportToEmail'),url:'$url',exportid:'$exportid',el:this});\">" . $ReportLanguage->Phrase("ExportToEmail") . "</a>";
 		$item->Visible = FALSE;
 		$ReportTypes["email"] = $item->Visible ? $ReportLanguage->Phrase("ReportFormEmail") : "";
 		$ReportOptions["ReportTypes"] = $ReportTypes;
@@ -368,10 +368,10 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 
 		// Filter button
 		$item = &$this->FilterOptions->Add("savecurrentfilter");
-		$item->Body = "<a class=\"ewSaveFilter\" data-form=\"fEspecies_Categoriassummary\" href=\"#\">" . $ReportLanguage->Phrase("SaveCurrentFilter") . "</a>";
+		$item->Body = "<a class=\"ewSaveFilter\" data-form=\"fEgreso_Bienes_Proyectosummary\" href=\"#\">" . $ReportLanguage->Phrase("SaveCurrentFilter") . "</a>";
 		$item->Visible = TRUE;
 		$item = &$this->FilterOptions->Add("deletefilter");
-		$item->Body = "<a class=\"ewDeleteFilter\" data-form=\"fEspecies_Categoriassummary\" href=\"#\">" . $ReportLanguage->Phrase("DeleteFilter") . "</a>";
+		$item->Body = "<a class=\"ewDeleteFilter\" data-form=\"fEgreso_Bienes_Proyectosummary\" href=\"#\">" . $ReportLanguage->Phrase("DeleteFilter") . "</a>";
 		$item->Visible = TRUE;
 		$this->FilterOptions->UseDropDownButton = TRUE;
 		$this->FilterOptions->UseButtonGroup = !$this->FilterOptions->UseDropDownButton; // v8
@@ -405,7 +405,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Filter panel button
 		$item = &$this->SearchOptions->Add("searchtoggle");
 		$SearchToggleClass = $this->FilterApplied ? " active" : " active";
-		$item->Body = "<button type=\"button\" class=\"btn btn-default ewSearchToggle" . $SearchToggleClass . "\" title=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-caption=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-toggle=\"button\" data-form=\"fEspecies_Categoriassummary\">" . $ReportLanguage->Phrase("SearchBtn") . "</button>";
+		$item->Body = "<button type=\"button\" class=\"btn btn-default ewSearchToggle" . $SearchToggleClass . "\" title=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-caption=\"" . $ReportLanguage->Phrase("SearchBtn", TRUE) . "\" data-toggle=\"button\" data-form=\"fEgreso_Bienes_Proyectosummary\">" . $ReportLanguage->Phrase("SearchBtn") . "</button>";
 		$item->Visible = TRUE;
 
 		// Reset filter
@@ -544,22 +544,25 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		global $grDashboardReport;
 
 		// Set field visibility for detail fields
-		$this->idespecies->SetVisibility();
-		$this->codigo->SetVisibility();
-		$this->nombre->SetVisibility();
+		$this->idegreso_bienes->SetVisibility();
+		$this->numero_egreso->SetVisibility();
+		$this->proyecto->SetVisibility();
+		$this->fecha->SetVisibility();
+		$this->lugar->SetVisibility();
+		$this->calle->SetVisibility();
+		$this->interseccion->SetVisibility();
 		$this->descripcion->SetVisibility();
-		$this->imagen->SetVisibility();
-		$this->stock->SetVisibility();
-		$this->desde->SetVisibility();
-		$this->hasta->SetVisibility();
-		$this->categoria->SetVisibility();
-		$this->condicion->SetVisibility();
+		$this->usuario->SetVisibility();
+		$this->cajero->SetVisibility();
+		$this->cedula_cajero->SetVisibility();
+		$this->total->SetVisibility();
+		$this->estado->SetVisibility();
 
 		// Aggregate variables
 		// 1st dimension = no of groups (level 0 used for grand total)
 		// 2nd dimension = no of fields
 
-		$nDtls = 11;
+		$nDtls = 14;
 		$nGrps = 1;
 		$this->Val = &ewr_InitArray($nDtls, 0);
 		$this->Cnt = &ewr_Init2DArray($nGrps, $nDtls, 0);
@@ -572,7 +575,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		$this->GrandMx = &ewr_InitArray($nDtls, NULL);
 
 		// Set up array if accumulation required: array(Accum, SkipNullOrZero)
-		$this->Col = array(array(FALSE, FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE));
+		$this->Col = array(array(FALSE, FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(FALSE,FALSE), array(TRUE,FALSE), array(FALSE,FALSE));
 
 		// Set up groups per page dynamically
 		$this->SetUpDisplayGrps();
@@ -580,6 +583,9 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Set up Breadcrumb
 		if ($this->Export == "")
 			$this->SetupBreadcrumb();
+		$this->proyecto->SelectionList = "";
+		$this->proyecto->DefaultSelectionList = "";
+		$this->proyecto->ValueList = "";
 
 		// Check if search command
 		$this->SearchCommand = (@$_GET["cmd"] == "search");
@@ -635,7 +641,7 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		$this->StartGrp = 1;
 
 		// Show header
-		$this->ShowHeader = ($this->TotalGrps > 0);
+		$this->ShowHeader = TRUE;
 
 		// Set up start position if not export all
 		if ($this->ExportAll && $this->Export <> "")
@@ -777,51 +783,65 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 			return;
 		if ($opt == 1) { // Get first row
 				$this->FirstRowData = array();
-				$this->FirstRowData['idespecies'] = ewr_Conv($rs->fields('idespecies'), 3);
-				$this->FirstRowData['codigo'] = ewr_Conv($rs->fields('codigo'), 200);
-				$this->FirstRowData['nombre'] = ewr_Conv($rs->fields('nombre'), 200);
-				$this->FirstRowData['descripcion'] = ewr_Conv($rs->fields('descripcion'), 200);
-				$this->FirstRowData['imagen'] = ewr_Conv($rs->fields('imagen'), 200);
-				$this->FirstRowData['stock'] = ewr_Conv($rs->fields('stock'), 3);
-				$this->FirstRowData['desde'] = ewr_Conv($rs->fields('desde'), 200);
-				$this->FirstRowData['hasta'] = ewr_Conv($rs->fields('hasta'), 200);
-				$this->FirstRowData['categoria'] = ewr_Conv($rs->fields('categoria'), 200);
-				$this->FirstRowData['condicion'] = ewr_Conv($rs->fields('condicion'), 16);
+				$this->FirstRowData['idegreso_bienes'] = ewr_Conv($rs->fields('idegreso_bienes'), 3);
+				$this->FirstRowData['numero_egreso'] = ewr_Conv($rs->fields('numero_egreso'), 200);
+				$this->FirstRowData['proyecto'] = ewr_Conv($rs->fields('proyecto'), 200);
+				$this->FirstRowData['fecha'] = ewr_Conv($rs->fields('fecha'), 133);
+				$this->FirstRowData['lugar'] = ewr_Conv($rs->fields('lugar'), 200);
+				$this->FirstRowData['calle'] = ewr_Conv($rs->fields('calle'), 200);
+				$this->FirstRowData['interseccion'] = ewr_Conv($rs->fields('interseccion'), 200);
+				$this->FirstRowData['idcajeros'] = ewr_Conv($rs->fields('idcajeros'), 3);
+				$this->FirstRowData['usuario'] = ewr_Conv($rs->fields('usuario'), 200);
+				$this->FirstRowData['cajero'] = ewr_Conv($rs->fields('cajero'), 200);
+				$this->FirstRowData['cedula_cajero'] = ewr_Conv($rs->fields('cedula_cajero'), 200);
+				$this->FirstRowData['total'] = ewr_Conv($rs->fields('total'), 131);
+				$this->FirstRowData['estado'] = ewr_Conv($rs->fields('estado'), 200);
 		} else { // Get next row
 			$rs->MoveNext();
 		}
 		if (!$rs->EOF) {
-			$this->idespecies->setDbValue($rs->fields('idespecies'));
-			$this->codigo->setDbValue($rs->fields('codigo'));
-			$this->nombre->setDbValue($rs->fields('nombre'));
+			$this->idegreso_bienes->setDbValue($rs->fields('idegreso_bienes'));
+			$this->numero_egreso->setDbValue($rs->fields('numero_egreso'));
+			$this->proyecto->setDbValue($rs->fields('proyecto'));
+			$this->fecha->setDbValue($rs->fields('fecha'));
+			$this->lugar->setDbValue($rs->fields('lugar'));
+			$this->calle->setDbValue($rs->fields('calle'));
+			$this->interseccion->setDbValue($rs->fields('interseccion'));
 			$this->descripcion->setDbValue($rs->fields('descripcion'));
-			$this->imagen->setDbValue($rs->fields('imagen'));
-			$this->stock->setDbValue($rs->fields('stock'));
-			$this->desde->setDbValue($rs->fields('desde'));
-			$this->hasta->setDbValue($rs->fields('hasta'));
-			$this->categoria->setDbValue($rs->fields('categoria'));
-			$this->condicion->setDbValue($rs->fields('condicion'));
-			$this->Val[1] = $this->idespecies->CurrentValue;
-			$this->Val[2] = $this->codigo->CurrentValue;
-			$this->Val[3] = $this->nombre->CurrentValue;
-			$this->Val[4] = $this->descripcion->CurrentValue;
-			$this->Val[5] = $this->imagen->CurrentValue;
-			$this->Val[6] = $this->stock->CurrentValue;
-			$this->Val[7] = $this->desde->CurrentValue;
-			$this->Val[8] = $this->hasta->CurrentValue;
-			$this->Val[9] = $this->categoria->CurrentValue;
-			$this->Val[10] = $this->condicion->CurrentValue;
+			$this->idcajeros->setDbValue($rs->fields('idcajeros'));
+			$this->usuario->setDbValue($rs->fields('usuario'));
+			$this->cajero->setDbValue($rs->fields('cajero'));
+			$this->cedula_cajero->setDbValue($rs->fields('cedula_cajero'));
+			$this->total->setDbValue($rs->fields('total'));
+			$this->estado->setDbValue($rs->fields('estado'));
+			$this->Val[1] = $this->idegreso_bienes->CurrentValue;
+			$this->Val[2] = $this->numero_egreso->CurrentValue;
+			$this->Val[3] = $this->proyecto->CurrentValue;
+			$this->Val[4] = $this->fecha->CurrentValue;
+			$this->Val[5] = $this->lugar->CurrentValue;
+			$this->Val[6] = $this->calle->CurrentValue;
+			$this->Val[7] = $this->interseccion->CurrentValue;
+			$this->Val[8] = $this->descripcion->CurrentValue;
+			$this->Val[9] = $this->usuario->CurrentValue;
+			$this->Val[10] = $this->cajero->CurrentValue;
+			$this->Val[11] = $this->cedula_cajero->CurrentValue;
+			$this->Val[12] = $this->total->CurrentValue;
+			$this->Val[13] = $this->estado->CurrentValue;
 		} else {
-			$this->idespecies->setDbValue("");
-			$this->codigo->setDbValue("");
-			$this->nombre->setDbValue("");
+			$this->idegreso_bienes->setDbValue("");
+			$this->numero_egreso->setDbValue("");
+			$this->proyecto->setDbValue("");
+			$this->fecha->setDbValue("");
+			$this->lugar->setDbValue("");
+			$this->calle->setDbValue("");
+			$this->interseccion->setDbValue("");
 			$this->descripcion->setDbValue("");
-			$this->imagen->setDbValue("");
-			$this->stock->setDbValue("");
-			$this->desde->setDbValue("");
-			$this->hasta->setDbValue("");
-			$this->categoria->setDbValue("");
-			$this->condicion->setDbValue("");
+			$this->idcajeros->setDbValue("");
+			$this->usuario->setDbValue("");
+			$this->cajero->setDbValue("");
+			$this->cedula_cajero->setDbValue("");
+			$this->total->setDbValue("");
+			$this->estado->setDbValue("");
 		}
 	}
 
@@ -882,8 +902,39 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 			$popupname = $_GET["popup"];
 
 			// Check popup name
-			// Output data as Json
+			// Build distinct values for proyecto
 
+			if ($popupname == 'Egreso_Bienes_Proyecto_proyecto') {
+				$bNullValue = FALSE;
+				$bEmptyValue = FALSE;
+				$sFilter = $this->Filter;
+
+				// Call Page Filtering event
+				$this->Page_Filtering($this->proyecto, $sFilter, "popup");
+				$sSql = ewr_BuildReportSql($this->proyecto->SqlSelect, $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), $this->proyecto->SqlOrderBy, $sFilter, "");
+				$rswrk = $conn->Execute($sSql);
+				while ($rswrk && !$rswrk->EOF) {
+					$this->proyecto->setDbValue($rswrk->fields[0]);
+					$this->proyecto->ViewValue = @$rswrk->fields[1];
+					if (is_null($this->proyecto->CurrentValue)) {
+						$bNullValue = TRUE;
+					} elseif ($this->proyecto->CurrentValue == "") {
+						$bEmptyValue = TRUE;
+					} else {
+						ewr_SetupDistinctValues($this->proyecto->ValueList, $this->proyecto->CurrentValue, $this->proyecto->ViewValue, FALSE, $this->proyecto->FldDelimiter);
+					}
+					$rswrk->MoveNext();
+				}
+				if ($rswrk)
+					$rswrk->Close();
+				if ($bEmptyValue)
+					ewr_SetupDistinctValues($this->proyecto->ValueList, EWR_EMPTY_VALUE, $ReportLanguage->Phrase("EmptyLabel"), FALSE);
+				if ($bNullValue)
+					ewr_SetupDistinctValues($this->proyecto->ValueList, EWR_NULL_VALUE, $ReportLanguage->Phrase("NullLabel"), FALSE);
+				$fld = &$this->proyecto;
+			}
+
+			// Output data as Json
 			if (!is_null($fld)) {
 				$jsdb = ewr_GetJsDb($fld, $fld->FldType);
 				if (ob_get_length())
@@ -928,11 +979,19 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		} elseif (@$_GET["cmd"] <> "") {
 			$sCmd = $_GET["cmd"];
 			if (strtolower($sCmd) == "reset") {
+				$this->ClearSessionSelection('proyecto');
 				$this->ResetPager();
 			}
 		}
 
 		// Load selection criteria to array
+		// Get proyecto selected values
+
+		if (is_array(@$_SESSION["sel_Egreso_Bienes_Proyecto_proyecto"])) {
+			$this->LoadSelectionFromSession('proyecto');
+		} elseif (@$_SESSION["sel_Egreso_Bienes_Proyecto_proyecto"] == EWR_INIT_VALUE) { // Select all
+			$this->proyecto->SelectionList = "";
+		}
 	}
 
 	// Reset pager
@@ -988,7 +1047,29 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 			} else {
 				$this->TotCount = 0;
 			}
-		$bGotSummary = TRUE;
+
+			// Get total from sql directly
+			$sSql = ewr_BuildReportSql($this->getSqlSelectAgg(), $this->getSqlWhere(), $this->getSqlGroupBy(), $this->getSqlHaving(), "", $this->Filter, "");
+			$sSql = $this->getSqlAggPfx() . $sSql . $this->getSqlAggSfx();
+			$rsagg = $conn->Execute($sSql);
+			if ($rsagg) {
+				$this->GrandCnt[1] = $this->TotCount;
+				$this->GrandCnt[2] = $this->TotCount;
+				$this->GrandCnt[3] = $this->TotCount;
+				$this->GrandCnt[4] = $this->TotCount;
+				$this->GrandCnt[5] = $this->TotCount;
+				$this->GrandCnt[6] = $this->TotCount;
+				$this->GrandCnt[7] = $this->TotCount;
+				$this->GrandCnt[8] = $this->TotCount;
+				$this->GrandCnt[9] = $this->TotCount;
+				$this->GrandCnt[10] = $this->TotCount;
+				$this->GrandCnt[11] = $this->TotCount;
+				$this->GrandCnt[12] = $this->TotCount;
+				$this->GrandSmry[12] = $rsagg->fields("sum_total");
+				$this->GrandCnt[13] = $this->TotCount;
+				$rsagg->Close();
+				$bGotSummary = TRUE;
+			}
 
 			// Accumulate grand summary from detail records
 			if (!$bGotCount || !$bGotSummary) {
@@ -1016,141 +1097,235 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		if ($this->RowType == EWR_ROWTYPE_TOTAL && !($this->RowTotalType == EWR_ROWTOTAL_GROUP && $this->RowTotalSubType == EWR_ROWTOTAL_HEADER)) { // Summary row
 			ewr_PrependClass($this->RowAttrs["class"], ($this->RowTotalType == EWR_ROWTOTAL_PAGE || $this->RowTotalType == EWR_ROWTOTAL_GRAND) ? "ewRptGrpAggregate" : ""); // Set up row class
 
-			// idespecies
-			$this->idespecies->HrefValue = "";
+			// total
+			$this->total->SumViewValue = $this->total->SumValue;
+			$this->total->CellAttrs["class"] = ($this->RowTotalType == EWR_ROWTOTAL_PAGE || $this->RowTotalType == EWR_ROWTOTAL_GRAND) ? "ewRptGrpAggregate" : "ewRptGrpSummary" . $this->RowGroupLevel;
 
-			// codigo
-			$this->codigo->HrefValue = "";
+			// idegreso_bienes
+			$this->idegreso_bienes->HrefValue = "";
 
-			// nombre
-			$this->nombre->HrefValue = "";
+			// numero_egreso
+			$this->numero_egreso->HrefValue = "";
+
+			// proyecto
+			$this->proyecto->HrefValue = "";
+			if ($this->Export == "") {
+				$drillurl = $this->proyecto->DrillDownUrl;
+				$drillurl = str_replace("=f0", "=" . ewr_Encrypt($this->GetDrillDownSQL($this->idegreso_bienes, "egreso_bienes_idegreso_bienes", $this->RowTotalType, -1)), $drillurl);
+				$this->proyecto->LinkAttrs["title"] = ewr_JsEncode($GLOBALS["ReportLanguage"]->Phrase("ClickToDrillDown"));
+				$this->proyecto->LinkAttrs["class"] = "ewDrillLink";
+				$this->proyecto->LinkAttrs["onclick"] = ewr_DrillDownJs($drillurl, 'Egreso_Bienes_Proyecto_proyecto', $GLOBALS["ReportLanguage"]->TablePhrase('r_detalle_egreso_bienes', 'TblCaption'), $this->UseDrillDownPanel);
+			}
+
+			// fecha
+			$this->fecha->HrefValue = "";
+
+			// lugar
+			$this->lugar->HrefValue = "";
+
+			// calle
+			$this->calle->HrefValue = "";
+
+			// interseccion
+			$this->interseccion->HrefValue = "";
 
 			// descripcion
 			$this->descripcion->HrefValue = "";
 
-			// imagen
-			$this->imagen->HrefValue = "";
+			// usuario
+			$this->usuario->HrefValue = "";
 
-			// stock
-			$this->stock->HrefValue = "";
+			// cajero
+			$this->cajero->HrefValue = "";
 
-			// desde
-			$this->desde->HrefValue = "";
+			// cedula_cajero
+			$this->cedula_cajero->HrefValue = "";
 
-			// hasta
-			$this->hasta->HrefValue = "";
+			// total
+			$this->total->HrefValue = "";
 
-			// categoria
-			$this->categoria->HrefValue = "";
-
-			// condicion
-			$this->condicion->HrefValue = "";
+			// estado
+			$this->estado->HrefValue = "";
 		} else {
 			if ($this->RowTotalType == EWR_ROWTOTAL_GROUP && $this->RowTotalSubType == EWR_ROWTOTAL_HEADER) {
 			} else {
 			}
 
-			// idespecies
-			$this->idespecies->ViewValue = $this->idespecies->CurrentValue;
-			$this->idespecies->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// idegreso_bienes
+			$this->idegreso_bienes->ViewValue = $this->idegreso_bienes->CurrentValue;
+			$this->idegreso_bienes->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// codigo
-			$this->codigo->ViewValue = $this->codigo->CurrentValue;
-			$this->codigo->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// numero_egreso
+			$this->numero_egreso->ViewValue = $this->numero_egreso->CurrentValue;
+			$this->numero_egreso->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// nombre
-			$this->nombre->ViewValue = $this->nombre->CurrentValue;
-			$this->nombre->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// proyecto
+			$this->proyecto->ViewValue = $this->proyecto->CurrentValue;
+			$this->proyecto->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+
+			// fecha
+			$this->fecha->ViewValue = $this->fecha->CurrentValue;
+			$this->fecha->ViewValue = ewr_FormatDateTime($this->fecha->ViewValue, 0);
+			$this->fecha->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+
+			// lugar
+			$this->lugar->ViewValue = $this->lugar->CurrentValue;
+			$this->lugar->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+
+			// calle
+			$this->calle->ViewValue = $this->calle->CurrentValue;
+			$this->calle->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+
+			// interseccion
+			$this->interseccion->ViewValue = $this->interseccion->CurrentValue;
+			$this->interseccion->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
 			// descripcion
 			$this->descripcion->ViewValue = $this->descripcion->CurrentValue;
 			$this->descripcion->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// imagen
-			$this->imagen->ViewValue = $this->imagen->CurrentValue;
-			$this->imagen->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// usuario
+			$this->usuario->ViewValue = $this->usuario->CurrentValue;
+			$this->usuario->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// stock
-			$this->stock->ViewValue = $this->stock->CurrentValue;
-			$this->stock->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// cajero
+			$this->cajero->ViewValue = $this->cajero->CurrentValue;
+			$this->cajero->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// desde
-			$this->desde->ViewValue = $this->desde->CurrentValue;
-			$this->desde->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// cedula_cajero
+			$this->cedula_cajero->ViewValue = $this->cedula_cajero->CurrentValue;
+			$this->cedula_cajero->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// hasta
-			$this->hasta->ViewValue = $this->hasta->CurrentValue;
-			$this->hasta->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// total
+			$this->total->ViewValue = $this->total->CurrentValue;
+			$this->total->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// categoria
-			$this->categoria->ViewValue = $this->categoria->CurrentValue;
-			$this->categoria->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// estado
+			$this->estado->ViewValue = $this->estado->CurrentValue;
+			$this->estado->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
 
-			// condicion
-			$this->condicion->ViewValue = $this->condicion->CurrentValue;
-			$this->condicion->CellAttrs["class"] = ($this->RecCount % 2 <> 1) ? "ewTableAltRow" : "ewTableRow";
+			// idegreso_bienes
+			$this->idegreso_bienes->HrefValue = "";
 
-			// idespecies
-			$this->idespecies->HrefValue = "";
+			// numero_egreso
+			$this->numero_egreso->HrefValue = "";
 
-			// codigo
-			$this->codigo->HrefValue = "";
+			// proyecto
+			$this->proyecto->HrefValue = "";
+			if ($this->Export == "") {
+				$drillurl = $this->proyecto->DrillDownUrl;
+				$drillurl = str_replace("=f0", "=" . ewr_Encrypt($this->GetDrillDownSQL($this->idegreso_bienes, "egreso_bienes_idegreso_bienes", 0)), $drillurl);
+				$this->proyecto->LinkAttrs["title"] = ewr_JsEncode($ReportLanguage->Phrase("ClickToDrillDown"));
+				$this->proyecto->LinkAttrs["class"] = "ewDrillLink";
+				$this->proyecto->LinkAttrs["onclick"] = ewr_DrillDownJs($drillurl, 'Egreso_Bienes_Proyecto_proyecto', $GLOBALS["ReportLanguage"]->TablePhrase('r_detalle_egreso_bienes', 'TblCaption'), $this->UseDrillDownPanel);
+			}
 
-			// nombre
-			$this->nombre->HrefValue = "";
+			// fecha
+			$this->fecha->HrefValue = "";
+
+			// lugar
+			$this->lugar->HrefValue = "";
+
+			// calle
+			$this->calle->HrefValue = "";
+
+			// interseccion
+			$this->interseccion->HrefValue = "";
 
 			// descripcion
 			$this->descripcion->HrefValue = "";
 
-			// imagen
-			$this->imagen->HrefValue = "";
+			// usuario
+			$this->usuario->HrefValue = "";
 
-			// stock
-			$this->stock->HrefValue = "";
+			// cajero
+			$this->cajero->HrefValue = "";
 
-			// desde
-			$this->desde->HrefValue = "";
+			// cedula_cajero
+			$this->cedula_cajero->HrefValue = "";
 
-			// hasta
-			$this->hasta->HrefValue = "";
+			// total
+			$this->total->HrefValue = "";
 
-			// categoria
-			$this->categoria->HrefValue = "";
-
-			// condicion
-			$this->condicion->HrefValue = "";
+			// estado
+			$this->estado->HrefValue = "";
 		}
 
 		// Call Cell_Rendered event
 		if ($this->RowType == EWR_ROWTYPE_TOTAL) { // Summary row
+
+			// total
+			$CurrentValue = $this->total->SumValue;
+			$ViewValue = &$this->total->SumViewValue;
+			$ViewAttrs = &$this->total->ViewAttrs;
+			$CellAttrs = &$this->total->CellAttrs;
+			$HrefValue = &$this->total->HrefValue;
+			$LinkAttrs = &$this->total->LinkAttrs;
+			$this->Cell_Rendered($this->total, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 		} else {
 
-			// idespecies
-			$CurrentValue = $this->idespecies->CurrentValue;
-			$ViewValue = &$this->idespecies->ViewValue;
-			$ViewAttrs = &$this->idespecies->ViewAttrs;
-			$CellAttrs = &$this->idespecies->CellAttrs;
-			$HrefValue = &$this->idespecies->HrefValue;
-			$LinkAttrs = &$this->idespecies->LinkAttrs;
-			$this->Cell_Rendered($this->idespecies, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// idegreso_bienes
+			$CurrentValue = $this->idegreso_bienes->CurrentValue;
+			$ViewValue = &$this->idegreso_bienes->ViewValue;
+			$ViewAttrs = &$this->idegreso_bienes->ViewAttrs;
+			$CellAttrs = &$this->idegreso_bienes->CellAttrs;
+			$HrefValue = &$this->idegreso_bienes->HrefValue;
+			$LinkAttrs = &$this->idegreso_bienes->LinkAttrs;
+			$this->Cell_Rendered($this->idegreso_bienes, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// codigo
-			$CurrentValue = $this->codigo->CurrentValue;
-			$ViewValue = &$this->codigo->ViewValue;
-			$ViewAttrs = &$this->codigo->ViewAttrs;
-			$CellAttrs = &$this->codigo->CellAttrs;
-			$HrefValue = &$this->codigo->HrefValue;
-			$LinkAttrs = &$this->codigo->LinkAttrs;
-			$this->Cell_Rendered($this->codigo, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// numero_egreso
+			$CurrentValue = $this->numero_egreso->CurrentValue;
+			$ViewValue = &$this->numero_egreso->ViewValue;
+			$ViewAttrs = &$this->numero_egreso->ViewAttrs;
+			$CellAttrs = &$this->numero_egreso->CellAttrs;
+			$HrefValue = &$this->numero_egreso->HrefValue;
+			$LinkAttrs = &$this->numero_egreso->LinkAttrs;
+			$this->Cell_Rendered($this->numero_egreso, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// nombre
-			$CurrentValue = $this->nombre->CurrentValue;
-			$ViewValue = &$this->nombre->ViewValue;
-			$ViewAttrs = &$this->nombre->ViewAttrs;
-			$CellAttrs = &$this->nombre->CellAttrs;
-			$HrefValue = &$this->nombre->HrefValue;
-			$LinkAttrs = &$this->nombre->LinkAttrs;
-			$this->Cell_Rendered($this->nombre, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// proyecto
+			$CurrentValue = $this->proyecto->CurrentValue;
+			$ViewValue = &$this->proyecto->ViewValue;
+			$ViewAttrs = &$this->proyecto->ViewAttrs;
+			$CellAttrs = &$this->proyecto->CellAttrs;
+			$HrefValue = &$this->proyecto->HrefValue;
+			$LinkAttrs = &$this->proyecto->LinkAttrs;
+			$this->Cell_Rendered($this->proyecto, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+
+			// fecha
+			$CurrentValue = $this->fecha->CurrentValue;
+			$ViewValue = &$this->fecha->ViewValue;
+			$ViewAttrs = &$this->fecha->ViewAttrs;
+			$CellAttrs = &$this->fecha->CellAttrs;
+			$HrefValue = &$this->fecha->HrefValue;
+			$LinkAttrs = &$this->fecha->LinkAttrs;
+			$this->Cell_Rendered($this->fecha, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+
+			// lugar
+			$CurrentValue = $this->lugar->CurrentValue;
+			$ViewValue = &$this->lugar->ViewValue;
+			$ViewAttrs = &$this->lugar->ViewAttrs;
+			$CellAttrs = &$this->lugar->CellAttrs;
+			$HrefValue = &$this->lugar->HrefValue;
+			$LinkAttrs = &$this->lugar->LinkAttrs;
+			$this->Cell_Rendered($this->lugar, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+
+			// calle
+			$CurrentValue = $this->calle->CurrentValue;
+			$ViewValue = &$this->calle->ViewValue;
+			$ViewAttrs = &$this->calle->ViewAttrs;
+			$CellAttrs = &$this->calle->CellAttrs;
+			$HrefValue = &$this->calle->HrefValue;
+			$LinkAttrs = &$this->calle->LinkAttrs;
+			$this->Cell_Rendered($this->calle, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+
+			// interseccion
+			$CurrentValue = $this->interseccion->CurrentValue;
+			$ViewValue = &$this->interseccion->ViewValue;
+			$ViewAttrs = &$this->interseccion->ViewAttrs;
+			$CellAttrs = &$this->interseccion->CellAttrs;
+			$HrefValue = &$this->interseccion->HrefValue;
+			$LinkAttrs = &$this->interseccion->LinkAttrs;
+			$this->Cell_Rendered($this->interseccion, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
 			// descripcion
 			$CurrentValue = $this->descripcion->CurrentValue;
@@ -1161,59 +1336,50 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 			$LinkAttrs = &$this->descripcion->LinkAttrs;
 			$this->Cell_Rendered($this->descripcion, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// imagen
-			$CurrentValue = $this->imagen->CurrentValue;
-			$ViewValue = &$this->imagen->ViewValue;
-			$ViewAttrs = &$this->imagen->ViewAttrs;
-			$CellAttrs = &$this->imagen->CellAttrs;
-			$HrefValue = &$this->imagen->HrefValue;
-			$LinkAttrs = &$this->imagen->LinkAttrs;
-			$this->Cell_Rendered($this->imagen, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// usuario
+			$CurrentValue = $this->usuario->CurrentValue;
+			$ViewValue = &$this->usuario->ViewValue;
+			$ViewAttrs = &$this->usuario->ViewAttrs;
+			$CellAttrs = &$this->usuario->CellAttrs;
+			$HrefValue = &$this->usuario->HrefValue;
+			$LinkAttrs = &$this->usuario->LinkAttrs;
+			$this->Cell_Rendered($this->usuario, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// stock
-			$CurrentValue = $this->stock->CurrentValue;
-			$ViewValue = &$this->stock->ViewValue;
-			$ViewAttrs = &$this->stock->ViewAttrs;
-			$CellAttrs = &$this->stock->CellAttrs;
-			$HrefValue = &$this->stock->HrefValue;
-			$LinkAttrs = &$this->stock->LinkAttrs;
-			$this->Cell_Rendered($this->stock, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// cajero
+			$CurrentValue = $this->cajero->CurrentValue;
+			$ViewValue = &$this->cajero->ViewValue;
+			$ViewAttrs = &$this->cajero->ViewAttrs;
+			$CellAttrs = &$this->cajero->CellAttrs;
+			$HrefValue = &$this->cajero->HrefValue;
+			$LinkAttrs = &$this->cajero->LinkAttrs;
+			$this->Cell_Rendered($this->cajero, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// desde
-			$CurrentValue = $this->desde->CurrentValue;
-			$ViewValue = &$this->desde->ViewValue;
-			$ViewAttrs = &$this->desde->ViewAttrs;
-			$CellAttrs = &$this->desde->CellAttrs;
-			$HrefValue = &$this->desde->HrefValue;
-			$LinkAttrs = &$this->desde->LinkAttrs;
-			$this->Cell_Rendered($this->desde, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// cedula_cajero
+			$CurrentValue = $this->cedula_cajero->CurrentValue;
+			$ViewValue = &$this->cedula_cajero->ViewValue;
+			$ViewAttrs = &$this->cedula_cajero->ViewAttrs;
+			$CellAttrs = &$this->cedula_cajero->CellAttrs;
+			$HrefValue = &$this->cedula_cajero->HrefValue;
+			$LinkAttrs = &$this->cedula_cajero->LinkAttrs;
+			$this->Cell_Rendered($this->cedula_cajero, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// hasta
-			$CurrentValue = $this->hasta->CurrentValue;
-			$ViewValue = &$this->hasta->ViewValue;
-			$ViewAttrs = &$this->hasta->ViewAttrs;
-			$CellAttrs = &$this->hasta->CellAttrs;
-			$HrefValue = &$this->hasta->HrefValue;
-			$LinkAttrs = &$this->hasta->LinkAttrs;
-			$this->Cell_Rendered($this->hasta, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// total
+			$CurrentValue = $this->total->CurrentValue;
+			$ViewValue = &$this->total->ViewValue;
+			$ViewAttrs = &$this->total->ViewAttrs;
+			$CellAttrs = &$this->total->CellAttrs;
+			$HrefValue = &$this->total->HrefValue;
+			$LinkAttrs = &$this->total->LinkAttrs;
+			$this->Cell_Rendered($this->total, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 
-			// categoria
-			$CurrentValue = $this->categoria->CurrentValue;
-			$ViewValue = &$this->categoria->ViewValue;
-			$ViewAttrs = &$this->categoria->ViewAttrs;
-			$CellAttrs = &$this->categoria->CellAttrs;
-			$HrefValue = &$this->categoria->HrefValue;
-			$LinkAttrs = &$this->categoria->LinkAttrs;
-			$this->Cell_Rendered($this->categoria, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
-
-			// condicion
-			$CurrentValue = $this->condicion->CurrentValue;
-			$ViewValue = &$this->condicion->ViewValue;
-			$ViewAttrs = &$this->condicion->ViewAttrs;
-			$CellAttrs = &$this->condicion->CellAttrs;
-			$HrefValue = &$this->condicion->HrefValue;
-			$LinkAttrs = &$this->condicion->LinkAttrs;
-			$this->Cell_Rendered($this->condicion, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
+			// estado
+			$CurrentValue = $this->estado->CurrentValue;
+			$ViewValue = &$this->estado->ViewValue;
+			$ViewAttrs = &$this->estado->ViewAttrs;
+			$CellAttrs = &$this->estado->CellAttrs;
+			$HrefValue = &$this->estado->HrefValue;
+			$LinkAttrs = &$this->estado->LinkAttrs;
+			$this->Cell_Rendered($this->estado, $CurrentValue, $ViewValue, $ViewAttrs, $CellAttrs, $HrefValue, $LinkAttrs);
 		}
 
 		// Call Row_Rendered event
@@ -1226,16 +1392,19 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		$this->GrpColumnCount = 0;
 		$this->SubGrpColumnCount = 0;
 		$this->DtlColumnCount = 0;
-		if ($this->idespecies->Visible) $this->DtlColumnCount += 1;
-		if ($this->codigo->Visible) $this->DtlColumnCount += 1;
-		if ($this->nombre->Visible) $this->DtlColumnCount += 1;
+		if ($this->idegreso_bienes->Visible) $this->DtlColumnCount += 1;
+		if ($this->numero_egreso->Visible) $this->DtlColumnCount += 1;
+		if ($this->proyecto->Visible) $this->DtlColumnCount += 1;
+		if ($this->fecha->Visible) $this->DtlColumnCount += 1;
+		if ($this->lugar->Visible) $this->DtlColumnCount += 1;
+		if ($this->calle->Visible) $this->DtlColumnCount += 1;
+		if ($this->interseccion->Visible) $this->DtlColumnCount += 1;
 		if ($this->descripcion->Visible) $this->DtlColumnCount += 1;
-		if ($this->imagen->Visible) $this->DtlColumnCount += 1;
-		if ($this->stock->Visible) $this->DtlColumnCount += 1;
-		if ($this->desde->Visible) $this->DtlColumnCount += 1;
-		if ($this->hasta->Visible) $this->DtlColumnCount += 1;
-		if ($this->categoria->Visible) $this->DtlColumnCount += 1;
-		if ($this->condicion->Visible) $this->DtlColumnCount += 1;
+		if ($this->usuario->Visible) $this->DtlColumnCount += 1;
+		if ($this->cajero->Visible) $this->DtlColumnCount += 1;
+		if ($this->cedula_cajero->Visible) $this->DtlColumnCount += 1;
+		if ($this->total->Visible) $this->DtlColumnCount += 1;
+		if ($this->estado->Visible) $this->DtlColumnCount += 1;
 	}
 
 	// Set up Breadcrumb
@@ -1273,20 +1442,31 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Reset extended filter if filter changed
 		if ($bPostBack) {
 
+			// Set/clear dropdown for field proyecto
+			if ($this->PopupName == 'Egreso_Bienes_Proyecto_proyecto' && $this->PopupValue <> "") {
+				if ($this->PopupValue == EWR_INIT_VALUE)
+					$this->proyecto->DropDownValue = EWR_ALL_VALUE;
+				else
+					$this->proyecto->DropDownValue = $this->PopupValue;
+				$bRestoreSession = FALSE; // Do not restore
+			} elseif ($this->ClearExtFilter == 'Egreso_Bienes_Proyecto_proyecto') {
+				$this->SetSessionDropDownValue(EWR_INIT_VALUE, '', 'proyecto');
+			}
+
 		// Reset search command
 		} elseif (@$_GET["cmd"] == "reset") {
 
 			// Load default values
-			$this->SetSessionDropDownValue($this->categoria->DropDownValue, $this->categoria->SearchOperator, 'categoria'); // Field categoria
+			$this->SetSessionDropDownValue($this->proyecto->DropDownValue, $this->proyecto->SearchOperator, 'proyecto'); // Field proyecto
 
 			//$bSetupFilter = TRUE; // No need to set up, just use default
 		} else {
 			$bRestoreSession = !$this->SearchCommand;
 
-			// Field categoria
-			if ($this->GetDropDownValue($this->categoria)) {
+			// Field proyecto
+			if ($this->GetDropDownValue($this->proyecto)) {
 				$bSetupFilter = TRUE;
-			} elseif ($this->categoria->DropDownValue <> EWR_INIT_VALUE && !isset($_SESSION['sv_Especies_Categorias_categoria'])) {
+			} elseif ($this->proyecto->DropDownValue <> EWR_INIT_VALUE && !isset($_SESSION['sv_Egreso_Bienes_Proyecto_proyecto'])) {
 				$bSetupFilter = TRUE;
 			}
 			if (!$this->ValidateForm()) {
@@ -1297,24 +1477,30 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 
 		// Restore session
 		if ($bRestoreSession) {
-			$this->GetSessionDropDownValue($this->categoria); // Field categoria
+			$this->GetSessionDropDownValue($this->proyecto); // Field proyecto
 		}
 
 		// Call page filter validated event
 		$this->Page_FilterValidated();
 
 		// Build SQL
-		$this->BuildDropDownFilter($this->categoria, $sFilter, $this->categoria->SearchOperator, FALSE, TRUE); // Field categoria
+		$this->BuildDropDownFilter($this->proyecto, $sFilter, $this->proyecto->SearchOperator, FALSE, TRUE); // Field proyecto
 
 		// Save parms to session
-		$this->SetSessionDropDownValue($this->categoria->DropDownValue, $this->categoria->SearchOperator, 'categoria'); // Field categoria
+		$this->SetSessionDropDownValue($this->proyecto->DropDownValue, $this->proyecto->SearchOperator, 'proyecto'); // Field proyecto
 
 		// Setup filter
 		if ($bSetupFilter) {
+
+			// Field proyecto
+			$sWrk = "";
+			$this->BuildDropDownFilter($this->proyecto, $sWrk, $this->proyecto->SearchOperator);
+			ewr_LoadSelectionFromFilter($this->proyecto, $sWrk, $this->proyecto->SelectionList, $this->proyecto->DropDownValue);
+			$_SESSION['sel_Egreso_Bienes_Proyecto_proyecto'] = ($this->proyecto->SelectionList == "") ? EWR_INIT_VALUE : $this->proyecto->SelectionList;
 		}
 
-		// Field categoria
-		ewr_LoadDropDownList($this->categoria->DropDownList, $this->categoria->DropDownValue);
+		// Field proyecto
+		ewr_LoadDropDownList($this->proyecto->DropDownList, $this->proyecto->DropDownValue);
 		return $sFilter;
 	}
 
@@ -1516,18 +1702,18 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 	// Get dropdown value from session
 	function GetSessionDropDownValue(&$fld) {
 		$parm = substr($fld->FldVar, 2);
-		$this->GetSessionValue($fld->DropDownValue, 'sv_Especies_Categorias_' . $parm);
-		$this->GetSessionValue($fld->SearchOperator, 'so_Especies_Categorias_' . $parm);
+		$this->GetSessionValue($fld->DropDownValue, 'sv_Egreso_Bienes_Proyecto_' . $parm);
+		$this->GetSessionValue($fld->SearchOperator, 'so_Egreso_Bienes_Proyecto_' . $parm);
 	}
 
 	// Get filter values from session
 	function GetSessionFilterValues(&$fld) {
 		$parm = substr($fld->FldVar, 2);
-		$this->GetSessionValue($fld->SearchValue, 'sv_Especies_Categorias_' . $parm);
-		$this->GetSessionValue($fld->SearchOperator, 'so_Especies_Categorias_' . $parm);
-		$this->GetSessionValue($fld->SearchCondition, 'sc_Especies_Categorias_' . $parm);
-		$this->GetSessionValue($fld->SearchValue2, 'sv2_Especies_Categorias_' . $parm);
-		$this->GetSessionValue($fld->SearchOperator2, 'so2_Especies_Categorias_' . $parm);
+		$this->GetSessionValue($fld->SearchValue, 'sv_Egreso_Bienes_Proyecto_' . $parm);
+		$this->GetSessionValue($fld->SearchOperator, 'so_Egreso_Bienes_Proyecto_' . $parm);
+		$this->GetSessionValue($fld->SearchCondition, 'sc_Egreso_Bienes_Proyecto_' . $parm);
+		$this->GetSessionValue($fld->SearchValue2, 'sv2_Egreso_Bienes_Proyecto_' . $parm);
+		$this->GetSessionValue($fld->SearchOperator2, 'so2_Egreso_Bienes_Proyecto_' . $parm);
 	}
 
 	// Get value from session
@@ -1538,17 +1724,17 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 
 	// Set dropdown value to session
 	function SetSessionDropDownValue($sv, $so, $parm) {
-		$_SESSION['sv_Especies_Categorias_' . $parm] = $sv;
-		$_SESSION['so_Especies_Categorias_' . $parm] = $so;
+		$_SESSION['sv_Egreso_Bienes_Proyecto_' . $parm] = $sv;
+		$_SESSION['so_Egreso_Bienes_Proyecto_' . $parm] = $so;
 	}
 
 	// Set filter values to session
 	function SetSessionFilterValues($sv1, $so1, $sc, $sv2, $so2, $parm) {
-		$_SESSION['sv_Especies_Categorias_' . $parm] = $sv1;
-		$_SESSION['so_Especies_Categorias_' . $parm] = $so1;
-		$_SESSION['sc_Especies_Categorias_' . $parm] = $sc;
-		$_SESSION['sv2_Especies_Categorias_' . $parm] = $sv2;
-		$_SESSION['so2_Especies_Categorias_' . $parm] = $so2;
+		$_SESSION['sv_Egreso_Bienes_Proyecto_' . $parm] = $sv1;
+		$_SESSION['so_Egreso_Bienes_Proyecto_' . $parm] = $so1;
+		$_SESSION['sc_Egreso_Bienes_Proyecto_' . $parm] = $sc;
+		$_SESSION['sv2_Egreso_Bienes_Proyecto_' . $parm] = $sv2;
+		$_SESSION['so2_Egreso_Bienes_Proyecto_' . $parm] = $so2;
 	}
 
 	// Check if has Session filter values
@@ -1598,17 +1784,17 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 
 	// Clear selection stored in session
 	function ClearSessionSelection($parm) {
-		$_SESSION["sel_Especies_Categorias_$parm"] = "";
-		$_SESSION["rf_Especies_Categorias_$parm"] = "";
-		$_SESSION["rt_Especies_Categorias_$parm"] = "";
+		$_SESSION["sel_Egreso_Bienes_Proyecto_$parm"] = "";
+		$_SESSION["rf_Egreso_Bienes_Proyecto_$parm"] = "";
+		$_SESSION["rt_Egreso_Bienes_Proyecto_$parm"] = "";
 	}
 
 	// Load selection from session
 	function LoadSelectionFromSession($parm) {
 		$fld = &$this->FieldByParm($parm);
-		$fld->SelectionList = @$_SESSION["sel_Especies_Categorias_$parm"];
-		$fld->RangeFrom = @$_SESSION["rf_Especies_Categorias_$parm"];
-		$fld->RangeTo = @$_SESSION["rt_Especies_Categorias_$parm"];
+		$fld->SelectionList = @$_SESSION["sel_Egreso_Bienes_Proyecto_$parm"];
+		$fld->RangeFrom = @$_SESSION["rf_Egreso_Bienes_Proyecto_$parm"];
+		$fld->RangeTo = @$_SESSION["rt_Egreso_Bienes_Proyecto_$parm"];
 	}
 
 	// Load default value for filters
@@ -1617,9 +1803,13 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		* Set up default values for non Text filters
 		*/
 
-		// Field categoria
-		$this->categoria->DefaultDropDownValue = EWR_INIT_VALUE;
-		if (!$this->SearchCommand) $this->categoria->DropDownValue = $this->categoria->DefaultDropDownValue;
+		// Field proyecto
+		$this->proyecto->DefaultDropDownValue = EWR_INIT_VALUE;
+		if (!$this->SearchCommand) $this->proyecto->DropDownValue = $this->proyecto->DefaultDropDownValue;
+		$sWrk = "";
+		$this->BuildDropDownFilter($this->proyecto, $sWrk, $this->proyecto->SearchOperator, TRUE);
+		ewr_LoadSelectionFromFilter($this->proyecto, $sWrk, $this->proyecto->DefaultSelectionList);
+		if (!$this->SearchCommand) $this->proyecto->SelectionList = $this->proyecto->DefaultSelectionList;
 		/**
 		* Set up default values for extended filters
 		* function SetDefaultExtFilter(&$fld, $so1, $sv1, $sc, $so2, $sv2)
@@ -1634,13 +1824,21 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		/**
 		* Set up default values for popup filters
 		*/
+
+		// Field proyecto
+		// $this->proyecto->DefaultSelectionList = array("val1", "val2");
+
 	}
 
 	// Check if filter applied
 	function CheckFilter() {
 
-		// Check categoria extended filter
-		if ($this->NonTextFilterApplied($this->categoria))
+		// Check proyecto extended filter
+		if ($this->NonTextFilterApplied($this->proyecto))
+			return TRUE;
+
+		// Check proyecto popup filter
+		if (!ewr_MatchedArray($this->proyecto->DefaultSelectionList, $this->proyecto->SelectionList))
 			return TRUE;
 		return FALSE;
 	}
@@ -1652,17 +1850,19 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Initialize
 		$sFilterList = "";
 
-		// Field categoria
+		// Field proyecto
 		$sExtWrk = "";
 		$sWrk = "";
-		$this->BuildDropDownFilter($this->categoria, $sExtWrk, $this->categoria->SearchOperator);
+		$this->BuildDropDownFilter($this->proyecto, $sExtWrk, $this->proyecto->SearchOperator);
+		if (is_array($this->proyecto->SelectionList))
+			$sWrk = ewr_JoinArray($this->proyecto->SelectionList, ", ", EWR_DATATYPE_STRING, 0, $this->DBID);
 		$sFilter = "";
 		if ($sExtWrk <> "")
 			$sFilter .= "<span class=\"ewFilterValue\">$sExtWrk</span>";
 		elseif ($sWrk <> "")
 			$sFilter .= "<span class=\"ewFilterValue\">$sWrk</span>";
 		if ($sFilter <> "")
-			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->categoria->FldCaption() . "</span>" . $sFilter . "</div>";
+			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->proyecto->FldCaption() . "</span>" . $sFilter . "</div>";
 		$divstyle = "";
 		$divdataclass = "";
 
@@ -1685,13 +1885,20 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		// Initialize
 		$sFilterList = "";
 
-		// Field categoria
+		// Field proyecto
 		$sWrk = "";
-		$sWrk = ($this->categoria->DropDownValue <> EWR_INIT_VALUE) ? $this->categoria->DropDownValue : "";
+		$sWrk = ($this->proyecto->DropDownValue <> EWR_INIT_VALUE) ? $this->proyecto->DropDownValue : "";
 		if (is_array($sWrk))
 			$sWrk = implode("||", $sWrk);
 		if ($sWrk <> "")
-			$sWrk = "\"sv_categoria\":\"" . ewr_JsEncode2($sWrk) . "\"";
+			$sWrk = "\"sv_proyecto\":\"" . ewr_JsEncode2($sWrk) . "\"";
+		if ($sWrk == "") {
+			$sWrk = ($this->proyecto->SelectionList <> EWR_INIT_VALUE) ? $this->proyecto->SelectionList : "";
+			if (is_array($sWrk))
+				$sWrk = implode("||", $sWrk);
+			if ($sWrk <> "")
+				$sWrk = "\"sel_proyecto\":\"" . ewr_JsEncode2($sWrk) . "\"";
+		}
 		if ($sWrk <> "") {
 			if ($sFilterList <> "") $sFilterList .= ",";
 			$sFilterList .= $sWrk;
@@ -1719,17 +1926,27 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		if (!is_array($filter))
 			return FALSE;
 
-		// Field categoria
+		// Field proyecto
 		$bRestoreFilter = FALSE;
-		if (array_key_exists("sv_categoria", $filter)) {
-			$sWrk = $filter["sv_categoria"];
+		if (array_key_exists("sv_proyecto", $filter)) {
+			$sWrk = $filter["sv_proyecto"];
 			if (strpos($sWrk, "||") !== FALSE)
 				$sWrk = explode("||", $sWrk);
-			$this->SetSessionDropDownValue($sWrk, @$filter["so_categoria"], "categoria");
+			$this->SetSessionDropDownValue($sWrk, @$filter["so_proyecto"], "proyecto");
+			$bRestoreFilter = TRUE;
+		}
+		if (array_key_exists("sel_proyecto", $filter)) {
+			$sWrk = $filter["sel_proyecto"];
+			$sWrk = explode("||", $sWrk);
+			$this->proyecto->SelectionList = $sWrk;
+			$_SESSION["sel_Egreso_Bienes_Proyecto_proyecto"] = $sWrk;
+			$this->SetSessionDropDownValue(EWR_INIT_VALUE, "", "proyecto"); // Clear drop down
 			$bRestoreFilter = TRUE;
 		}
 		if (!$bRestoreFilter) { // Clear filter
-			$this->SetSessionDropDownValue(EWR_INIT_VALUE, "", "categoria");
+			$this->SetSessionDropDownValue(EWR_INIT_VALUE, "", "proyecto");
+			$this->proyecto->SelectionList = "";
+			$_SESSION["sel_Egreso_Bienes_Proyecto_proyecto"] = "";
 		}
 		return TRUE;
 	}
@@ -1739,7 +1956,47 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		$sWrk = "";
 		if ($this->DrillDown)
 			return "";
+		if (!$this->DropDownFilterExist($this->proyecto, $this->proyecto->SearchOperator)) {
+			if (is_array($this->proyecto->SelectionList)) {
+				$sFilter = ewr_FilterSql($this->proyecto, "`proyecto`", EWR_DATATYPE_STRING, $this->DBID);
+
+				// Call Page Filtering event
+				$this->Page_Filtering($this->proyecto, $sFilter, "popup");
+				$this->proyecto->CurrentFilter = $sFilter;
+				ewr_AddFilter($sWrk, $sFilter);
+			}
+		}
 		return $sWrk;
+	}
+
+	// Return drill down SQL
+	// - fld = source field object
+	// - target = target field name
+	// - rowtype = row type
+	//  * 0 = detail
+	//  * 1 = group
+	//  * 2 = page
+	//  * 3 = grand
+	// - parm = filter/column index
+	//  * -1  = use field filter value / current/old value
+	//  * 0   = use grouping/column field value
+	//  * > 0 = use column index
+	function GetDrillDownSQL($fld, $target, $rowtype, $parm = 0) {
+		$sql = "";
+
+		// Handle group/row/column field
+		if ($parm >= 0 && $sql == "") {
+			switch (substr($fld->FldVar,2)) {
+			}
+		}
+
+		// Detail field
+		if ($sql == "" && $rowtype == 0)
+			if ($fld->CurrentFilter <> "") // Use current filter
+				$sql = str_replace($fld->FldExpression, "@" . $target, $fld->CurrentFilter);
+			elseif ($fld->CurrentValue <> "") // Use current value for detail row
+				$sql = "@" . $target . "=" . ewr_QuotedValue($fld->CurrentValue, $fld->FldDataType, $this->DBID);
+		return $sql;
 	}
 
 	// Get sort parameters based on sort links clicked
@@ -1754,16 +2011,19 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 		if ($bResetSort) {
 			$this->setOrderBy("");
 			$this->setStartGroup(1);
-			$this->idespecies->setSort("");
-			$this->codigo->setSort("");
-			$this->nombre->setSort("");
+			$this->idegreso_bienes->setSort("");
+			$this->numero_egreso->setSort("");
+			$this->proyecto->setSort("");
+			$this->fecha->setSort("");
+			$this->lugar->setSort("");
+			$this->calle->setSort("");
+			$this->interseccion->setSort("");
 			$this->descripcion->setSort("");
-			$this->imagen->setSort("");
-			$this->stock->setSort("");
-			$this->desde->setSort("");
-			$this->hasta->setSort("");
-			$this->categoria->setSort("");
-			$this->condicion->setSort("");
+			$this->usuario->setSort("");
+			$this->cajero->setSort("");
+			$this->cedula_cajero->setSort("");
+			$this->total->setSort("");
+			$this->estado->setSort("");
 
 		// Check for an Order parameter
 		} elseif ($orderBy <> "") {
@@ -1963,9 +2223,9 @@ class crEspecies_Categorias_summary extends crEspecies_Categorias {
 <?php
 
 // Create page object
-if (!isset($Especies_Categorias_summary)) $Especies_Categorias_summary = new crEspecies_Categorias_summary();
+if (!isset($Egreso_Bienes_Proyecto_summary)) $Egreso_Bienes_Proyecto_summary = new crEgreso_Bienes_Proyecto_summary();
 if (isset($Page)) $OldPage = $Page;
-$Page = &$Especies_Categorias_summary;
+$Page = &$Egreso_Bienes_Proyecto_summary;
 
 // Page init
 $Page->Page_Init();
@@ -1988,21 +2248,21 @@ $Page->Page_Render();
 <script type="text/javascript">
 
 // Create page object
-var Especies_Categorias_summary = new ewr_Page("Especies_Categorias_summary");
+var Egreso_Bienes_Proyecto_summary = new ewr_Page("Egreso_Bienes_Proyecto_summary");
 
 // Page properties
-Especies_Categorias_summary.PageID = "summary"; // Page ID
-var EWR_PAGE_ID = Especies_Categorias_summary.PageID;
+Egreso_Bienes_Proyecto_summary.PageID = "summary"; // Page ID
+var EWR_PAGE_ID = Egreso_Bienes_Proyecto_summary.PageID;
 </script>
 <?php } ?>
 <?php if ($Page->Export == "" && !$Page->DrillDown && !$grDashboardReport) { ?>
 <script type="text/javascript">
 
 // Form object
-var CurrentForm = fEspecies_Categoriassummary = new ewr_Form("fEspecies_Categoriassummary");
+var CurrentForm = fEgreso_Bienes_Proyectosummary = new ewr_Form("fEgreso_Bienes_Proyectosummary");
 
 // Validate method
-fEspecies_Categoriassummary.Validate = function() {
+fEgreso_Bienes_Proyectosummary.Validate = function() {
 	if (!this.ValidateRequired)
 		return true; // Ignore validation
 	var $ = jQuery, fobj = this.GetForm(), $fobj = $(fobj);
@@ -2014,20 +2274,20 @@ fEspecies_Categoriassummary.Validate = function() {
 }
 
 // Form_CustomValidate method
-fEspecies_Categoriassummary.Form_CustomValidate = 
+fEgreso_Bienes_Proyectosummary.Form_CustomValidate = 
  function(fobj) { // DO NOT CHANGE THIS LINE!
 
  	// Your custom validation code here, return false if invalid.
  	return true;
  }
 <?php if (EWR_CLIENT_VALIDATE) { ?>
-fEspecies_Categoriassummary.ValidateRequired = true; // Uses JavaScript validation
+fEgreso_Bienes_Proyectosummary.ValidateRequired = true; // Uses JavaScript validation
 <?php } else { ?>
-fEspecies_Categoriassummary.ValidateRequired = false; // No JavaScript validation
+fEgreso_Bienes_Proyectosummary.ValidateRequired = false; // No JavaScript validation
 <?php } ?>
 
 // Use Ajax
-fEspecies_Categoriassummary.Lists["sv_categoria"] = {"LinkField":"sv_categoria","Ajax":true,"DisplayFields":["sv_categoria","","",""],"ParentFields":[],"FilterFields":[],"Options":[],"Template":""};
+fEgreso_Bienes_Proyectosummary.Lists["sv_proyecto"] = {"LinkField":"sv_proyecto","Ajax":true,"DisplayFields":["sv_proyecto","","",""],"ParentFields":[],"FilterFields":[],"Options":[],"Template":""};
 </script>
 <?php } ?>
 <?php if ($Page->Export == "" && !$Page->DrillDown && !$grDashboardReport) { ?>
@@ -2069,34 +2329,34 @@ if (!$Page->DrillDownInPanel) {
 <?php } ?>
 <?php if ($Page->Export == "" && !$Page->DrillDown && !$grDashboardReport) { ?>
 <!-- Search form (begin) -->
-<form name="fEspecies_Categoriassummary" id="fEspecies_Categoriassummary" class="form-inline ewForm ewExtFilterForm" action="<?php echo ewr_CurrentPage() ?>">
+<form name="fEgreso_Bienes_Proyectosummary" id="fEgreso_Bienes_Proyectosummary" class="form-inline ewForm ewExtFilterForm" action="<?php echo ewr_CurrentPage() ?>">
 <?php $SearchPanelClass = ($Page->Filter <> "") ? " in" : " in"; ?>
-<div id="fEspecies_Categoriassummary_SearchPanel" class="ewSearchPanel collapse<?php echo $SearchPanelClass ?>">
+<div id="fEgreso_Bienes_Proyectosummary_SearchPanel" class="ewSearchPanel collapse<?php echo $SearchPanelClass ?>">
 <input type="hidden" name="cmd" value="search">
 <div id="r_1" class="ewRow">
-<div id="c_categoria" class="ewCell form-group">
-	<label for="sv_categoria" class="ewSearchCaption ewLabel"><?php echo $Page->categoria->FldCaption() ?></label>
+<div id="c_proyecto" class="ewCell form-group">
+	<label for="sv_proyecto" class="ewSearchCaption ewLabel"><?php echo $Page->proyecto->FldCaption() ?></label>
 	<span class="ewSearchField">
-<?php $Page->categoria->EditAttrs["onclick"] = "ewrForms(this).Submit(); " . @$Page->categoria->EditAttrs["onclick"]; ?>
+<?php $Page->proyecto->EditAttrs["onclick"] = "ewrForms(this).Submit(); " . @$Page->proyecto->EditAttrs["onclick"]; ?>
 <div class="ewDropdownList has-feedback">
 	<span onclick="" class="form-control dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-		<?php echo ewr_FilterDropDownValue($Page->categoria) ?>
+		<?php echo ewr_FilterDropDownValue($Page->proyecto) ?>
 	</span>
 	<span class="glyphicon glyphicon-remove form-control-feedback ewDropdownListClear"></span>
 	<span class="form-control-feedback"><span class="caret"></span></span>
-	<div id="dsl_sv_categoria" data-repeatcolumn="1" class="dropdown-menu">
+	<div id="dsl_sv_proyecto" data-repeatcolumn="1" class="dropdown-menu">
 		<div class="ewItems" style="position: relative; overflow-x: hidden;">
 <?php
-	$cntf = is_array($Page->categoria->AdvancedFilters) ? count($Page->categoria->AdvancedFilters) : 0;
-	$cntd = is_array($Page->categoria->DropDownList) ? count($Page->categoria->DropDownList) : 0;
+	$cntf = is_array($Page->proyecto->AdvancedFilters) ? count($Page->proyecto->AdvancedFilters) : 0;
+	$cntd = is_array($Page->proyecto->DropDownList) ? count($Page->proyecto->DropDownList) : 0;
 	$totcnt = $cntf + $cntd;
 	$wrkcnt = 0;
 	if ($cntf > 0) {
-		foreach ($Page->categoria->AdvancedFilters as $filter) {
+		foreach ($Page->proyecto->AdvancedFilters as $filter) {
 			if ($filter->Enabled) {
-				$selwrk = ewr_MatchedFilterValue($Page->categoria->DropDownValue, $filter->ID) ? " checked" : "";
+				$selwrk = ewr_MatchedFilterValue($Page->proyecto->DropDownValue, $filter->ID) ? " checked" : "";
 ?>
-<input type="radio" data-table="Especies_Categorias" data-field="x_categoria" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->categoria->DisplayValueSeparator) ? json_encode($Page->categoria->DisplayValueSeparator) : $Page->categoria->DisplayValueSeparator) ?>" data-filter-name="<?php echo ewr_HtmlEncode($filter->Name) ?>" name="sv_categoria" value="<?php echo $filter->ID ?>"<?php echo $selwrk ?><?php echo $Page->categoria->EditAttributes() ?>><?php echo $filter->Name ?>
+<input type="radio" data-table="Egreso_Bienes_Proyecto" data-field="x_proyecto" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->proyecto->DisplayValueSeparator) ? json_encode($Page->proyecto->DisplayValueSeparator) : $Page->proyecto->DisplayValueSeparator) ?>" data-filter-name="<?php echo ewr_HtmlEncode($filter->Name) ?>" name="sv_proyecto" value="<?php echo $filter->ID ?>"<?php echo $selwrk ?><?php echo $Page->proyecto->EditAttributes() ?>><?php echo $filter->Name ?>
 <?php
 				$wrkcnt += 1;
 			}
@@ -2105,18 +2365,18 @@ if (!$Page->DrillDownInPanel) {
 	for ($i = 0; $i < $cntd; $i++) {
 		$selwrk = " checked";
 ?>
-<input type="radio" data-table="Especies_Categorias" data-field="x_categoria" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->categoria->DisplayValueSeparator) ? json_encode($Page->categoria->DisplayValueSeparator) : $Page->categoria->DisplayValueSeparator) ?>" name="sv_categoria" value="<?php echo $Page->categoria->DropDownList[$i] ?>"<?php echo $selwrk ?><?php echo $Page->categoria->EditAttributes() ?>><?php echo ewr_DropDownDisplayValue($Page->categoria->DropDownList[$i], "", 0) ?>
+<input type="radio" data-table="Egreso_Bienes_Proyecto" data-field="x_proyecto" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->proyecto->DisplayValueSeparator) ? json_encode($Page->proyecto->DisplayValueSeparator) : $Page->proyecto->DisplayValueSeparator) ?>" name="sv_proyecto" value="<?php echo $Page->proyecto->DropDownList[$i] ?>"<?php echo $selwrk ?><?php echo $Page->proyecto->EditAttributes() ?>><?php echo ewr_DropDownDisplayValue($Page->proyecto->DropDownList[$i], "", 0) ?>
 <?php
 		$wrkcnt += 1;
 	}
 ?>
 		</div>
 	</div>
-	<div id="tp_sv_categoria" class="ewTemplate"><input type="radio" data-table="Especies_Categorias" data-field="x_categoria" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->categoria->DisplayValueSeparator) ? json_encode($Page->categoria->DisplayValueSeparator) : $Page->categoria->DisplayValueSeparator) ?>" name="sv_categoria" id="sv_categoria" value="{value}"<?php echo $Page->categoria->EditAttributes() ?>></div>
+	<div id="tp_sv_proyecto" class="ewTemplate"><input type="radio" data-table="Egreso_Bienes_Proyecto" data-field="x_proyecto" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->proyecto->DisplayValueSeparator) ? json_encode($Page->proyecto->DisplayValueSeparator) : $Page->proyecto->DisplayValueSeparator) ?>" name="sv_proyecto" id="sv_proyecto" value="{value}"<?php echo $Page->proyecto->EditAttributes() ?>></div>
 </div>
-<input type="hidden" name="s_sv_categoria" id="s_sv_categoria" value="<?php echo $Page->categoria->LookupFilterQuery() ?>">
+<input type="hidden" name="s_sv_proyecto" id="s_sv_proyecto" value="<?php echo $Page->proyecto->LookupFilterQuery() ?>">
 <script type="text/javascript">
-fEspecies_Categoriassummary.Lists["sv_categoria"].Options = <?php echo ewr_ArrayToJson($Page->categoria->LookupFilterOptions) ?>;
+fEgreso_Bienes_Proyectosummary.Lists["sv_proyecto"].Options = <?php echo ewr_ArrayToJson($Page->proyecto->LookupFilterOptions) ?>;
 </script>
 </span>
 </div>
@@ -2124,8 +2384,8 @@ fEspecies_Categoriassummary.Lists["sv_categoria"].Options = <?php echo ewr_Array
 </div>
 </form>
 <script type="text/javascript">
-fEspecies_Categoriassummary.Init();
-fEspecies_Categoriassummary.FilterList = <?php echo $Page->GetFilterList() ?>;
+fEgreso_Bienes_Proyectosummary.Init();
+fEgreso_Bienes_Proyectosummary.FilterList = <?php echo $Page->GetFilterList() ?>;
 </script>
 <!-- Search form (end) -->
 <?php } ?>
@@ -2171,67 +2431,145 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <?php } ?>
 <?php if ($Page->Export == "" && !($Page->DrillDown && $Page->TotalGrps > 0)) { ?>
 <div class="box-header ewGridUpperPanel">
-<?php include "Especies_Categoriassmrypager.php" ?>
+<?php include "Egreso_Bienes_Proyectosmrypager.php" ?>
 <div class="clearfix"></div>
 </div>
 <?php } ?>
 <!-- Report grid (begin) -->
 <?php if ($Page->Export <> "pdf") { ?>
-<div id="gmp_Especies_Categorias" class="<?php if (ewr_IsResponsiveLayout()) { echo "table-responsive "; } ?>ewGridMiddlePanel">
+<div id="gmp_Egreso_Bienes_Proyecto" class="<?php if (ewr_IsResponsiveLayout()) { echo "table-responsive "; } ?>ewGridMiddlePanel">
 <?php } ?>
 <table class="<?php echo $Page->ReportTableClass ?>">
 <thead>
 	<!-- Table header -->
 	<tr class="ewTableHeader">
-<?php if ($Page->idespecies->Visible) { ?>
+<?php if ($Page->idegreso_bienes->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="idespecies"><div class="Especies_Categorias_idespecies"><span class="ewTableHeaderCaption"><?php echo $Page->idespecies->FldCaption() ?></span></div></td>
+	<td data-field="idegreso_bienes"><div class="Egreso_Bienes_Proyecto_idegreso_bienes"><span class="ewTableHeaderCaption"><?php echo $Page->idegreso_bienes->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="idespecies">
-<?php if ($Page->SortUrl($Page->idespecies) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_idespecies">
-			<span class="ewTableHeaderCaption"><?php echo $Page->idespecies->FldCaption() ?></span>
+	<td data-field="idegreso_bienes">
+<?php if ($Page->SortUrl($Page->idegreso_bienes) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_idegreso_bienes">
+			<span class="ewTableHeaderCaption"><?php echo $Page->idegreso_bienes->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_idespecies" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->idespecies) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->idespecies->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->idespecies->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->idespecies->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_idegreso_bienes" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->idegreso_bienes) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->idegreso_bienes->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->idegreso_bienes->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->idegreso_bienes->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->codigo->Visible) { ?>
+<?php if ($Page->numero_egreso->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="codigo"><div class="Especies_Categorias_codigo"><span class="ewTableHeaderCaption"><?php echo $Page->codigo->FldCaption() ?></span></div></td>
+	<td data-field="numero_egreso"><div class="Egreso_Bienes_Proyecto_numero_egreso"><span class="ewTableHeaderCaption"><?php echo $Page->numero_egreso->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="codigo">
-<?php if ($Page->SortUrl($Page->codigo) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_codigo">
-			<span class="ewTableHeaderCaption"><?php echo $Page->codigo->FldCaption() ?></span>
+	<td data-field="numero_egreso">
+<?php if ($Page->SortUrl($Page->numero_egreso) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_numero_egreso">
+			<span class="ewTableHeaderCaption"><?php echo $Page->numero_egreso->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_codigo" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->codigo) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->codigo->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->codigo->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->codigo->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_numero_egreso" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->numero_egreso) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->numero_egreso->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->numero_egreso->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->numero_egreso->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->nombre->Visible) { ?>
+<?php if ($Page->proyecto->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="nombre"><div class="Especies_Categorias_nombre"><span class="ewTableHeaderCaption"><?php echo $Page->nombre->FldCaption() ?></span></div></td>
+	<td data-field="proyecto"><div class="Egreso_Bienes_Proyecto_proyecto"><span class="ewTableHeaderCaption"><?php echo $Page->proyecto->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="nombre">
-<?php if ($Page->SortUrl($Page->nombre) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_nombre">
-			<span class="ewTableHeaderCaption"><?php echo $Page->nombre->FldCaption() ?></span>
+	<td data-field="proyecto">
+<?php if ($Page->SortUrl($Page->proyecto) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_proyecto">
+			<span class="ewTableHeaderCaption"><?php echo $Page->proyecto->FldCaption() ?></span>
+	<?php if (!$grDashboardReport) { ?>
+			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, { name: 'Egreso_Bienes_Proyecto_proyecto', range: true, from: '<?php echo $Page->proyecto->RangeFrom; ?>', to: '<?php echo $Page->proyecto->RangeTo; ?>', url: 'Egreso_Bienes_Proyectosmry.php' });" id="x_proyecto<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
+	<?php } ?>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_nombre" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->nombre) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->nombre->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->nombre->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->nombre->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_proyecto" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->proyecto) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->proyecto->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->proyecto->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->proyecto->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+	<?php if (!$grDashboardReport) { ?>
+			<a class="ewTableHeaderPopup" title="<?php echo $ReportLanguage->Phrase("Filter"); ?>" onclick="ewr_ShowPopup.call(this, event, { name: 'Egreso_Bienes_Proyecto_proyecto', range: true, from: '<?php echo $Page->proyecto->RangeFrom; ?>', to: '<?php echo $Page->proyecto->RangeTo; ?>', url: 'Egreso_Bienes_Proyectosmry.php' });" id="x_proyecto<?php echo $Page->Cnt[0][0]; ?>"><span class="icon-filter"></span></a>
+	<?php } ?>
+		</div>
+<?php } ?>
+	</td>
+<?php } ?>
+<?php } ?>
+<?php if ($Page->fecha->Visible) { ?>
+<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
+	<td data-field="fecha"><div class="Egreso_Bienes_Proyecto_fecha"><span class="ewTableHeaderCaption"><?php echo $Page->fecha->FldCaption() ?></span></div></td>
+<?php } else { ?>
+	<td data-field="fecha">
+<?php if ($Page->SortUrl($Page->fecha) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_fecha">
+			<span class="ewTableHeaderCaption"><?php echo $Page->fecha->FldCaption() ?></span>
+		</div>
+<?php } else { ?>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_fecha" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->fecha) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->fecha->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->fecha->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->fecha->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		</div>
+<?php } ?>
+	</td>
+<?php } ?>
+<?php } ?>
+<?php if ($Page->lugar->Visible) { ?>
+<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
+	<td data-field="lugar"><div class="Egreso_Bienes_Proyecto_lugar"><span class="ewTableHeaderCaption"><?php echo $Page->lugar->FldCaption() ?></span></div></td>
+<?php } else { ?>
+	<td data-field="lugar">
+<?php if ($Page->SortUrl($Page->lugar) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_lugar">
+			<span class="ewTableHeaderCaption"><?php echo $Page->lugar->FldCaption() ?></span>
+		</div>
+<?php } else { ?>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_lugar" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->lugar) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->lugar->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->lugar->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->lugar->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		</div>
+<?php } ?>
+	</td>
+<?php } ?>
+<?php } ?>
+<?php if ($Page->calle->Visible) { ?>
+<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
+	<td data-field="calle"><div class="Egreso_Bienes_Proyecto_calle"><span class="ewTableHeaderCaption"><?php echo $Page->calle->FldCaption() ?></span></div></td>
+<?php } else { ?>
+	<td data-field="calle">
+<?php if ($Page->SortUrl($Page->calle) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_calle">
+			<span class="ewTableHeaderCaption"><?php echo $Page->calle->FldCaption() ?></span>
+		</div>
+<?php } else { ?>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_calle" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->calle) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->calle->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->calle->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->calle->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		</div>
+<?php } ?>
+	</td>
+<?php } ?>
+<?php } ?>
+<?php if ($Page->interseccion->Visible) { ?>
+<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
+	<td data-field="interseccion"><div class="Egreso_Bienes_Proyecto_interseccion"><span class="ewTableHeaderCaption"><?php echo $Page->interseccion->FldCaption() ?></span></div></td>
+<?php } else { ?>
+	<td data-field="interseccion">
+<?php if ($Page->SortUrl($Page->interseccion) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_interseccion">
+			<span class="ewTableHeaderCaption"><?php echo $Page->interseccion->FldCaption() ?></span>
+		</div>
+<?php } else { ?>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_interseccion" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->interseccion) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->interseccion->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->interseccion->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->interseccion->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
@@ -2239,15 +2577,15 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <?php } ?>
 <?php if ($Page->descripcion->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="descripcion"><div class="Especies_Categorias_descripcion"><span class="ewTableHeaderCaption"><?php echo $Page->descripcion->FldCaption() ?></span></div></td>
+	<td data-field="descripcion"><div class="Egreso_Bienes_Proyecto_descripcion"><span class="ewTableHeaderCaption"><?php echo $Page->descripcion->FldCaption() ?></span></div></td>
 <?php } else { ?>
 	<td data-field="descripcion">
 <?php if ($Page->SortUrl($Page->descripcion) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_descripcion">
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_descripcion">
 			<span class="ewTableHeaderCaption"><?php echo $Page->descripcion->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_descripcion" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->descripcion) ?>',0);">
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_descripcion" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->descripcion) ?>',0);">
 			<span class="ewTableHeaderCaption"><?php echo $Page->descripcion->FldCaption() ?></span>
 			<span class="ewTableHeaderSort"><?php if ($Page->descripcion->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->descripcion->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
@@ -2255,109 +2593,91 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->imagen->Visible) { ?>
+<?php if ($Page->usuario->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="imagen"><div class="Especies_Categorias_imagen"><span class="ewTableHeaderCaption"><?php echo $Page->imagen->FldCaption() ?></span></div></td>
+	<td data-field="usuario"><div class="Egreso_Bienes_Proyecto_usuario"><span class="ewTableHeaderCaption"><?php echo $Page->usuario->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="imagen">
-<?php if ($Page->SortUrl($Page->imagen) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_imagen">
-			<span class="ewTableHeaderCaption"><?php echo $Page->imagen->FldCaption() ?></span>
+	<td data-field="usuario">
+<?php if ($Page->SortUrl($Page->usuario) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_usuario">
+			<span class="ewTableHeaderCaption"><?php echo $Page->usuario->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_imagen" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->imagen) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->imagen->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->imagen->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->imagen->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_usuario" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->usuario) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->usuario->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->usuario->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->usuario->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->stock->Visible) { ?>
+<?php if ($Page->cajero->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="stock"><div class="Especies_Categorias_stock"><span class="ewTableHeaderCaption"><?php echo $Page->stock->FldCaption() ?></span></div></td>
+	<td data-field="cajero"><div class="Egreso_Bienes_Proyecto_cajero"><span class="ewTableHeaderCaption"><?php echo $Page->cajero->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="stock">
-<?php if ($Page->SortUrl($Page->stock) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_stock">
-			<span class="ewTableHeaderCaption"><?php echo $Page->stock->FldCaption() ?></span>
+	<td data-field="cajero">
+<?php if ($Page->SortUrl($Page->cajero) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_cajero">
+			<span class="ewTableHeaderCaption"><?php echo $Page->cajero->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_stock" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->stock) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->stock->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->stock->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->stock->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_cajero" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->cajero) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->cajero->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->cajero->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->cajero->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->desde->Visible) { ?>
+<?php if ($Page->cedula_cajero->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="desde"><div class="Especies_Categorias_desde"><span class="ewTableHeaderCaption"><?php echo $Page->desde->FldCaption() ?></span></div></td>
+	<td data-field="cedula_cajero"><div class="Egreso_Bienes_Proyecto_cedula_cajero"><span class="ewTableHeaderCaption"><?php echo $Page->cedula_cajero->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="desde">
-<?php if ($Page->SortUrl($Page->desde) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_desde">
-			<span class="ewTableHeaderCaption"><?php echo $Page->desde->FldCaption() ?></span>
+	<td data-field="cedula_cajero">
+<?php if ($Page->SortUrl($Page->cedula_cajero) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_cedula_cajero">
+			<span class="ewTableHeaderCaption"><?php echo $Page->cedula_cajero->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_desde" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->desde) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->desde->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->desde->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->desde->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_cedula_cajero" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->cedula_cajero) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->cedula_cajero->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->cedula_cajero->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->cedula_cajero->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->hasta->Visible) { ?>
+<?php if ($Page->total->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="hasta"><div class="Especies_Categorias_hasta"><span class="ewTableHeaderCaption"><?php echo $Page->hasta->FldCaption() ?></span></div></td>
+	<td data-field="total"><div class="Egreso_Bienes_Proyecto_total"><span class="ewTableHeaderCaption"><?php echo $Page->total->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="hasta">
-<?php if ($Page->SortUrl($Page->hasta) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_hasta">
-			<span class="ewTableHeaderCaption"><?php echo $Page->hasta->FldCaption() ?></span>
+	<td data-field="total">
+<?php if ($Page->SortUrl($Page->total) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_total">
+			<span class="ewTableHeaderCaption"><?php echo $Page->total->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_hasta" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->hasta) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->hasta->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->hasta->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->hasta->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_total" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->total) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->total->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->total->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->total->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
 <?php } ?>
 <?php } ?>
-<?php if ($Page->categoria->Visible) { ?>
+<?php if ($Page->estado->Visible) { ?>
 <?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="categoria"><div class="Especies_Categorias_categoria"><span class="ewTableHeaderCaption"><?php echo $Page->categoria->FldCaption() ?></span></div></td>
+	<td data-field="estado"><div class="Egreso_Bienes_Proyecto_estado"><span class="ewTableHeaderCaption"><?php echo $Page->estado->FldCaption() ?></span></div></td>
 <?php } else { ?>
-	<td data-field="categoria">
-<?php if ($Page->SortUrl($Page->categoria) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_categoria">
-			<span class="ewTableHeaderCaption"><?php echo $Page->categoria->FldCaption() ?></span>
+	<td data-field="estado">
+<?php if ($Page->SortUrl($Page->estado) == "") { ?>
+		<div class="ewTableHeaderBtn Egreso_Bienes_Proyecto_estado">
+			<span class="ewTableHeaderCaption"><?php echo $Page->estado->FldCaption() ?></span>
 		</div>
 <?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_categoria" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->categoria) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->categoria->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->categoria->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->categoria->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
-		</div>
-<?php } ?>
-	</td>
-<?php } ?>
-<?php } ?>
-<?php if ($Page->condicion->Visible) { ?>
-<?php if ($Page->Export <> "" || $Page->DrillDown) { ?>
-	<td data-field="condicion"><div class="Especies_Categorias_condicion"><span class="ewTableHeaderCaption"><?php echo $Page->condicion->FldCaption() ?></span></div></td>
-<?php } else { ?>
-	<td data-field="condicion">
-<?php if ($Page->SortUrl($Page->condicion) == "") { ?>
-		<div class="ewTableHeaderBtn Especies_Categorias_condicion">
-			<span class="ewTableHeaderCaption"><?php echo $Page->condicion->FldCaption() ?></span>
-		</div>
-<?php } else { ?>
-		<div class="ewTableHeaderBtn ewPointer Especies_Categorias_condicion" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->condicion) ?>',0);">
-			<span class="ewTableHeaderCaption"><?php echo $Page->condicion->FldCaption() ?></span>
-			<span class="ewTableHeaderSort"><?php if ($Page->condicion->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->condicion->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
+		<div class="ewTableHeaderBtn ewPointer Egreso_Bienes_Proyecto_estado" onclick="ewr_Sort(event,'<?php echo $Page->SortUrl($Page->estado) ?>',0);">
+			<span class="ewTableHeaderCaption"><?php echo $Page->estado->FldCaption() ?></span>
+			<span class="ewTableHeaderSort"><?php if ($Page->estado->getSort() == "ASC") { ?><span class="caret ewSortUp"></span><?php } elseif ($Page->estado->getSort() == "DESC") { ?><span class="caret"></span><?php } ?></span>
 		</div>
 <?php } ?>
 	</td>
@@ -2381,45 +2701,67 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 		$Page->RenderRow();
 ?>
 	<tr<?php echo $Page->RowAttributes(); ?>>
-<?php if ($Page->idespecies->Visible) { ?>
-		<td data-field="idespecies"<?php echo $Page->idespecies->CellAttributes() ?>>
-<span<?php echo $Page->idespecies->ViewAttributes() ?>><?php echo $Page->idespecies->ListViewValue() ?></span></td>
+<?php if ($Page->idegreso_bienes->Visible) { ?>
+		<td data-field="idegreso_bienes"<?php echo $Page->idegreso_bienes->CellAttributes() ?>>
+<span<?php echo $Page->idegreso_bienes->ViewAttributes() ?>><?php echo $Page->idegreso_bienes->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->codigo->Visible) { ?>
-		<td data-field="codigo"<?php echo $Page->codigo->CellAttributes() ?>>
-<span<?php echo $Page->codigo->ViewAttributes() ?>><?php echo $Page->codigo->ListViewValue() ?></span></td>
+<?php if ($Page->numero_egreso->Visible) { ?>
+		<td data-field="numero_egreso"<?php echo $Page->numero_egreso->CellAttributes() ?>>
+<span<?php echo $Page->numero_egreso->ViewAttributes() ?>><?php echo $Page->numero_egreso->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->nombre->Visible) { ?>
-		<td data-field="nombre"<?php echo $Page->nombre->CellAttributes() ?>>
-<span<?php echo $Page->nombre->ViewAttributes() ?>><?php echo $Page->nombre->ListViewValue() ?></span></td>
+<?php if ($Page->proyecto->Visible) { ?>
+		<td data-field="proyecto"<?php echo $Page->proyecto->CellAttributes() ?>>
+<span<?php echo $Page->proyecto->ViewAttributes() ?>>
+<?php if ($Page->proyecto->HrefValue <> "" || @$Page->proyecto->LinkAttrs["onclick"] <> "") { ?>
+<?php if ($Page->proyecto->ListViewValue() <> "" && $Page->proyecto->ListViewValue() <> "&nbsp;") { ?>
+<a<?php echo $Page->proyecto->LinkAttributes() ?>><?php echo $Page->proyecto->ListViewValue() ?></a>
+<?php } else { echo "&nbsp;"; } ?>
+<?php } else { ?>
+<?php if ($Page->proyecto->ListViewValue() <> "" && $Page->proyecto->ListViewValue() <> "&nbsp;") { ?>
+<?php echo $Page->proyecto->ListViewValue() ?>
+<?php } else { echo "&nbsp;"; } ?>
+<?php } ?>
+</span></td>
+<?php } ?>
+<?php if ($Page->fecha->Visible) { ?>
+		<td data-field="fecha"<?php echo $Page->fecha->CellAttributes() ?>>
+<span<?php echo $Page->fecha->ViewAttributes() ?>><?php echo $Page->fecha->ListViewValue() ?></span></td>
+<?php } ?>
+<?php if ($Page->lugar->Visible) { ?>
+		<td data-field="lugar"<?php echo $Page->lugar->CellAttributes() ?>>
+<span<?php echo $Page->lugar->ViewAttributes() ?>><?php echo $Page->lugar->ListViewValue() ?></span></td>
+<?php } ?>
+<?php if ($Page->calle->Visible) { ?>
+		<td data-field="calle"<?php echo $Page->calle->CellAttributes() ?>>
+<span<?php echo $Page->calle->ViewAttributes() ?>><?php echo $Page->calle->ListViewValue() ?></span></td>
+<?php } ?>
+<?php if ($Page->interseccion->Visible) { ?>
+		<td data-field="interseccion"<?php echo $Page->interseccion->CellAttributes() ?>>
+<span<?php echo $Page->interseccion->ViewAttributes() ?>><?php echo $Page->interseccion->ListViewValue() ?></span></td>
 <?php } ?>
 <?php if ($Page->descripcion->Visible) { ?>
 		<td data-field="descripcion"<?php echo $Page->descripcion->CellAttributes() ?>>
 <span<?php echo $Page->descripcion->ViewAttributes() ?>><?php echo $Page->descripcion->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->imagen->Visible) { ?>
-		<td data-field="imagen"<?php echo $Page->imagen->CellAttributes() ?>>
-<span<?php echo $Page->imagen->ViewAttributes() ?>><?php echo $Page->imagen->ListViewValue() ?></span></td>
+<?php if ($Page->usuario->Visible) { ?>
+		<td data-field="usuario"<?php echo $Page->usuario->CellAttributes() ?>>
+<span<?php echo $Page->usuario->ViewAttributes() ?>><?php echo $Page->usuario->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->stock->Visible) { ?>
-		<td data-field="stock"<?php echo $Page->stock->CellAttributes() ?>>
-<span<?php echo $Page->stock->ViewAttributes() ?>><?php echo $Page->stock->ListViewValue() ?></span></td>
+<?php if ($Page->cajero->Visible) { ?>
+		<td data-field="cajero"<?php echo $Page->cajero->CellAttributes() ?>>
+<span<?php echo $Page->cajero->ViewAttributes() ?>><?php echo $Page->cajero->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->desde->Visible) { ?>
-		<td data-field="desde"<?php echo $Page->desde->CellAttributes() ?>>
-<span<?php echo $Page->desde->ViewAttributes() ?>><?php echo $Page->desde->ListViewValue() ?></span></td>
+<?php if ($Page->cedula_cajero->Visible) { ?>
+		<td data-field="cedula_cajero"<?php echo $Page->cedula_cajero->CellAttributes() ?>>
+<span<?php echo $Page->cedula_cajero->ViewAttributes() ?>><?php echo $Page->cedula_cajero->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->hasta->Visible) { ?>
-		<td data-field="hasta"<?php echo $Page->hasta->CellAttributes() ?>>
-<span<?php echo $Page->hasta->ViewAttributes() ?>><?php echo $Page->hasta->ListViewValue() ?></span></td>
+<?php if ($Page->total->Visible) { ?>
+		<td data-field="total"<?php echo $Page->total->CellAttributes() ?>>
+<span<?php echo $Page->total->ViewAttributes() ?>><?php echo $Page->total->ListViewValue() ?></span></td>
 <?php } ?>
-<?php if ($Page->categoria->Visible) { ?>
-		<td data-field="categoria"<?php echo $Page->categoria->CellAttributes() ?>>
-<span<?php echo $Page->categoria->ViewAttributes() ?>><?php echo $Page->categoria->ListViewValue() ?></span></td>
-<?php } ?>
-<?php if ($Page->condicion->Visible) { ?>
-		<td data-field="condicion"<?php echo $Page->condicion->CellAttributes() ?>>
-<span<?php echo $Page->condicion->ViewAttributes() ?>><?php echo $Page->condicion->ListViewValue() ?></span></td>
+<?php if ($Page->estado->Visible) { ?>
+		<td data-field="estado"<?php echo $Page->estado->CellAttributes() ?>>
+<span<?php echo $Page->estado->ViewAttributes() ?>><?php echo $Page->estado->ListViewValue() ?></span></td>
 <?php } ?>
 	</tr>
 <?php
@@ -2436,6 +2778,8 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 </tbody>
 <tfoot>
 <?php
+	$Page->total->Count = $Page->GrandCnt[12];
+	$Page->total->SumValue = $Page->GrandSmry[12]; // Load SUM
 	$Page->ResetAttrs();
 	$Page->RowType = EWR_ROWTYPE_TOTAL;
 	$Page->RowTotalType = EWR_ROWTOTAL_GRAND;
@@ -2445,11 +2789,97 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 ?>
 <?php if ($Page->ShowCompactSummaryFooter) { ?>
 	<tr<?php echo $Page->RowAttributes() ?>><td colspan="<?php echo ($Page->GrpColumnCount + $Page->DtlColumnCount) ?>"><?php echo $ReportLanguage->Phrase("RptGrandSummary") ?> (<span class="ewAggregateCaption"><?php echo $ReportLanguage->Phrase("RptCnt") ?></span><?php echo $ReportLanguage->Phrase("AggregateEqual") ?><span class="ewAggregateValue"><?php echo ewr_FormatNumber($Page->TotCount,0,-2,-2,-2) ?></span>)</td></tr>
+	<tr<?php echo $Page->RowAttributes() ?>>
+<?php if ($Page->GrpColumnCount > 0) { ?>
+		<td colspan="<?php echo $Page->GrpColumnCount ?>" class="ewRptGrpAggregate">&nbsp;</td>
+<?php } ?>
+<?php if ($Page->idegreso_bienes->Visible) { ?>
+		<td data-field="idegreso_bienes"<?php echo $Page->idegreso_bienes->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->numero_egreso->Visible) { ?>
+		<td data-field="numero_egreso"<?php echo $Page->numero_egreso->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->proyecto->Visible) { ?>
+		<td data-field="proyecto"<?php echo $Page->proyecto->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->fecha->Visible) { ?>
+		<td data-field="fecha"<?php echo $Page->fecha->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->lugar->Visible) { ?>
+		<td data-field="lugar"<?php echo $Page->lugar->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->calle->Visible) { ?>
+		<td data-field="calle"<?php echo $Page->calle->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->interseccion->Visible) { ?>
+		<td data-field="interseccion"<?php echo $Page->interseccion->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->descripcion->Visible) { ?>
+		<td data-field="descripcion"<?php echo $Page->descripcion->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->usuario->Visible) { ?>
+		<td data-field="usuario"<?php echo $Page->usuario->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->cajero->Visible) { ?>
+		<td data-field="cajero"<?php echo $Page->cajero->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->cedula_cajero->Visible) { ?>
+		<td data-field="cedula_cajero"<?php echo $Page->cedula_cajero->CellAttributes() ?>></td>
+<?php } ?>
+<?php if ($Page->total->Visible) { ?>
+		<td data-field="total"<?php echo $Page->total->CellAttributes() ?>><?php echo $ReportLanguage->Phrase("RptSum") ?><?php echo $ReportLanguage->Phrase("AggregateEqual") ?><span<?php echo $Page->total->ViewAttributes() ?>><?php echo $Page->total->SumViewValue ?></span></td>
+<?php } ?>
+<?php if ($Page->estado->Visible) { ?>
+		<td data-field="estado"<?php echo $Page->estado->CellAttributes() ?>></td>
+<?php } ?>
+	</tr>
 <?php } else { ?>
 	<tr<?php echo $Page->RowAttributes() ?>><td colspan="<?php echo ($Page->GrpColumnCount + $Page->DtlColumnCount) ?>"><?php echo $ReportLanguage->Phrase("RptGrandSummary") ?> <span class="ewDirLtr">(<?php echo ewr_FormatNumber($Page->TotCount,0,-2,-2,-2); ?><?php echo $ReportLanguage->Phrase("RptDtlRec") ?>)</span></td></tr>
+	<tr<?php echo $Page->RowAttributes() ?>>
+<?php if ($Page->idegreso_bienes->Visible) { ?>
+		<td data-field="idegreso_bienes"<?php echo $Page->idegreso_bienes->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->numero_egreso->Visible) { ?>
+		<td data-field="numero_egreso"<?php echo $Page->numero_egreso->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->proyecto->Visible) { ?>
+		<td data-field="proyecto"<?php echo $Page->proyecto->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->fecha->Visible) { ?>
+		<td data-field="fecha"<?php echo $Page->fecha->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->lugar->Visible) { ?>
+		<td data-field="lugar"<?php echo $Page->lugar->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->calle->Visible) { ?>
+		<td data-field="calle"<?php echo $Page->calle->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->interseccion->Visible) { ?>
+		<td data-field="interseccion"<?php echo $Page->interseccion->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->descripcion->Visible) { ?>
+		<td data-field="descripcion"<?php echo $Page->descripcion->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->usuario->Visible) { ?>
+		<td data-field="usuario"<?php echo $Page->usuario->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->cajero->Visible) { ?>
+		<td data-field="cajero"<?php echo $Page->cajero->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->cedula_cajero->Visible) { ?>
+		<td data-field="cedula_cajero"<?php echo $Page->cedula_cajero->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+<?php if ($Page->total->Visible) { ?>
+		<td data-field="total"<?php echo $Page->total->CellAttributes() ?>><span class="ewAggregate"><?php echo $ReportLanguage->Phrase("RptSum") ?></span><?php echo $ReportLanguage->Phrase("AggregateColon") ?>
+<span<?php echo $Page->total->ViewAttributes() ?>><?php echo $Page->total->SumViewValue ?></span></td>
+<?php } ?>
+<?php if ($Page->estado->Visible) { ?>
+		<td data-field="estado"<?php echo $Page->estado->CellAttributes() ?>>&nbsp;</td>
+<?php } ?>
+	</tr>
 <?php } ?>
 	</tfoot>
-<?php } elseif (!$Page->ShowHeader && FALSE) { // No header displayed ?>
+<?php } elseif (!$Page->ShowHeader && TRUE) { // No header displayed ?>
 <?php if ($Page->Export <> "pdf") { ?>
 <?php if ($Page->Export == "word" || $Page->Export == "excel") { ?>
 <div class="ewGrid"<?php echo $Page->ReportTableStyle ?>>
@@ -2459,17 +2889,17 @@ while ($rs && !$rs->EOF && $Page->GrpCount <= $Page->DisplayGrps || $Page->ShowH
 <?php } ?>
 <?php if ($Page->Export == "" && !($Page->DrillDown && $Page->TotalGrps > 0)) { ?>
 <div class="box-header ewGridUpperPanel">
-<?php include "Especies_Categoriassmrypager.php" ?>
+<?php include "Egreso_Bienes_Proyectosmrypager.php" ?>
 <div class="clearfix"></div>
 </div>
 <?php } ?>
 <!-- Report grid (begin) -->
 <?php if ($Page->Export <> "pdf") { ?>
-<div id="gmp_Especies_Categorias" class="<?php if (ewr_IsResponsiveLayout()) { echo "table-responsive "; } ?>ewGridMiddlePanel">
+<div id="gmp_Egreso_Bienes_Proyecto" class="<?php if (ewr_IsResponsiveLayout()) { echo "table-responsive "; } ?>ewGridMiddlePanel">
 <?php } ?>
 <table class="<?php echo $Page->ReportTableClass ?>">
 <?php } ?>
-<?php if ($Page->TotalGrps > 0 || FALSE) { // Show footer ?>
+<?php if ($Page->TotalGrps > 0 || TRUE) { // Show footer ?>
 </table>
 <?php if ($Page->Export <> "pdf") { ?>
 </div>

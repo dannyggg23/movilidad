@@ -171,5 +171,19 @@ switch ($_GET["op"]){
         header("Location: ../index.php");
 
 	break;
+
+	case 'validarcedula':
+	//Cargar el autoload de composer
+	 require '../vendor/autoload.php';
+	// Crear nuevo objeto
+	 $validador = new Tavo\ValidadorEc;
+
+	 if ($validador->validarCedula($num_documento)) {
+		echo 'Cédula válida';
+	} else {
+		echo 'Cédula incorrecta: '.$validador->getError();
+	}
+	 
+break;
 }
 ?>

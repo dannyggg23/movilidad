@@ -153,4 +153,18 @@ function activar(idusuario) {
     })
 }
 
+function validarcedula() {
+
+    var num_documento = $('#num_documento').val();
+
+    $.post("../ajax/usuario.php?op=validarcedula", { num_documento: num_documento }, function(e) {
+        if (e == "Cédula válida") { swal("CORRECTO", e, "success") } else {
+            swal("ERROR", e, "error");
+            $('#num_documento').val("");
+        }
+        tabla.ajax.reload();
+    });
+
+}
+
 init();

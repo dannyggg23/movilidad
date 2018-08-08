@@ -1065,7 +1065,8 @@ class crTableBase {
 	var $ExportAll;
 	var $ExportPageBreakCount = 1; // Export page break count
 	var $ExportChartPageBreak = TRUE; // Page break for chart when export
-	var $PageBreakContent = EWR_EXPORT_PAGE_BREAK_CONTENT;
+	var $ExportPageOrientation; // Page orientation (PDF only)
+	var $PageBreakContent = EWR_PAGE_BREAK_HTML;
 	var $UseTokenInUrl = EWR_USE_TOKEN_IN_URL;
 	var $RowType; // Row type
 	var $RowTotalType; // Row total type
@@ -1733,9 +1734,9 @@ class crChart {
 	var $UseGridComponent = FALSE;
 	var $ChartSeriesSql;
 	var $ChartSql;
-	var $PageBreak = FALSE;
-	var $PageBreakType = "";
-	var $PageBreakContent = "";
+	var $PageBreak = TRUE; // Page break before/after chart
+	var $PageBreakType = "before"; // "before" or "after"
+	var $PageBreakContent = EWR_PAGE_BREAK_HTML; // Page break HTML
 	var $DrillDownInPanel = FALSE;
 	var $ScrollChart = FALSE;
 	var $IsCustomTemplate = FALSE;
@@ -3169,23 +3170,43 @@ class crChart {
 	function ShowTempImage() {
 		global $gsExport;
 		$chartid = "chart_" . $this->ID;
-		$tmpChartImage = ewr_TmpChartImage($chartid, $this->IsCustomTemplate);
-		$tmpGridImage = ewr_TmpChartImage($chartid . "_grid", $this->IsCustomTemplate);
-		if ($this->PageBreak)
-			$pageBreakTag = " data-page-break=\"" . ($this->PageBreakType == "before" ? "before" : "after") . "\"";
-		else
-			$pageBreakTag = "";
+		$chartImage = ewr_TmpChartImage($chartid, $this->IsCustomTemplate);
+		$this->ResizeTempImage($chartImage);
+		$gridImage = ewr_TmpChartImage($chartid . "_grid", $this->IsCustomTemplate);
+		$this->ResizeTempImage($gridImage);
 		$wrk = "";
-		if ($tmpChartImage <> "") {
-			$wrk = "<img src=\"" . $tmpChartImage . "\" alt=\"\">";
-			if ($tmpGridImage <> "")
-				$wrk .= "<img src=\"" . $tmpGridImage . "\" alt=\"\">";
-			if ($gsExport == "word" && defined('EWR_USE_PHPWORD') || $gsExport == "excel" && defined('EWR_USE_PHPEXCEL'))
-				$wrk = "<table class=\"ewChart\"" . $pageBreakTag . "><tr><td>" . $wrk . "</td></tr></table>";
-			else
-				$wrk = "<div class=\"ewChart\"" . $pageBreakTag . ">" . $wrk . "</div>";
+		if ($chartImage <> "") {
+			$wrk .= "<img src=\"" . $chartImage . "\" alt=\"\">";
+			if ($gridImage <> "")
+				$wrk .= "<img src=\"" . $gridImage . "\" alt=\"\">";
+			if ($this->PageBreak)
+				$attr = " data-page-break=\"" . ($this->PageBreakType == "before" ? "before" : "after") . "\"";
+			if ($gsExport == "word" && defined('EWR_USE_PHPWORD') || $gsExport == "excel" && defined('EWR_USE_PHPEXCEL') || $gsExport == "pdf") {
+				$wrk = "<table class=\"ewChart\"" . $attr . "><tr><td>" . $wrk . "</td></tr></table>";
+			} else {
+				$wrk = "<div class=\"ewChart\"" . $attr . ">" . $wrk . "</div>";
+			}
+		}
+		if ($this->PageBreak) {
+			if ($this->PageBreakType == "before") {
+				$wrk = $this->PageBreakContent . $wrk;
+			} else {
+				$wrk .= $this->PageBreakContent;
+			}
 		}
 		return $wrk;
+	}
+
+	function ResizeTempImage($fn) {
+		global $gsExport, $EWR_PDF_MAX_IMAGE_WIDTH, $EWR_PDF_MAX_IMAGE_HEIGHT;
+		if ($gsExport == "pdf") {
+			$maxWidth = ($this->Table->ExportPageOrientation == "portrait") ? $EWR_PDF_MAX_IMAGE_WIDTH : $EWR_PDF_MAX_IMAGE_HEIGHT;
+			$maxHeight = ($this->Table->ExportPageOrientation == "portrait") ? $EWR_PDF_MAX_IMAGE_HEIGHT : $EWR_PDF_MAX_IMAGE_WIDTH;
+			$w = ($this->ChartWidth > 0) ? min($this->ChartWidth, $maxWidth) : $maxWidth;
+			$h = ($this->ChartHeight > 0) ? min($this->ChartHeight, $maxHeight) : $maxHeight;
+			return ewr_ResizeFile($fn, $fn, $w, $h);
+		}
+		return true;
 	}
 
 	// Check width and height
@@ -3211,10 +3232,6 @@ class crChart {
 
 		// Set up chart first
 		$this->SetupChart();
-
-		// Render page break content (before)
-		if ($this->PageBreak && $this->PageBreakType == "before")
-			echo $this->PageBreakContent;
 
 		// Render chart content
 		if ($gsExport == "" || $gsExport == "print" && $gsCustomExport == "" || $gsExport == "email" && @$_POST["contenttype"] == "url") {
@@ -3258,10 +3275,6 @@ class crChart {
 		} elseif ($gsExport == "pdf" || $gsCustomExport <> "" || $gsExport == "email" || $gsExport == "excel" && defined("EWR_USE_PHPEXCEL") || $gsExport == "word" && defined("EWR_USE_PHPWORD")) { // Show temp image
 			echo $this->ShowTempImage();
 		}
-
-		// Render page break content (after)
-		if ($this->PageBreak && $this->PageBreakType == "after")
-			echo $this->PageBreakContent;
 	}
 
 	// Chart Rendering event
@@ -7006,22 +7019,27 @@ function ewr_DisplayGroupValue(&$fld, $val) {
 	}
 }
 
+// Format quarter
 function ewr_FormatQuarter($y, $q) {
 	return "Q" . $q . "/" . $y;
 }
 
+// Format month
 function ewr_FormatMonth($y, $m) {
 	return $m . "/" . $y;
 }
 
+// Format week
 function ewr_FormatWeek($y, $w) {
 	return "WK" . $w . "/" . $y;
 }
 
+// Format day
 function ewr_FormatDay($y, $m, $d) {
 	return $y . "-" . $m . "-" . $d;
 }
 
+// Format hour
 function ewr_FormatHour($h) {
 	if (intval($h) == 0) {
 		return "12 AM";
@@ -7034,6 +7052,7 @@ function ewr_FormatHour($h) {
 	}
 }
 
+// Format minute
 function ewr_FormatMinute($n) {
 	return $n . " MIN";
 }

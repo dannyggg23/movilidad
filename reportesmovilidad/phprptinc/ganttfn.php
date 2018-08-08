@@ -54,6 +54,8 @@ class crGanttDataColumn {
 //
 class crGantt extends crChart {
 	var $Name = "";
+	var $ChartWidth; // Chart Width
+	var $ChartHeight; // Chart Height
 	var $ProcessesHeaderText;
 	var $DateFormat = "yyyy/mm/dd";
 
@@ -877,22 +879,6 @@ class crGantt extends crChart {
 			$doc->loadXML($xml);
 			$doc->formatOutput = TRUE;
 			ewr_SetDebugMsg("(Chart XML):<pre>" . ewr_HtmlEncode(ewr_ConvertFromUtf8($doc->saveXML())) . "</pre>");
-		}
-		return $wrk;
-	}
-
-	// Show temp image
-	function ShowTempImage() {
-		global $gsExport;
-		$chartid = "chart_" . $this->ID;
-		$tmpChartImage = ewr_TmpChartImage($chartid, FALSE);
-		$wrk = "";
-		if ($tmpChartImage <> "") {
-			$wrk = "<img src=\"" . $tmpChartImage . "\" alt=\"\">";
-			if ($gsExport == "word" && defined('EWR_USE_PHPWORD') || $gsExport == "excel" && defined('EWR_USE_PHPEXCEL'))
-				$wrk = "<table class=\"ewChart\"><tr><td>" . $wrk . "</td></tr></table>";
-			else
-				$wrk = "<div class=\"ewChart\">" . $wrk . "</div>";
 		}
 		return $wrk;
 	}

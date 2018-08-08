@@ -448,10 +448,12 @@ function addCadreTVAs($monto)
 	//$this->Line( $r1+75, $y1, $r1+75, $y2);  // avant PORT
 	//$this->Line( $r1+91, $y1, $r1+91, $y2);  // avant TOTAUX
 	$this->SetXY( $r1+9, $y1+3);
-	$this->Cell(10,4, "IMPORTE TOTAL CON LETRA");
+	$this->Cell(10,4, "Validado por:");
+	$this->SetXY( $r1+9, $y1+8);
+	$this->Cell(10,4, "CI:");
 	$this->SetFont( "Arial", "", 8);
-	$this->SetXY( $r1+9, $y1+7);
-	$this->MultiCell(100,4, $monto);
+	$this->SetXY( $r1+9, $y1+15);
+	$this->MultiCell(100,4, '                                                    Firma:   ------------------------------------------------');
 	//$this->SetX( $r1+29 );
 	//$this->Cell(10,4, "REMISE");
 	//$this->SetX( $r1+48 );

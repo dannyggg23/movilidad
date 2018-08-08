@@ -1,22 +1,27 @@
 <?php
 
 // Global variable for table object
-$Ingreso_Bienes = NULL;
+$Egreso_Bienes_Proyecto = NULL;
 
 //
-// Table class for Ingreso-Bienes
+// Table class for Egreso-Bienes-Proyecto
 //
-class crIngreso_Bienes extends crTableBase {
+class crEgreso_Bienes_Proyecto extends crTableBase {
 	var $ShowGroupHeaderAsRow = FALSE;
 	var $ShowCompactSummaryFooter = TRUE;
-	var $idingreso_bienes;
-	var $numero_ingreso;
-	var $nombre;
+	var $idegreso_bienes;
+	var $numero_egreso;
+	var $proyecto;
 	var $fecha;
-	var $ubicacion;
-	var $detalle;
+	var $lugar;
+	var $calle;
+	var $interseccion;
+	var $descripcion;
+	var $idcajeros;
+	var $usuario;
+	var $cajero;
+	var $cedula_cajero;
 	var $total;
-	var $n_documento;
 	var $estado;
 
 	//
@@ -24,8 +29,8 @@ class crIngreso_Bienes extends crTableBase {
 	//
 	function __construct() {
 		global $ReportLanguage, $grLanguage;
-		$this->TableVar = 'Ingreso_Bienes';
-		$this->TableName = 'Ingreso-Bienes';
+		$this->TableVar = 'Egreso_Bienes_Proyecto';
+		$this->TableName = 'Egreso-Bienes-Proyecto';
 		$this->TableType = 'REPORT';
 		$this->TableReportType = 'summary';
 		$this->SourcTableIsCustomView = FALSE;
@@ -34,59 +39,108 @@ class crIngreso_Bienes extends crTableBase {
 		$this->ExportPageBreakCount = 0;
 		$this->ExportPageOrientation = "portrait"; // Page orientation (PDF only)
 
-		// idingreso_bienes
-		$this->idingreso_bienes = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_idingreso_bienes', 'idingreso_bienes', '`idingreso_bienes`', 3, EWR_DATATYPE_NUMBER, -1);
-		$this->idingreso_bienes->Sortable = TRUE; // Allow sort
-		$this->idingreso_bienes->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
-		$this->idingreso_bienes->DateFilter = "";
-		$this->idingreso_bienes->SqlSelect = "";
-		$this->idingreso_bienes->SqlOrderBy = "";
-		$this->idingreso_bienes->DrillDownUrl = "r_detalle_ingreso_bienesrpt.php?d=1&t=r_detalle_ingreso_bienes&s=Ingreso_Bienes&ingreso_bienes_idingreso_bienes=f0";
-		$this->fields['idingreso_bienes'] = &$this->idingreso_bienes;
+		// idegreso_bienes
+		$this->idegreso_bienes = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_idegreso_bienes', 'idegreso_bienes', '`idegreso_bienes`', 3, EWR_DATATYPE_NUMBER, -1);
+		$this->idegreso_bienes->Sortable = TRUE; // Allow sort
+		$this->idegreso_bienes->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
+		$this->idegreso_bienes->DateFilter = "";
+		$this->idegreso_bienes->SqlSelect = "";
+		$this->idegreso_bienes->SqlOrderBy = "";
+		$this->fields['idegreso_bienes'] = &$this->idegreso_bienes;
 
-		// numero_ingreso
-		$this->numero_ingreso = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_numero_ingreso', 'numero_ingreso', '`numero_ingreso`', 200, EWR_DATATYPE_STRING, -1);
-		$this->numero_ingreso->Sortable = TRUE; // Allow sort
-		$this->numero_ingreso->DateFilter = "";
-		$this->numero_ingreso->SqlSelect = "";
-		$this->numero_ingreso->SqlOrderBy = "";
-		$this->fields['numero_ingreso'] = &$this->numero_ingreso;
+		// numero_egreso
+		$this->numero_egreso = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_numero_egreso', 'numero_egreso', '`numero_egreso`', 200, EWR_DATATYPE_STRING, -1);
+		$this->numero_egreso->Sortable = TRUE; // Allow sort
+		$this->numero_egreso->DateFilter = "";
+		$this->numero_egreso->SqlSelect = "";
+		$this->numero_egreso->SqlOrderBy = "";
+		$this->fields['numero_egreso'] = &$this->numero_egreso;
 
-		// nombre
-		$this->nombre = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_nombre', 'nombre', '`nombre`', 200, EWR_DATATYPE_STRING, -1);
-		$this->nombre->Sortable = TRUE; // Allow sort
-		$this->nombre->DateFilter = "";
-		$this->nombre->SqlSelect = "";
-		$this->nombre->SqlOrderBy = "";
-		$this->fields['nombre'] = &$this->nombre;
+		// proyecto
+		$this->proyecto = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_proyecto', 'proyecto', '`proyecto`', 200, EWR_DATATYPE_STRING, -1);
+		$this->proyecto->Sortable = TRUE; // Allow sort
+		$this->proyecto->DateFilter = "";
+		$this->proyecto->SqlSelect = "SELECT DISTINCT `proyecto`, `proyecto` AS `DispFld` FROM " . $this->getSqlFrom();
+		$this->proyecto->SqlOrderBy = "`proyecto`";
+		$this->proyecto->DrillDownUrl = "r_detalle_egreso_bienesrpt.php?d=1&t=r_detalle_egreso_bienes&s=Egreso_Bienes_Proyecto&egreso_bienes_idegreso_bienes=f0";
+		$this->fields['proyecto'] = &$this->proyecto;
 
 		// fecha
-		$this->fecha = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_fecha', 'fecha', '`fecha`', 133, EWR_DATATYPE_DATE, 0);
+		$this->fecha = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_fecha', 'fecha', '`fecha`', 133, EWR_DATATYPE_DATE, 0);
 		$this->fecha->Sortable = TRUE; // Allow sort
 		$this->fecha->FldDefaultErrMsg = str_replace("%s", $GLOBALS["EWR_DATE_FORMAT"], $ReportLanguage->Phrase("IncorrectDate"));
 		$this->fecha->DateFilter = "";
-		$this->fecha->SqlSelect = "SELECT DISTINCT `fecha`, `fecha` AS `DispFld` FROM " . $this->getSqlFrom();
-		$this->fecha->SqlOrderBy = "`fecha`";
+		$this->fecha->SqlSelect = "";
+		$this->fecha->SqlOrderBy = "";
 		$this->fields['fecha'] = &$this->fecha;
 
-		// ubicacion
-		$this->ubicacion = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_ubicacion', 'ubicacion', '`ubicacion`', 200, EWR_DATATYPE_STRING, -1);
-		$this->ubicacion->Sortable = TRUE; // Allow sort
-		$this->ubicacion->DateFilter = "";
-		$this->ubicacion->SqlSelect = "";
-		$this->ubicacion->SqlOrderBy = "";
-		$this->fields['ubicacion'] = &$this->ubicacion;
+		// lugar
+		$this->lugar = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_lugar', 'lugar', '`lugar`', 200, EWR_DATATYPE_STRING, -1);
+		$this->lugar->Sortable = TRUE; // Allow sort
+		$this->lugar->DateFilter = "";
+		$this->lugar->SqlSelect = "";
+		$this->lugar->SqlOrderBy = "";
+		$this->fields['lugar'] = &$this->lugar;
 
-		// detalle
-		$this->detalle = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_detalle', 'detalle', '`detalle`', 200, EWR_DATATYPE_STRING, -1);
-		$this->detalle->Sortable = TRUE; // Allow sort
-		$this->detalle->DateFilter = "";
-		$this->detalle->SqlSelect = "";
-		$this->detalle->SqlOrderBy = "";
-		$this->fields['detalle'] = &$this->detalle;
+		// calle
+		$this->calle = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_calle', 'calle', '`calle`', 200, EWR_DATATYPE_STRING, -1);
+		$this->calle->Sortable = TRUE; // Allow sort
+		$this->calle->DateFilter = "";
+		$this->calle->SqlSelect = "";
+		$this->calle->SqlOrderBy = "";
+		$this->fields['calle'] = &$this->calle;
+
+		// interseccion
+		$this->interseccion = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_interseccion', 'interseccion', '`interseccion`', 200, EWR_DATATYPE_STRING, -1);
+		$this->interseccion->Sortable = TRUE; // Allow sort
+		$this->interseccion->DateFilter = "";
+		$this->interseccion->SqlSelect = "";
+		$this->interseccion->SqlOrderBy = "";
+		$this->fields['interseccion'] = &$this->interseccion;
+
+		// descripcion
+		$this->descripcion = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_descripcion', 'descripcion', '`descripcion`', 201, EWR_DATATYPE_MEMO, -1);
+		$this->descripcion->Sortable = TRUE; // Allow sort
+		$this->descripcion->DateFilter = "";
+		$this->descripcion->SqlSelect = "";
+		$this->descripcion->SqlOrderBy = "";
+		$this->fields['descripcion'] = &$this->descripcion;
+
+		// idcajeros
+		$this->idcajeros = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_idcajeros', 'idcajeros', '`idcajeros`', 3, EWR_DATATYPE_NUMBER, -1);
+		$this->idcajeros->Sortable = TRUE; // Allow sort
+		$this->idcajeros->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectInteger");
+		$this->idcajeros->DateFilter = "";
+		$this->idcajeros->SqlSelect = "";
+		$this->idcajeros->SqlOrderBy = "";
+		$this->fields['idcajeros'] = &$this->idcajeros;
+
+		// usuario
+		$this->usuario = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_usuario', 'usuario', '`usuario`', 200, EWR_DATATYPE_STRING, -1);
+		$this->usuario->Sortable = TRUE; // Allow sort
+		$this->usuario->DateFilter = "";
+		$this->usuario->SqlSelect = "";
+		$this->usuario->SqlOrderBy = "";
+		$this->fields['usuario'] = &$this->usuario;
+
+		// cajero
+		$this->cajero = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_cajero', 'cajero', '`cajero`', 200, EWR_DATATYPE_STRING, -1);
+		$this->cajero->Sortable = TRUE; // Allow sort
+		$this->cajero->DateFilter = "";
+		$this->cajero->SqlSelect = "";
+		$this->cajero->SqlOrderBy = "";
+		$this->fields['cajero'] = &$this->cajero;
+
+		// cedula_cajero
+		$this->cedula_cajero = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_cedula_cajero', 'cedula_cajero', '`cedula_cajero`', 200, EWR_DATATYPE_STRING, -1);
+		$this->cedula_cajero->Sortable = TRUE; // Allow sort
+		$this->cedula_cajero->DateFilter = "";
+		$this->cedula_cajero->SqlSelect = "";
+		$this->cedula_cajero->SqlOrderBy = "";
+		$this->fields['cedula_cajero'] = &$this->cedula_cajero;
 
 		// total
-		$this->total = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_total', 'total', '`total`', 131, EWR_DATATYPE_NUMBER, -1);
+		$this->total = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_total', 'total', '`total`', 131, EWR_DATATYPE_NUMBER, -1);
 		$this->total->Sortable = TRUE; // Allow sort
 		$this->total->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectFloat");
 		$this->total->DateFilter = "";
@@ -94,16 +148,8 @@ class crIngreso_Bienes extends crTableBase {
 		$this->total->SqlOrderBy = "";
 		$this->fields['total'] = &$this->total;
 
-		// n_documento
-		$this->n_documento = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_n_documento', 'n_documento', '`n_documento`', 200, EWR_DATATYPE_STRING, -1);
-		$this->n_documento->Sortable = TRUE; // Allow sort
-		$this->n_documento->DateFilter = "";
-		$this->n_documento->SqlSelect = "";
-		$this->n_documento->SqlOrderBy = "";
-		$this->fields['n_documento'] = &$this->n_documento;
-
 		// estado
-		$this->estado = new crField('Ingreso_Bienes', 'Ingreso-Bienes', 'x_estado', 'estado', '`estado`', 200, EWR_DATATYPE_STRING, -1);
+		$this->estado = new crField('Egreso_Bienes_Proyecto', 'Egreso-Bienes-Proyecto', 'x_estado', 'estado', '`estado`', 200, EWR_DATATYPE_STRING, -1);
 		$this->estado->Sortable = TRUE; // Allow sort
 		$this->estado->DateFilter = "";
 		$this->estado->SqlSelect = "";
@@ -168,7 +214,7 @@ class crIngreso_Bienes extends crTableBase {
 	var $_SqlFrom = "";
 
 	function getSqlFrom() {
-		return ($this->_SqlFrom <> "") ? $this->_SqlFrom : "`r_ingreso_bienes`";
+		return ($this->_SqlFrom <> "") ? $this->_SqlFrom : "`view1`";
 	}
 
 	function SqlFrom() { // For backward compatibility
@@ -405,6 +451,17 @@ class crIngreso_Bienes extends crTableBase {
 	function SetupLookupFilters($fld) {
 		global $grLanguage;
 		switch ($fld->FldVar) {
+		case "x_proyecto":
+			$fld->LookupFilters = array("d" => "DB", "f0" => '`proyecto` = {filter_value}', "t0" => "200", "fn0" => "", "dlm" => ewr_Encrypt($fld->FldDelimiter), "af" => json_encode($fld->AdvancedFilters));
+		$sWhereWrk = "";
+		$fld->LookupFilters += array(
+			"select" => "SELECT DISTINCT `proyecto`, `proyecto` AS `DispFld`, '' AS `DispFld2`, '' AS `DispFld3`, '' AS `DispFld4` FROM `view1`",
+			"where" => $sWhereWrk,
+			"orderby" => "`proyecto` ASC"
+		);
+		$this->Lookup_Selecting($fld, $fld->LookupFilters["where"]); // Call Lookup selecting
+		$fld->LookupFilters["s"] = ewr_BuildReportSql($fld->LookupFilters["select"], $fld->LookupFilters["where"], "", "", $fld->LookupFilters["orderby"], "", "");
+			break;
 		}
 	}
 
