@@ -183,6 +183,13 @@ if (strlen(session_id()) < 1)
               </a>
             </li>
 
+              <li class="treeview">
+              <a target="_blank" href="../backup/backup.php">
+                <i class="fa fa-bar-chart"></i> <span>Backup</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+            </li>
+
           </ul>
         </section>
         <!-- /.sidebar -->

@@ -11,12 +11,20 @@ class ComposerStaticInit782b264af769baf39618cc876eaad6c0
         array (
             'Tavo\\' => 5,
         ),
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'Tavo\\' => 
         array (
             0 => __DIR__ . '/..' . '/tavo1987/ec-validador-cedula-ruc/src',
+        ),
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
         ),
     );
 

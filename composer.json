@@ -1,5 +1,6 @@
 {
     "require": {
-        "tavo1987/ec-validador-cedula-ruc": "^1.0"
+        "tavo1987/ec-validador-cedula-ruc": "^1.0",
+        "phpmailer/phpmailer": "^6.0"
     }
 }
