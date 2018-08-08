@@ -87,7 +87,7 @@ switch ($_GET["op"]){
 
         $rspta = $egreso_bienes->select();
         
-        echo '<option>--SELECCIONE--</option>';
+        echo '<option value="">--SELECCIONE--</option>';
 
 		while ($reg = $rspta->fetch_object())
 				{

@@ -13,10 +13,10 @@ Class Egreso_bienes
 	//Implementamos un método <para></para> insertar registros
 	public function insertar($fecha,
 	$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,
-	$calle,$interseccion,
+	$calle,$interseccion,$proyectos_idproyectos,
 	$cantidad,$precio,$bienes_idbienes)
 	{
-		$sql="INSERT INTO `egreso_bienes`( `fecha`, `total`, `lugar`, `descripcion`, `personas_idcajeros`, `usuario_idusuario`,estado,numero_egreso,calle,interseccion) VALUES ('$fecha','$total','$lugar','$descripcion','$personas_idcajeros','$usuario_idusuario','Aceptado','$numero_egreso','$calle','$interseccion')";
+		$sql="INSERT INTO `egreso_bienes`( `fecha`, `total`, `lugar`, `descripcion`, `personas_idcajeros`, `usuario_idusuario`,estado,numero_egreso,calle,interseccion,proyectos_idproyectos) VALUES ('$fecha','$total','$lugar','$descripcion','$personas_idcajeros','$usuario_idusuario','Aceptado','$numero_egreso','$calle','$interseccion','$proyectos_idproyectos')";
 		//return ejecutarConsulta($sql);
 		$idegresonew=ejecutarConsulta_retornarID($sql);
 		$num_elementos=0;
@@ -60,7 +60,12 @@ Class Egreso_bienes
 	//Implementar un método para listar los registros
 	public function listar()
 	{
-		$sql="SELECT egreso_bienes.*,usuario.nombre,personas.cedula FROM `egreso_bienes` INNER JOIN usuario ON usuario.idusuario=egreso_bienes.usuario_idusuario INNER JOIN personas ON personas.idcajeros=egreso_bienes.personas_idcajeros ORDER BY fecha desc";
+		$sql="SELECT egreso_bienes.*,usuario.nombre,personas.cedula,proyectos.nombre AS 'proyecto'
+		FROM `egreso_bienes` 
+		INNER JOIN usuario ON usuario.idusuario=egreso_bienes.usuario_idusuario 
+		INNER JOIN personas ON personas.idcajeros=egreso_bienes.personas_idcajeros
+        INNER JOIN proyectos ON proyectos.idproyectos=egreso_bienes.proyectos_idproyectos
+		ORDER BY fecha desc";
 		return ejecutarConsulta($sql);		
 	}
 	public function select()

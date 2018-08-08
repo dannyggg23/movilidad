@@ -15,6 +15,13 @@ function init() {
 
     });
 
+
+    $.post("../ajax/egreso_bienes.php?op=selectProyectos", function(r) {
+        $("#proyectos_idproyectos").html(r);
+        $('#proyectos_idproyectos').selectpicker('refresh');
+
+    });
+
 }
 
 //Función limpiar
@@ -26,6 +33,9 @@ function limpiar() {
 
     $("#personas_idcajeros").val("");
     $('#personas_idcajeros').selectpicker('refresh');
+
+    $("#proyectos_idproyectos").val("");
+    $('#proyectos_idproyectos').selectpicker('refresh');
 
     $("#numero_egreso").val("");
     $("#calle").val("");
@@ -166,6 +176,13 @@ function mostrar(idegreso_bienes) {
         $("#interseccion").val(data.interseccion);
         $("#fecha").val(data.fecha);
         $("#total").val(data.total);
+
+
+        $("#personas_idcajeros").val(data.personas_idcajeros);
+        $('#personas_idcajeros').selectpicker('refresh');
+
+        $("#proyectos_idproyectos").val(data.proyectos_idproyectos);
+        $('#proyectos_idproyectos').selectpicker('refresh');
 
 
         //Ocultar y mostrar los botones

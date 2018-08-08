@@ -132,7 +132,7 @@ switch ($_GET["op"]){
 
 		$rspta = $personas->select();
 
-		echo '<option>--SELECCIONE--</option>';
+		echo '<option value="">--SELECCIONE--</option>';
 
 		while ($reg = $rspta->fetch_object())
 				{

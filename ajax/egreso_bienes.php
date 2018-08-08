@@ -17,13 +17,13 @@ $personas_idcajeros=isset($_POST["personas_idcajeros"])? limpiarCadena($_POST["p
 $numero_egreso=isset($_POST["numero_egreso"])? limpiarCadena($_POST["numero_egreso"]):"";
 $calle=isset($_POST["calle"])? limpiarCadena($_POST["calle"]):"";
 $interseccion=isset($_POST["interseccion"])? limpiarCadena($_POST["interseccion"]):"";
+$proyectos_idproyectos=isset($_POST["proyectos_idproyectos"])? limpiarCadena($_POST["proyectos_idproyectos"]):"";
 $usuario_idusuario=$_SESSION["idusuario"];
-
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idegreso_bienes)){
-			$rspta=$egreso->insertar($fecha,$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,$calle,$interseccion,$_POST["cantidad"],$_POST["precio"],$_POST["bienes_idbienes"]);
+			$rspta=$egreso->insertar($fecha,$total,$lugar,$descripcion,$personas_idcajeros,$usuario_idusuario,$numero_egreso,$calle,$interseccion,$proyectos_idproyectos,$_POST["cantidad"],$_POST["precio"],$_POST["bienes_idbienes"]);
 			echo $rspta ? "egreso registrado" : "No se pudieron registrar todos los datos del egreso";
 		}
 		else {
@@ -77,7 +77,7 @@ switch ($_GET["op"]){
 		 $data= Array();
 		 
 		 $url='../reportes/egreso_bienes_Factura.php?id=';
-
+		 
 
  		while ($reg=$rspta->fetch_object()){
  			$data[]=array(
@@ -87,12 +87,13 @@ switch ($_GET["op"]){
 				 '<a target="_blank" href="'.$url.$reg->idegreso_bienes.'"> <button class="btn btn-info"><i class="fa fa-file"></i></button></a>',
  				"1"=>$reg->fecha,
  				"2"=>$reg->cedula,
- 				"3"=>$reg->lugar,
- 				"4"=>$reg->descripcion,
- 				"5"=>$reg->numero_egreso,
- 				"6"=>$reg->nombre,
- 				"7"=>$reg->total,
- 				"8"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':
+ 				"3"=>$reg->proyecto,
+ 				"4"=>$reg->lugar,
+ 				"5"=>$reg->descripcion,
+ 				"6"=>$reg->numero_egreso,
+ 				"7"=>$reg->nombre,
+ 				"8"=>$reg->total,
+ 				"9"=>($reg->estado=='Aceptado')?'<span class="label bg-green">Aceptado</span>':
  				'<span class="label bg-red">Anulado</span>'
  				);
  		}
@@ -141,7 +142,7 @@ switch ($_GET["op"]){
 
 		$rspta = $personas->select();
 
-		echo '<option>--SELECCIONE--</option>';
+		echo '<option value="">--SELECCIONE--</option>';
 
 
 		while ($reg = $rspta->fetch_object())
@@ -149,5 +150,20 @@ switch ($_GET["op"]){
 					echo '<option value=' . $reg->idcajeros . '>' . $reg->nombre . '</option>';
 				}
 	break;
+
+	case "selectProyectos":
+	require_once "../modelos/Proyectos.php";
+	$personas = new Proyectos();
+
+	$rspta = $personas->select();
+
+	echo '<option value="">--SELECCIONE--</option>';
+
+
+	while ($reg = $rspta->fetch_object())
+			{
+				echo '<option value=' . $reg->idproyectos . '>' . $reg->nombre . '</option>';
+			}
+break;
 }
 ?>

@@ -35,6 +35,7 @@ if($_SESSION['bienes']==1)
                           <th>Opciones</th>
                             <th>Fecha</th>
                             <th>Cédula</th>
+                            <th>Proyecto</th>
                             <th>Ubicación</th>
                             <th>Detalle</th>
                             <th>Numero</th>
@@ -48,6 +49,7 @@ if($_SESSION['bienes']==1)
                           <th>Opciones</th>
                             <th>Fecha</th>
                             <th>Cédula</th>
+                            <th>Proyecto</th>
                             <th>Ubicación</th>
                             <th>Detalle</th>
                             <th>Numero</th>
@@ -80,14 +82,20 @@ if($_SESSION['bienes']==1)
                             <label>Detalle:</label>
                               <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="200" placeholder="Ingrese el Detalle" >
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Número:</label>
                               <input type="text" class="form-control" name="numero_egreso" id="numero_egreso" maxlength="25" placeholder="Ingrese el Número" >
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                             <label>Persona(*):</label>
                             <select id="personas_idcajeros" name="personas_idcajeros" class="form-control selectpicker" data-live-search="true" required></select>
                           </div>
+
+                            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label>Proyecto(*):</label>
+                            <select id="proyectos_idproyectos" name="proyectos_idproyectos" class="form-control selectpicker" data-live-search="true" required></select>
+                          </div>
+
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                            <a data-toggle="modal" href="#myModal">
                               <button id="btnAgregarArt" type="button" class="btn btn-primary"> <span class="fa fa-plus"></span>Agregar ficha</button>

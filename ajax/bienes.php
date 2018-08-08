@@ -92,7 +92,7 @@ switch ($_GET["op"]){
 		$categoria_bienes = new Categoria_bienes();
 
 		$rspta = $categoria_bienes->select();
-		echo '<option>--SELECCIONE--</option>';
+		echo '<option value="">--SELECCIONE--</option>';
 
 		while ($reg = $rspta->fetch_object())
 				{

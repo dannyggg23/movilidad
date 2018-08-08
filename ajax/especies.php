@@ -94,7 +94,7 @@ switch ($_GET["op"]){
 
 		$rspta = $categoria_especies->select();
 
-		echo '<option>--Seleccione--</option>';
+		echo '<option value="">--Seleccione--</option>';
 
 		while ($reg = $rspta->fetch_object())
 				{

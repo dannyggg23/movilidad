@@ -125,6 +125,7 @@ if (strlen(session_id()) < 1)
                 <li><a href="especies.php"><i class="fa fa-circle-o"></i> Especies</a></li>
                 <li><a href="bienes.php"><i class="fa fa-circle-o"></i> Bienes</a></li>
                 <li><a href="cajeros.php"><i class="fa fa-circle-o"></i> Personas</a></li>
+                <li><a href="proyectos.php"><i class="fa fa-circle-o"></i> Proyectos</a></li>
               </ul>
             </li>
 
