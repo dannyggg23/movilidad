@@ -67,12 +67,12 @@ if($_SESSION['especies']==1)
                             <label>Fecha(*):</label>
                               <input type="date" class="form-control" name="fecha" id="fecha" required>
                           </div>
-                           <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
+                           <div class="form-group col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <label>Detalle(*):</label>
                               <input type="text" class="form-control" name="detalle" id="detalle" maxlength="200" placeholder="Ingrese el detalle del ingreso" required="">
                           </div>
-                          <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                            <label>Número(*):</label>
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label>Orden de Compra(*):</label>
                               <input type="text" class="form-control" name="numero_docuemnto" id="numero_docuemnto" maxlength="20" placeholder="Número de ingreso" required="">
                           </div>
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">

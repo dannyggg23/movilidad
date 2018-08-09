@@ -43,7 +43,7 @@ Class Consultas
   }
 
   public function NUMalertaespecies(){
-    $sql="SELECT COUNT(especies.idespecies) as NUMalertaespecies FROM `especies` WHERE especies.condicion=1 AND especies.stock <= 1000";
+    $sql="SELECT COUNT(especies.idespecies) as NUMalertaespecies FROM `especies` WHERE especies.condicion=1 AND especies.stock <= 5000";
     return ejecutarConsulta($sql);
   }
 

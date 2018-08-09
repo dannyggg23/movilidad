@@ -63,8 +63,8 @@ if ($_SESSION['catalogos']==1)
                           </div>
 
                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label>Descripción(*):</label>
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="200" placeholder="Ingrese una descripción" required>
+                            <label>Justificativo(*):</label>
+                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="200" placeholder="Ingrese la justificación del proyecto" required>
                           </div>
 
                         

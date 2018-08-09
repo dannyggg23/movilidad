@@ -78,7 +78,7 @@ switch ($_GET["op"]){
  			"iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
  			"aaData"=>$data);
  		echo json_encode($results);
-
+ 
 	break;
 
 	case "selectEgresoBienes":
@@ -91,7 +91,7 @@ switch ($_GET["op"]){
 
 		while ($reg = $rspta->fetch_object())
 				{
-					echo '<option value=' . $reg->idegreso_bienes . '>' . $reg->numero_egreso . '</option>';
+					echo '<option value=' . $reg->idegreso_bienes . '>' . $reg->numero_egreso  .' | '.$reg->lugar.' | '.$reg->descripcion. ' </option>';
 				}
 	break;
 }

@@ -72,7 +72,7 @@ if($_SESSION['bienes']==1)
                           </div>
                           <div class="form-group col-lg-2 col-md-2 col-sm-6 col-xs-12">
                             <label>Número(*):</label>
-                              <input type="text" class="form-control" name="numero_ingreso" id="numero_ingreso" maxlength="10" placeholder="Ingrese el Número" required="">
+                              <input type="text" class="form-control" name="numero_ingreso" id="numero_ingreso" maxlength="45" placeholder="Ingrese el Número" required="">
                           </div>
                           <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                            <a data-toggle="modal" href="#myModal">

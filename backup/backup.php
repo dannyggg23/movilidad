@@ -43,7 +43,7 @@ foreach ( $commands as $command ) {
            $mail->Mailer = "smtp";
            $mail->Username   = "dannyggg23@gmail.com";  // GMAIL username
            $mail->Password   = "..Danny..3Burguer";            // GMAIL password
-           $mail->AddAddress("deatheroger@gmail.com", 'abc');
+           $mail->AddAddress("galloapatty@hotmail.com", 'abc');
            $mail->AddAddress("dannyggg23@gmail.com", 'abc');
            $mail->SetFrom('dannyggg23@gmail.com', 'Backup');
            $mail->addAttachment($backup_file);         // Add attachments

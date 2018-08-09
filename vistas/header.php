@@ -117,7 +117,7 @@ if (strlen(session_id()) < 1)
 
             <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
+                <i class="fa fa-list"></i>
                 <span>Catálogos</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -129,11 +129,9 @@ if (strlen(session_id()) < 1)
               </ul>
             </li>
 
-            
-
           <li class="treeview">
               <a href="#">
-                <i class="fa fa-th"></i>
+                <i class="fa fa-file-text"></i>
                 <span>Especies</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -146,7 +144,7 @@ if (strlen(session_id()) < 1)
 
           <li class="treeview">
               <a href="#">
-                <i class="fa fa-file-text"></i>
+                <i class="fa fa-file-text-o"></i>
                 <span>Bienes</span>
                  <i class="fa fa-angle-left pull-right"></i>
               </a>
@@ -156,12 +154,6 @@ if (strlen(session_id()) < 1)
                 <li><a href="seguimiento.php"><i class="fa fa-circle-o"></i> Seguimiento</a></li>
               </ul>
             </li>
-
-           
-
-
-
-
 
           <li class="treeview">
               <a href="#">
@@ -175,18 +167,17 @@ if (strlen(session_id()) < 1)
               </ul>
             </li>
 
-
           <li class="treeview">
               <a target="_blank" href="../reportesmovilidad">
-                <i class="fa fa-bar-chart"></i> <span>Consultas</span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-line-chart"></i> <span>Consultas</span>
+                <i class=""></i>
               </a>
             </li>
 
               <li class="treeview">
               <a target="_blank" href="../backup/backup.php">
                 <i class="fa fa-bar-chart"></i> <span>Backup</span>
-                <i class="fa fa-angle-left pull-right"></i>
+                <i class=""></i>
               </a>
             </li>
 
