@@ -1,24 +1,71 @@
 <?php
-// variables
-$dbhost = 'localhost';
-$dbname = 'movilidad';
-$dbuser = 'root';
-$dbpass = '';
+//######################
+$host="localhost";
+$username="root";
+$password="";
+$database_name="movilidad";
 
-$backup_file = $dbname. "-" .date("Y-m-d-H-i-s"). ".sql";
+$conn=mysqli_connect($host,$username,$password,$database_name);
 
-// comandos a ejecutar
-$commands = array(
-        "mysqldump --opt -h $dbhost -u $dbuser -p$dbpass -v $dbname > $backup_file",
-      "bzip2 $backup_file"
-);
+$tables=array();
+$sql="SHOW TABLES";
+$result=mysqli_query($conn,$sql);
 
-// ejecución y salida de éxito o errores
-foreach ( $commands as $command ) {
-        system($command,$output);
-       // echo $output;
+while($row=mysqli_fetch_row($result)){
+$tables[]=$row[0];
 }
 
+$backupSQL="";
+foreach($tables as $table){
+$query="SHOW CREATE TABLE $table";
+$result=mysqli_query($conn,$query);
+$row=mysqli_fetch_row($result);
+$backupSQL.="\n\n".$row[1].";\n\n";
+
+$query="SELECT * FROM $table";
+$result=mysqli_query($conn,$query);
+
+$columnCount=mysqli_num_fields($result);
+
+for($i=0;$i<$columnCount;$i++){
+while($row=mysqli_fetch_row($result)){
+$backupSQL.="INSERT INTO $table VALUES(";
+for($j=0;$j<$columnCount;$j++){
+$row[$j]=$row[$j];
+
+if(isset($row[$j])){
+$backupSQL.='"'.$row[$j].'"';
+}else{
+$backupSQL.='""';
+}
+if($j<($columnCount-1)){
+$backupSQL.=',';
+}
+}
+$backupSQL.=");\n";
+}
+}
+$backupSQL.="\n";
+}
+
+if(!empty($backupSQL)){
+$backup_file_name=$database_name.'_backup_'.time().'.sql';
+$fileHandler=fopen($backup_file_name,'w+');
+$number_of_lines=fwrite($fileHandler,$backupSQL);
+fclose($fileHandler);
+
+// header('Content-Description: File Transfer');
+// header('Content-Type: application/octet-stream');
+// header('Content-Disposition: attachment; filename='.basename($backup_file_name));
+// header('Content-Transfer-Encoding: binary');
+// header('Expires: 0');
+// header('Cache-Control: must-revalidate');
+// header('Pragma: public');
+// header('Content-Length: '.filesize($backup_file_name));
+// ob_clean();
+// flush();
+
+}
  //####################
  require_once ('../vendor/phpmailer/phpmailer/src/Exception.php');
  require_once ('../vendor/phpmailer/phpmailer/src/OAuth.php');
@@ -41,12 +88,13 @@ foreach ( $commands as $command ) {
            $mail->Port       = 465;   // set the SMTP port for the GMAIL server
            $mail->SMTPKeepAlive = true;
            $mail->Mailer = "smtp";
-           $mail->Username   = "dannyggg23@gmail.com";  // GMAIL username
-           $mail->Password   = "..Danny..3Burguer";            // GMAIL password
-           $mail->AddAddress("galloapatty@hotmail.com", 'abc');
-           $mail->AddAddress("dannyggg23@gmail.com", 'abc');
-           $mail->SetFrom('dannyggg23@gmail.com', 'Backup');
-           $mail->addAttachment($backup_file);         // Add attachments
+           $mail->Username   = "movilidadlatacunga@gmail.com";  // GMAIL username
+           $mail->Password   = "Movilidad123";            // GMAIL password
+           //$mail->AddAddress("galloapatty@hotmail.com", 'abc');
+           $mail->AddAddress("movilidadlatacunga@gmail.com", 'abc');
+      
+           $mail->SetFrom('movilidadlatacunga@gmail.com', 'Backup');
+           $mail->addAttachment($backup_file_name);         // Add attachments
            $mail->Subject = 'Backup de la base de datos de movilidad';
            $mail->AltBody = ''; // optional - MsgHTML will create an alternate automatically
            $mail->MsgHTML($body);
