@@ -47,7 +47,7 @@ $pdf->temporaire( "" );
 $pdf->addDate( $regv->fecha);
 
 //Enviamos los datos del cliente al método addClientAdresse de la clase Factura
-$pdf->addClientAdresse(utf8_decode($regv->nombre),utf8_decode("Cédula: ").utf8_decode($regv->cedula),utf8_decode("Función: ").utf8_decode($regv->funcion),"Usario: ".utf8_decode($regv->usuario),utf8_decode("Ubicación: ").utf8_decode($regv->ubicacion),utf8_decode("Detalle: ").utf8_decode($regv->detalle));
+$pdf->addClientAdresse(utf8_decode($regv->nombre),utf8_decode("Cédula: ").utf8_decode($regv->cedula),utf8_decode("Función: ").utf8_decode($regv->funcion),"Entrega: ".utf8_decode($regv->usuario),utf8_decode("Ubicación: ").utf8_decode($regv->ubicacion),utf8_decode("Detalle: ").utf8_decode($regv->detalle));
 
 //Establecemos las columnas que va a tener la sección donde mostramos los detalles de la venta
 

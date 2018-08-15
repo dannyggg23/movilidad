@@ -258,7 +258,7 @@ function addClientAdresse( $cliente,$domicilio,$num_documento,$email,$telefono,$
 	$y1     = 40;
 	$this->SetXY( $r1, $y1+15);
 	$this->SetFont( "Arial", "B", 9);
-	$this->MultiCell( 200, 4, "PERSONA: ".$cliente);
+	$this->MultiCell( 200, 4, "RECIBE: ".$cliente);
 	$this->SetXY( $r1, $y1+19);
 	$this->SetFont( "Arial", "", 9);
 	$this->MultiCell( 200, 4, $lugar);
@@ -447,11 +447,11 @@ function addCadreTVAs($monto)
 	//$this->Line( $r1+63, $y1, $r1+63, $y2);  // avant % TVA
 	//$this->Line( $r1+75, $y1, $r1+75, $y2);  // avant PORT
 	//$this->Line( $r1+91, $y1, $r1+91, $y2);  // avant TOTAUX
-	$this->SetXY( $r1+9, $y1+3);
-	$this->Cell(10,4, "TOTAL CON LETRA");
+	$this->SetXY( $r1+20, $y1+3);
+	$this->Cell(100,4, "ENTREGUE CONFORME              RECIBI CONFORME");
 	$this->SetFont( "Arial", "", 8);
 	$this->SetXY( $r1+9, $y1+7);
-	$this->MultiCell(100,4, $monto);
+	$this->MultiCell(100,4, "");
 	//$this->SetX( $r1+29 );
 	//$this->Cell(10,4, "REMISE");
 	//$this->SetX( $r1+48 );
